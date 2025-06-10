@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #8a2be2;
+  --color-primary-light: #9d4edd;
+  --color-secondary: #ff8c00;
+  --color-dark: #0a0a0a;
+  --color-darker: #050505;
+  --color-light: #e6f1ff;
+  --color-light-gray: #a0a0c0;
+  --color-code-comment: #6a9955;
+  --color-code-keyword: #569cd6;
+  --color-code-string: #ce9178;
+  --color-code-number: #b5cea8;
+  --color-code-type: #4ec9b0;
+  --color-code-property: #9cdcfe;
+
+  --font-fira-code: "Fira Code", monospace;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typing-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #8a2be2; 
+  width: 0;
+  animation: 
+    typing 3s steps(40, end) forwards,
+    blink 1s step-end infinite;
+}
+
+
