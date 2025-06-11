@@ -96,7 +96,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projetos"
-      className="py-16 px-4 sm:px-6 bg-[rgba(10,10,20,0.9)]"
+      className="py-16 px-4 sm:px-6 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div

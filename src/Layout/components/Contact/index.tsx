@@ -83,7 +83,7 @@ export default function Contact() {
   return (
     <section
       id="contato"
-      className="py-16 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]"
+      className="py-16"
     >
       <div
         className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out ${
