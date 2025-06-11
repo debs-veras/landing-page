@@ -1,6 +1,6 @@
 export default function Terminal() {
   return (
-    <section className="flex justify-center items-center mb-8">
+    <section id="inicio" className="flex justify-center items-center mb-8">
       <div className="w-full max-w-[900px] bg-[rgba(20,20,30,0.85)] backdrop-blur-md rounded-lg border border-[rgba(138,43,226,0.2)] shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
         <div className="flex flex-wrap justify-center items-center gap-4 px-6 py-3.5 bg-[rgba(15,15,25,0.9)] border-b border-b-[rgba(138,43,226,0.2)] md:flex-nowrap md:gap-0 md:justify-normal">
           <div className="flex gap-3 mr-4">
@@ -36,16 +36,13 @@ export default function Terminal() {
               <span className="text-code-string">"Dev Junior"</span>;
             </p>
             <p className="font-[1.05rem] leading-[1.8] ml-6">
-              <span className="text-code-property">skills</span>:{" "}
+              <span className="text-code-property">main_skills</span>:{" "}
               <span className="text-code-type">Array</span>&lt;
               <span className="text-code-string">"React"</span> |{" "}
               <span className="text-code-string">"TypeScript"</span> |{" "}
               <span className="text-code-string">"Next.js"</span>&gt;;
             </p>
-            <p className="font-[1.05rem] leading-[1.8] ml-6">
-              <span className="text-code-property">chakra</span>:{" "}
-              <span className="text-code-number">9999</span>;
-            </p>
+        
             <p className="font-[1.05rem] leading-[1.8]">{"}"}</p>
             <p className="mt-6 text-[1rem] text-light-gray leading-relaxed w-full">
               Sou uma desenvolvedora frontend apaixonada por{" "}

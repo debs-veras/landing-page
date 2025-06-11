@@ -1,7 +1,7 @@
 export default function AboutMe() {
   return (
     <section
-      id="about"
+      id="sobre"
       className="py-12 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]"
     >
       <div className="max-w-[1200px] mx-auto px-4">

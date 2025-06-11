@@ -20,22 +20,16 @@ import emailjs from "emailjs-com";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Nome deve ter pelo menos 2 caracteres" }),
-  title: z
-    .string()
-    .min(2, { message: "Assunto deve ter pelo menos 2 caracteres" }),
+  title: z.string().min(2, { message: "Assunto deve ter pelo menos 2 caracteres" }),
   email: z.string().email({ message: "Por favor, insira um email válido" }),
-  message: z
-    .string()
-    .min(10, { message: "Mensagem deve ter pelo menos 10 caracteres" }),
+  message: z.string().min(10, { message: "Mensagem deve ter pelo menos 10 caracteres" }),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [showNotification, setShowNotification] = useState(false);
 
   const {
@@ -88,7 +82,7 @@ export default function Contact() {
 
   return (
     <section
-      id="contact"
+      id="contato"
       className="py-16 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]"
     >
       <div
@@ -123,7 +117,6 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Formulário de Contato */}
           <div className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm transition-all hover:border-[rgba(138,43,226,0.4)]">
             <h3 className="text-xl font-mono text-purple-300 mb-6">
               <span className="text-gray-400 mr-2">{"//"}</span> Envie uma
@@ -255,7 +248,6 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Informações de Contato */}
           <div className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm">
             <h3 className="text-xl font-mono text-purple-300 mb-6">
               <span className="text-gray-400 mr-2">{"//"}</span> Outras formas
@@ -269,12 +261,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-400 text-sm">Email</h4>
-                  <a
-                    href="contato@exemplo.com"
-                    className="text-white hover:text-purple-300 transition-colors"
-                  >
+                  <div className="text-white transition-colors">
                     deborahellenvp@gmail.com
-                  </a>
+                  </div>
                 </div>
               </div>
 
@@ -284,12 +273,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-400 text-sm">Telefone</h4>
-                  <a
-                    href="tel:+5500123456789"
-                    className="text-white hover:text-purple-300 transition-colors"
-                  >
+                  <div className="text-white transition-colors">
                     +55 (88) 99253-1384
-                  </a>
+                  </div>
                 </div>
               </div>
 

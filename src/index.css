@@ -19,25 +19,35 @@
   --font-fira-code: "Fira Code", monospace;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%
+  }
 }
 
 @keyframes blink {
-  50% { border-color: transparent }
+  50% {
+    border-color: transparent
+  }
 }
 
 .typing-text {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 2px solid #8a2be2; 
+  border-right: 2px solid #8a2be2;
   width: 0;
-  animation: 
+  animation:
     typing 3s steps(40, end) forwards,
     blink 1s step-end infinite;
 }
-
-
