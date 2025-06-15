@@ -32,14 +32,13 @@ export default function ProjectsSection() {
         link: "https://debs-veras.github.io/pokedex-mapadev/",
         github: "https://github.com/debs-veras/pokedex-mapadev",
       },
-
       {
         title: "Site Educação Popular",
         description:
           "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de **Educação Popular em Saúde**, alinhadas à participação social e às políticas públicas de base comunitária.",
         technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
         image: "/projetos/educacao-popular.png",
-        link: "https://observaaps.gpets.online/",
+        link: "https://epsaude.gpets.online",
       },
       {
         title: "Mata Mosquito",
@@ -81,8 +80,7 @@ export default function ProjectsSection() {
     faculdade: [
       {
         title: "Estrutura de Dados",
-        description:
-          "Atividades e implementações realizada na disciplina de estrutura de dados",
+        description: "Atividades e implementações realizada na disciplina de estrutura de dados",
         technologies: [],
         image: null,
         link: null,
@@ -90,12 +88,19 @@ export default function ProjectsSection() {
       },
       {
         title: "Algoritmos para Grafos",
-        description:
-          "Atividades e implementações realizada na disciplina de algoritmo para grafos",
+        description: "Atividades e implementações realizada na disciplina de algoritmo para grafos",
         technologies: [],
         image: null,
         link: null,
         github: "https://github.com/debs-veras/Algoritmos-para-Grafos",
+      },
+      {
+        title: "Redes de Computadores",
+        description: "Atividades e implementações realizada na disciplina de redes de computadores",
+        technologies: [],
+        image: null,
+        link: null,
+        github: "https://github.com/debs-veras/socket",
       },
     ],
   };
