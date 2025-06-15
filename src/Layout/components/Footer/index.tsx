@@ -4,14 +4,14 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-4">
         <div className="flex gap-8">
           <a
-            href="#github"
+            href="https://github.com/debs-veras"
             className="text-light-gray no-underline flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-light"
           >
             <span className="text-primary">{"</>"}</span>
             GitHub
           </a>
           <a
-            href="#linkedin"
+            href="https://linkedin.com/in/débora-hellen-veras-paiva-711955194"
             className="text-light-gray no-underline flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-light"
           >
             <span className="text-primary">{"{}"}</span>

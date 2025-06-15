@@ -44,7 +44,7 @@ export default function App() {
           <Contact />
         </ScrollAnimation>
       </main>
-      
+
       <ScrollAnimation delay={0.2}>
         <Footer />
       </ScrollAnimation>
@@ -53,10 +53,7 @@ export default function App() {
 }
 
 // Componente auxiliar para animação de scroll
-function ScrollAnimation({
-  children,
-  delay = 0,
-}: {
+function ScrollAnimation({children, delay = 0} : {
   children: React.ReactNode;
   delay?: number;
 }) {
@@ -65,9 +62,7 @@ function ScrollAnimation({
   const controls = useAnimation();
 
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
+    if (isInView) controls.start("visible");
   }, [isInView, controls]);
 
   return (

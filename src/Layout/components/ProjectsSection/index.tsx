@@ -8,13 +8,12 @@ export default function ProjectsSection() {
   const projects = {
     web: [
       {
-        title: "Pokedex Map Dev Week",
+        title: "BoxChat",
         description:
-          "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
-        technologies: ["HTML", "JavaScript", "CSS"],
-        image: "/projetos/mapadev.png",
-        link: "https://debs-veras.github.io/pokedex-mapadev/",
-        github: "https://github.com/debs-veras/pokedex-mapadev",
+          "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
+        technologies: ["React/TypeScript", "Tailwind", "HTML", "CSS"],
+        image: "/projetos/box-chat.png",
+        github: "https://github.com/debs-veras/box_chat",
       },
       {
         title: "Landing page da empresa de tecnologia Box3",
@@ -24,6 +23,16 @@ export default function ProjectsSection() {
         image: "/projetos/box3.png",
         link: "https://box3.work/",
       },
+      {
+        title: "Pokedex Map Dev Week",
+        description:
+          "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
+        technologies: ["HTML", "JavaScript", "CSS"],
+        image: "/projetos/mapadev.png",
+        link: "https://debs-veras.github.io/pokedex-mapadev/",
+        github: "https://github.com/debs-veras/pokedex-mapadev",
+      },
+
       {
         title: "Site Educação Popular",
         description:
@@ -72,7 +81,8 @@ export default function ProjectsSection() {
     faculdade: [
       {
         title: "Estrutura de Dados",
-        description:"Atividades e implementações realizada na disciplina de estrutura de dados",
+        description:
+          "Atividades e implementações realizada na disciplina de estrutura de dados",
         technologies: [],
         image: null,
         link: null,
@@ -80,7 +90,8 @@ export default function ProjectsSection() {
       },
       {
         title: "Algoritmos para Grafos",
-        description:"Atividades e implementações realizada na disciplina de algoritmo para grafos",
+        description:
+          "Atividades e implementações realizada na disciplina de algoritmo para grafos",
         technologies: [],
         image: null,
         link: null,

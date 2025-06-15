@@ -6,9 +6,6 @@ import {
   FiMail,
   FiPhone,
   FiMapPin,
-  FiFacebook,
-  FiTwitter,
-  FiInstagram,
   FiGithub,
   FiLinkedin,
   FiSend,
@@ -29,7 +26,9 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const [showNotification, setShowNotification] = useState(false);
 
   const {
@@ -81,10 +80,7 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contato"
-      className="py-16"
-    >
+    <section id="contato" className="py-16">
       <div
         className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out ${
           showNotification
@@ -250,8 +246,8 @@ export default function Contact() {
 
           <div className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm">
             <h3 className="text-xl font-mono text-purple-300 mb-6">
-              <span className="text-gray-400 mr-2">{"//"}</span> Outras formas
-              de contato
+              <span className="text-gray-400 mr-2">{"//"}</span>
+              Outras formas de contato
             </h3>
 
             <div className="space-y-4">
@@ -294,34 +290,7 @@ export default function Contact() {
               <h4 className="text-gray-400 text-sm mb-3">Redes Sociais</h4>
               <div className="flex space-x-3">
                 <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[rgba(30,30,40,0.8)] p-2 rounded-lg hover:bg-purple-900/30 transition-colors"
-                  aria-label="Facebook"
-                >
-                  <FiFacebook className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[rgba(30,30,40,0.8)] p-2 rounded-lg hover:bg-purple-900/30 transition-colors"
-                  aria-label="Twitter"
-                >
-                  <FiTwitter className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[rgba(30,30,40,0.8)] p-2 rounded-lg hover:bg-purple-900/30 transition-colors"
-                  aria-label="Instagram"
-                >
-                  <FiInstagram className="w-5 h-5 text-white" />
-                </a>
-                <a
-                  href="#"
+                  href="https://github.com/debs-veras"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[rgba(30,30,40,0.8)] p-2 rounded-lg hover:bg-purple-900/30 transition-colors"
@@ -330,7 +299,7 @@ export default function Contact() {
                   <FiGithub className="w-5 h-5 text-white" />
                 </a>
                 <a
-                  href="#"
+                  href="https://linkedin.com/in/débora-hellen-veras-paiva-711955194"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[rgba(30,30,40,0.8)] p-2 rounded-lg hover:bg-purple-900/30 transition-colors"
