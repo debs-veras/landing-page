@@ -1,9 +1,6 @@
 export default function AboutMe() {
   return (
-    <section
-      id="sobre"
-      className="py-12 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]"
-    >
+    <div className="py-12 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]">
       <div className="max-w-[1200px] mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-light mb-4">
@@ -50,9 +47,10 @@ export default function AboutMe() {
           "<span className="text-primary">'I never go back on my word!'</span> -
           Assim como Naruto, busco me tornar uma{" "}
           <span className="text-primary">desenvolvedora Hokage</span>, criando
-          experiências web que impressionem tanto quanto um <span className="text-primary">Rasengan</span>!"
+          experiências web que impressionem tanto quanto um{" "}
+          <span className="text-primary">Rasengan</span>!"
         </p>
       </div>
-    </section>
+    </div>
   );
 }

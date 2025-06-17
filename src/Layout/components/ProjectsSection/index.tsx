@@ -80,7 +80,8 @@ export default function ProjectsSection() {
     faculdade: [
       {
         title: "Estrutura de Dados",
-        description: "Atividades e implementações realizada na disciplina de estrutura de dados",
+        description:
+          "Atividades e implementações realizada na disciplina de estrutura de dados",
         technologies: [],
         image: null,
         link: null,
@@ -88,7 +89,8 @@ export default function ProjectsSection() {
       },
       {
         title: "Algoritmos para Grafos",
-        description: "Atividades e implementações realizada na disciplina de algoritmo para grafos",
+        description:
+          "Atividades e implementações realizada na disciplina de algoritmo para grafos",
         technologies: [],
         image: null,
         link: null,
@@ -96,7 +98,8 @@ export default function ProjectsSection() {
       },
       {
         title: "Redes de Computadores",
-        description: "Atividades e implementações realizada na disciplina de redes de computadores",
+        description:
+          "Atividades e implementações realizada na disciplina de redes de computadores",
         technologies: [],
         image: null,
         link: null,
@@ -110,10 +113,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section
-      id="projetos"
-      className="py-16 px-4 sm:px-6 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]"
-    >
+    <div className="py-16 px-4 sm:px-6 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -249,6 +249,6 @@ export default function ProjectsSection() {
           </motion.div>
         )}
       </div>
-    </section>
+    </div>
   );
 }

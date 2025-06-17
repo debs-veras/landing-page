@@ -16,6 +16,7 @@ export default function App() {
       <main className="p-8 relative overflow-hidden">
         <AnimatedBackground />
         <motion.section
+          id="inicio"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -23,15 +24,16 @@ export default function App() {
           <Terminal />
         </motion.section>
 
-        <ScrollAnimation>
+        <ScrollAnimation id="sobre">
           <AboutMe />
         </ScrollAnimation>
 
-        <ScrollAnimation delay={0.2}>
+        <ScrollAnimation id="skills" delay={0.2}>
           <SoftSkills />
         </ScrollAnimation>
 
         <motion.section
+          id="projetos"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -40,12 +42,12 @@ export default function App() {
           <ProjectsSection />
         </motion.section>
 
-        <ScrollAnimation delay={0.1}>
+        <ScrollAnimation id="contato" delay={0.1}>
           <Contact />
         </ScrollAnimation>
       </main>
 
-      <ScrollAnimation delay={0.2}>
+      <ScrollAnimation id="footer" delay={0.2}>
         <Footer />
       </ScrollAnimation>
     </div>
@@ -53,9 +55,14 @@ export default function App() {
 }
 
 // Componente auxiliar para animação de scroll
-function ScrollAnimation({children, delay = 0} : {
+function ScrollAnimation({
+  children,
+  delay = 0,
+  id,
+}: {
   children: React.ReactNode;
   delay?: number;
+  id: string;
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -66,8 +73,9 @@ function ScrollAnimation({children, delay = 0} : {
   }, [isInView, controls]);
 
   return (
-    <motion.div
+    <motion.section
       ref={ref}
+      id={id}
       initial="hidden"
       animate={controls}
       variants={{
@@ -77,6 +85,6 @@ function ScrollAnimation({children, delay = 0} : {
       transition={{ duration: 0.6, delay }}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 }

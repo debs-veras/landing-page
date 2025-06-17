@@ -1,6 +1,6 @@
 export default function Terminal() {
   return (
-    <section id="inicio" className="flex justify-center items-center mb-8">
+    <div className="flex justify-center items-center mb-8">
       <div className="w-full max-w-[900px] bg-[rgba(20,20,30,0.85)] backdrop-blur-md rounded-lg border border-[rgba(138,43,226,0.2)] shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden">
         <div className="flex flex-wrap justify-center items-center gap-4 px-6 py-3.5 bg-[rgba(15,15,25,0.9)] border-b border-b-[rgba(138,43,226,0.2)] md:flex-nowrap md:gap-0 md:justify-normal">
           <div className="flex gap-3 mr-4">
@@ -42,7 +42,7 @@ export default function Terminal() {
               <span className="text-code-string">"TypeScript"</span> |{" "}
               <span className="text-code-string">"Next.js"</span>&gt;;
             </p>
-        
+
             <p className="font-[1.05rem] leading-[1.8]">{"}"}</p>
             <p className="mt-6 text-[1rem] text-light-gray leading-relaxed w-full">
               Sou uma desenvolvedora frontend apaixonada por{" "}
@@ -55,15 +55,29 @@ export default function Terminal() {
           </div>
 
           <div className="flex flex-col justify-center gap-6 md:flex-row">
-            <button className="px-[1.8rem] py-[0.9rem] rounded-[6px] font-fira-code font-medium flex items-center gap-3.5 cursor-pointer text-white transition-all duration-300 ease-in-out border-none bg-gradient-to-br from-[#8a2be2] to-[#9d4edd] hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
-              Explorar Jutsus
+            <button
+              className="px-[1.8rem] py-[0.9rem] rounded-[6px] font-fira-code font-medium flex items-center gap-3.5 cursor-pointer text-white transition-all duration-300 ease-in-out border-none bg-gradient-to-br from-[#8a2be2] to-[#9d4edd] hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)]"
+              onClick={() => {
+                document
+                  .getElementById("projetos")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Explorar Projetos
             </button>
-            <button className="px-[1.8rem] py-[0.9rem] rounded-[6px] font-fira-code font-medium flex items-center gap-3.5 cursor-pointer  text-secondary border border-secondary transition-all duration-300 ease-in-out hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)] secondary">
+            <button
+              className="px-[1.8rem] py-[0.9rem] rounded-[6px] font-fira-code font-medium flex items-center gap-3.5 cursor-pointer  text-secondary border border-secondary transition-all duration-300 ease-in-out hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(0,0,0,0.3)] secondary"
+              onClick={() => {
+                document
+                  .getElementById("contato")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               Enviar Mensagem Secreta
             </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

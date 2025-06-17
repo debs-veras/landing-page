@@ -80,7 +80,7 @@ export default function SoftSkills() {
   ];
 
   return (
-    <section id="skills" className="py-8">
+    <div className="py-8">
       <div className="max-w-[1200px] mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-light mb-4">
@@ -168,6 +168,6 @@ export default function SoftSkills() {
           <p className="text-code-punctuation">{"}"}</p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

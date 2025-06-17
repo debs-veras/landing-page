@@ -26,9 +26,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [showNotification, setShowNotification] = useState(false);
 
   const {
@@ -80,7 +78,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" className="py-16">
+    <div  className="py-16">
       <div
         className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out ${
           showNotification
@@ -312,6 +310,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
