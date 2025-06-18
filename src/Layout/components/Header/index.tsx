@@ -96,7 +96,7 @@ export default function Header() {
             onClick={handleDownloadCV}
             className="bg-primary hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-300 border border-transparent hover:border-purple-300"
           >
-            Baixar CV
+            Baixar Curriculo
           </button>
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function Header() {
             onClick={handleDownloadCV}
             className="bg-primary hover:bg-purple-600 text-white w-full max-w-[200px] px-4 py-2 rounded-md transition-colors duration-300 border border-transparent hover:border-purple-300"
           >
-            Baixar CV
+            Baixar Curriculo
           </button>
         </div>
       </div>
