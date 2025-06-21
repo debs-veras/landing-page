@@ -134,7 +134,7 @@ export default function ProjectsSection() {
           <div className="bg-[rgba(20,20,30,0.8)] p-1 rounded-lg border border-[rgba(138,43,226,0.2)]">
             <button
               onClick={() => setActiveTab("web")}
-              className={`px-4 py-2 rounded-md transition-all ${
+              className={`px-4 py-2 rounded-md transition-all cursor-pointer ${
                 activeTab === "web"
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
                   : "text-gray-300 hover:text-white"
@@ -146,7 +146,7 @@ export default function ProjectsSection() {
             </button>
             <button
               onClick={() => setActiveTab("faculdade")}
-              className={`px-4 py-2 rounded-md transition-all ${
+              className={`px-4 py-2 rounded-md transition-all cursor-pointer ${
                 activeTab === "faculdade"
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
                   : "text-gray-300 hover:text-white"
