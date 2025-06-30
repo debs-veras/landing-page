@@ -131,13 +131,15 @@ export default function SoftSkills() {
 
         {/* Seção de Frontend */}
         <div className="mb-8 bg-[rgba(20,20,30,0.85)] p-6 rounded-lg border border-[rgba(138,43,226,0.2)]">
-          <h3 className="text-xl font-fira-code text-light mb-6">
-            <span className="text-code-keyword">const</span>{" "}
-            <span className="text-code-property">frontendJutsus</span>{" "}
-            <span className="text-code-keyword">=</span>{" "}
-            <span className="text-code-punctuation">{"["}</span>
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <div className="font-fira-code text-light mb-6 text-md xs:text-xl">
+            <p className="line-clamp-2">
+              <span className="text-code-keyword">const</span>{" "}
+              <span className="text-code-property">frontendJutsus</span>{" "}
+              <span className="text-code-keyword">=</span>{" "}
+              <span className="text-code-punctuation">{"["}</span>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             {frontendSkills.map((tech) => (
               <div
                 key={tech.name}
@@ -145,7 +147,7 @@ export default function SoftSkills() {
                 border border-[rgba(138,43,226,0.3)] transition-all duration-300 
                 rounded-lg p-4 text-center cursor-default overflow-hidden`}
               >
-                <div className="w-16 h-16 mx-auto mb-2 flex items-center justify-center">
+                <div className="max-w-16 h-auto mx-auto mb-2 flex items-center justify-center">
                   <img
                     src={tech.icon}
                     alt={tech.name}
@@ -172,13 +174,15 @@ export default function SoftSkills() {
 
         {/* Seção de Backend */}
         <div className="mb-8 bg-[rgba(20,20,30,0.85)] p-6 rounded-lg border border-[rgba(138,43,226,0.2)]">
-          <h3 className="text-xl font-fira-code text-light mb-6">
-            <span className="text-code-keyword">const</span>{" "}
-            <span className="text-code-property">backendJutsus</span>{" "}
-            <span className="text-code-keyword">=</span>{" "}
-            <span className="text-code-punctuation">{"["}</span>
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <div className="font-fira-code text-light mb-6 text-md xs:text-xl">
+            <p className="line-clamp-2">
+              <span className="text-code-keyword">const</span>{" "}
+              <span className="text-code-property">backendJutsus</span>{" "}
+              <span className="text-code-keyword">=</span>{" "}
+              <span className="text-code-punctuation">{"["}</span>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             {backendSkills.map((tech) => (
               <div
                 key={tech.name}
@@ -213,13 +217,15 @@ export default function SoftSkills() {
 
         {/* Seção de Ferramentas */}
         <div className="mb-8 bg-[rgba(20,20,30,0.85)] p-6 rounded-lg border border-[rgba(138,43,226,0.2)]">
-          <h3 className="text-xl font-fira-code text-light mb-6">
-            <span className="text-code-keyword">const</span>{" "}
-            <span className="text-code-property">toolsJutsus</span>{" "}
-            <span className="text-code-keyword">=</span>{" "}
-            <span className="text-code-punctuation">{"["}</span>
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <div className="font-fira-code text-light mb-6 text-md xs:text-xl">
+            <p className="line-clamp-2">
+              <span className="text-code-keyword">const</span>{" "}
+              <span className="text-code-property">toolsJutsus</span>{" "}
+              <span className="text-code-keyword">=</span>{" "}
+              <span className="text-code-punctuation">{"["}</span>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             {tools.map((tech) => (
               <div
                 key={tech.name}
@@ -227,7 +233,7 @@ export default function SoftSkills() {
                 border border-[rgba(138,43,226,0.3)] transition-all duration-300 
                 rounded-lg p-4 text-center cursor-default overflow-hidden`}
               >
-                <div className="w-16 h-16 mx-auto mb-2 flex items-center justify-center">
+                <div className="max-w-16 h-auto mx-auto mb-2 flex items-center justify-center">
                   <img
                     src={tech.icon}
                     alt={tech.name}
@@ -276,7 +282,11 @@ export default function SoftSkills() {
                     className="w-full h-full object-contain rounded-2xl"
                   />
                 </div>
-                <span className={`font-fira-code ${tech.color || 'text-light-gray'} font-medium`}>
+                <span
+                  className={`font-fira-code ${
+                    tech.color || "text-light-gray"
+                  } font-medium`}
+                >
                   {tech.name}
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-[rgba(138,43,226,0.1)]">

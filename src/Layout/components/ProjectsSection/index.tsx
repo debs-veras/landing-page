@@ -201,14 +201,19 @@ export default function ProjectsSection() {
                       </span>
                     ))}
                   </div>
-
-                  <div className="flex gap-4">
+                  <div
+                    className={`grid gap-4 ${
+                      project.link && project.github
+                        ? "grid-cols-2"
+                        : "grid-cols-1"
+                    }`}
+                  >
                     {project.link && (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:from-purple-700 hover:to-blue-700 transition-all text-sm sm:text-base"
+                        className="sm:col-span-1 col-span-2 text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:from-purple-700 hover:to-blue-700 transition-all text-sm sm:text-base"
                       >
                         Ver Demo
                       </a>
@@ -219,7 +224,7 @@ export default function ProjectsSection() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 text-center px-4 py-2 border border-purple-500 text-purple-300 rounded-md hover:bg-purple-900/30 transition-all text-sm sm:text-base"
+                        className="sm:col-span-1 col-span-2 text-center px-4 py-2 border border-purple-500 text-purple-300 rounded-md hover:bg-purple-900/30 transition-all text-sm sm:text-base"
                       >
                         Código
                       </a>
