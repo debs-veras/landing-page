@@ -260,14 +260,15 @@ export default function SoftSkills() {
 
         {/* Seção de Habilidades em Aprendizado */}
         <div className="bg-[rgba(20,20,30,0.85)] p-6 rounded-lg border border-[rgba(138,43,226,0.2)]">
-          <h3 className="text-xl font-fira-code text-light mb-6">
-            <span className="text-code-keyword">export default</span>{" "}
-            <span className="text-code-function">trainingJutsus</span>
-            <span className="text-code-punctuation">{"()"} </span>
-            <span className="text-code-keyword"></span>{" "}
-            <span className="text-code-punctuation">{"{"}</span>
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div className="font-fira-code text-light mb-6 text-md xs:text-xl">
+            <p className="line-clamp-4">
+              <span className="text-code-keyword">export default</span>{" "}
+              <span className="text-code-function">trainingJutsus</span>
+              <span className="text-code-punctuation">{"()"} </span>
+              <span className="text-code-punctuation">{"{"}</span>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             {learning.map((tech) => (
               <div
                 key={tech.name}
@@ -298,9 +299,7 @@ export default function SoftSkills() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-code-comment">
-            // Próximos jutsus em treinamento...
-          </p>
+          <p className="mt-6 text-code-comment">//Jutsus em treinamento...</p>
           <p className="text-code-punctuation">{"}"}</p>
         </div>
       </div>

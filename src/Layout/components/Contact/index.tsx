@@ -17,16 +17,22 @@ import emailjs from "emailjs-com";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Nome deve ter pelo menos 2 caracteres" }),
-  title: z.string().min(2, { message: "Assunto deve ter pelo menos 2 caracteres" }),
+  title: z
+    .string()
+    .min(2, { message: "Assunto deve ter pelo menos 2 caracteres" }),
   email: z.string().email({ message: "Por favor, insira um email válido" }),
-  message: z.string().min(10, { message: "Mensagem deve ter pelo menos 10 caracteres" }),
+  message: z
+    .string()
+    .min(10, { message: "Mensagem deve ter pelo menos 10 caracteres" }),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const [showNotification, setShowNotification] = useState(false);
 
   const {
@@ -78,7 +84,7 @@ export default function Contact() {
   };
 
   return (
-    <div  className="py-16">
+    <div className="py-16">
       <div
         className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out ${
           showNotification
@@ -255,7 +261,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-400 text-sm">Email</h4>
-                  <div className="text-white transition-colors">
+                  <div className="sm:text-base text-white transition-colors text-xs">
                     deborahellenvp@gmail.com
                   </div>
                 </div>
@@ -267,7 +273,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-400 text-sm">Telefone</h4>
-                  <div className="text-white transition-colors">
+                  <div className="sm:text-base text-white transition-colors text-xs">
                     +55 (88) 99253-1384
                   </div>
                 </div>
@@ -279,7 +285,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-gray-400 text-sm">Localização</h4>
-                  <p className="text-white">Sobral, Ceará</p>
+                  <div className="sm:text-base text-white transition-colors text-xs">
+                    Sobral, Ceará
+                  </div>
                 </div>
               </div>
             </div>
