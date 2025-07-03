@@ -33,6 +33,15 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/pokedex-mapadev",
       },
       {
+        title: "Pokedex com Api",
+        description:
+          "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
+        technologies: ["React", "Typescript", "Tailwind"],
+        image: "/projetos/pokedex.png",
+        link: "https://pokedex-orpin-chi-52.vercel.app/",
+        github: "https://github.com/debs-veras/pokedex",
+      },
+      {
         title: "Site Educação Popular",
         description:
           "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
