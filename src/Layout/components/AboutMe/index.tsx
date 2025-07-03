@@ -29,7 +29,7 @@ export default function AboutMe() {
 
           <div className="bg-[rgba(20,20,30,0.8)] w-full h-fullw-full h-full border border-[rgba(138,43,226,0.2)] rounded-lg p-6">
             <h3 className="text-xl font-fira-code text-light mb-4">
-              <span className="text-code-keyword">export default</span>{" "}
+              <span className="text-code-keyword">export function</span>{" "}
               <span className="text-code-function">objetivo</span>() {"{"}
             </h3>
             <p className="text-light-gray">

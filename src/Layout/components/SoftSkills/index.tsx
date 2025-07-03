@@ -262,7 +262,7 @@ export default function SoftSkills() {
         <div className="bg-[rgba(20,20,30,0.85)] p-6 rounded-lg border border-[rgba(138,43,226,0.2)]">
           <div className="font-fira-code text-light mb-6 text-md xs:text-xl">
             <p className="line-clamp-4">
-              <span className="text-code-keyword">export default</span>{" "}
+              <span className="text-code-keyword">export function</span>{" "}
               <span className="text-code-function">trainingJutsus</span>
               <span className="text-code-punctuation">{"()"} </span>
               <span className="text-code-punctuation">{"{"}</span>
