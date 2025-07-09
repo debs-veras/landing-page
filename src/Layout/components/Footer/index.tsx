@@ -18,7 +18,7 @@ export default function Footer() {
             LinkedIn
           </a>
         </div>
-        <div className="text-light-gray text-sm opacity-70">
+        <div className="text-light-gray text-sm opacity-70 text-center">
           © {new Date().getFullYear()} NinjaDev - Todos os direitos reservados
         </div>
       </div>

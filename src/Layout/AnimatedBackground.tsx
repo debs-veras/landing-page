@@ -20,9 +20,10 @@ type Particle = {
   content: string;
   life: number;
   maxLife: number;
+  color: string;
 };
 
-const MAX_PARTICLES = 20;
+const COLORS = ["#8a2be2", "#7fffd4", "#00bfff", "#ff69b4", "#ff6347"];
 
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -36,69 +37,76 @@ export default function AnimatedBackground() {
 
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    
-    
-    function randomRange(min: number, max: number) {
-      return Math.random() * (max - min) + min;
-    }
 
-    function createParticle(): Particle {
-      return {
-        x: randomRange(0, width),
-        y: randomRange(100, height),
-        size: randomRange(12, 24),
-        opacity: 0,
-        speedY: randomRange(0.1, 0.3),
-        type: "text",
-        content: texts[Math.floor(Math.random() * texts.length)],
-        life: 0,
-        maxLife: randomRange(400, 800),
-      };
-    }
+    const isMobile = width < 768;
+    const MAX_PARTICLES = isMobile
+      ? Math.floor(height / 65) 
+      : Math.floor(height / 40);
+    const randomRange = (min: number, max: number) =>
+      Math.random() * (max - min) + min;
 
-    particles.current = Array.from({ length: MAX_PARTICLES }, () =>
-      createParticle()
+    const createParticle = (index: number): Particle => ({
+      x: randomRange(0, width),
+      y: (index / MAX_PARTICLES) * height,
+      size: randomRange(14, 26),
+      opacity: 0,
+      speedY: randomRange(0.1, 0.3),
+      type: "text",
+      content: texts[Math.floor(Math.random() * texts.length)],
+      life: 0,
+      maxLife: randomRange(1500, 2500),
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    });
+
+    particles.current = Array.from({ length: MAX_PARTICLES }, (_, i) =>
+      createParticle(i)
     );
 
     let animationFrameId: number;
 
-    function draw() {
+    const draw = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
 
       particles.current.forEach((p) => {
-        if (p.life < 50) {
-          p.opacity += 0.01;
-        } else if (p.life > p.maxLife - 50) {
-          p.opacity -= 0.01;
+        const fadeIn = 50;
+        const fadeOut = 50;
+        if (p.life < fadeIn) {
+          p.opacity = (p.life / fadeIn) * 0.1;
+        } else if (p.life > p.maxLife - fadeOut) {
+          p.opacity = ((p.maxLife - p.life) / fadeOut) * 0.2;
+        } else {
+          p.opacity = 0.3;
         }
-        p.opacity = Math.min(Math.max(p.opacity, 0), 0.3);
 
-        ctx.globalAlpha = p.opacity;
-
-        ctx.fillStyle = "#8a2be2";
+        ctx.save();
+        ctx.globalAlpha = isMobile ? p.opacity * 0.4 : p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 6;
         ctx.font = `${p.size}px 'Courier New', monospace`;
         ctx.fillText(p.content, p.x, p.y);
+        ctx.restore();
 
         p.y -= p.speedY;
         p.life++;
 
         if (p.life >= p.maxLife || p.y < -p.size) {
-          Object.assign(p, createParticle(), { y: height + p.size });
+          Object.assign(p, createParticle(Math.floor(Math.random() * MAX_PARTICLES)), {
+            y: height + p.size,
+          });
         }
       });
 
-      ctx.globalAlpha = 1;
       animationFrameId = requestAnimationFrame(draw);
-    }
+    };
 
     draw();
 
-    function onResize() {
-      if (!canvas) return;
+    const onResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-    }
+    };
     window.addEventListener("resize", onResize);
 
     return () => {
@@ -119,7 +127,8 @@ export default function AnimatedBackground() {
         height: "100vh",
         backgroundColor: "#0a0a0a",
         pointerEvents: "none",
+        mixBlendMode: "soft-light", // suaviza sobreposição
       }}
     />
   );
-};
+}
