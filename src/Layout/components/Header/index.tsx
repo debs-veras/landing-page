@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const sections = [
@@ -52,7 +53,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-[rgba(10,10,10,0.7)] backdrop-blur-sm border-b border-b-[rgba(138,43,226,0.3)] px-6 py-4 sticky top-0 z-[100]">
+    <header className="bg-[rgba(10,10,10,0.7)] backdrop-blur-sm border-b border-b-[rgba(138,43,226,0.3)] px-6 py-4 sticky top-0 z-[100] shadow-lg">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center gap-2 flex-wrap">
         <a
           href="#inicio"
@@ -63,7 +64,6 @@ export default function Header() {
           <span className="text-primary">{"}"}</span>
         </a>
 
-        {/* Botão menu mobile */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-light text-2xl md:hidden"
@@ -72,14 +72,21 @@ export default function Header() {
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
 
-        {/* Menu desktop */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* Menu desktop com estilo refinado */}
+        <div className="hidden items-center gap-6 md:flex">
           <nav className="flex gap-6 text-light-gray">
             {sections.map((section, index) => (
-              <a
+              <motion.a
+                initial={{ opacity: 0, y: -12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: index * 0.06,
+                  ease: "easeInOut",
+                  duration: 0.4,
+                }}
                 key={index}
                 href={`#${section.ancor}`}
-                className={`group gap-2 flex hover:text-light transition-colors relative ${
+                className={`group gap-2 flex items-center hover:text-white transition-all relative tracking-wide ${
                   activeSection === section.ancor
                     ? "text-purple-400 font-semibold after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-purple-500"
                     : ""
@@ -89,49 +96,63 @@ export default function Header() {
                   //
                 </span>
                 {section.name}
-              </a>
+              </motion.a>
             ))}
           </nav>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleDownloadCV}
-            className="bg-primary hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-300 border border-transparent hover:border-purple-300"
+            className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all  border border-transparent hover:shadow-purple-500/30"
           >
-            Baixar Curriculo
-          </button>
+            Baixar Currículo
+          </motion.button>
         </div>
       </div>
 
-      {/* Menu mobile com transição */}
-      <div
-        className={`md:hidden fixed top-[64px] left-0 w-full bg-[rgba(10,10,10,0.9)] backdrop-blur-md transition-all duration-300 z-[99] overflow-hidden
-        ${menuOpen ? "max-h-[500px] py-4" : "max-h-0 py-0"}`}
-      >
-        <div className="flex flex-col gap-4 items-center text-light-gray px-6">
-          {sections.map((section, index) => (
-            <a
-              key={index}
-              href={`#${section.ancor}`}
-              onClick={() => setMenuOpen(false)}
-              className={`group gap-2 flex text-lg hover:text-light transition-colors relative ${
-                activeSection === section.ancor
-                  ? "text-purple-400 font-semibold after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-purple-500"
-                  : ""
-              }`}
-            >
-              <span className="text-code-comment group-hover:text-purple-400">
-                //
-              </span>
-              {section.name}
-            </a>
-          ))}
-          <button
-            onClick={handleDownloadCV}
-            className="bg-primary hover:bg-purple-600 text-white w-full max-w-[200px] px-4 py-2 rounded-md transition-colors duration-300 border border-transparent hover:border-purple-300"
+      {/* Menu mobile com estilo mais limpo e refinado */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-[64px] left-0 w-full bg-[rgba(10,10,10,0.95)] backdrop-blur-md z-[99] overflow-hidden md:hidden py-4 px-6 rounded-b-xl shadow-xl"
           >
-            Baixar Curriculo
-          </button>
-        </div>
-      </div>
+            <div className="flex flex-col gap-6 items-center text-light-gray">
+              {sections.map((section, index) => (
+                <motion.a
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                  href={`#${section.ancor}`}
+                  onClick={() => setMenuOpen(false)}
+                  className={`group gap-2 flex text-[1.1rem] transition-colors relative hover:text-white ${
+                    activeSection === section.ancor
+                      ? "text-purple-400 font-semibold after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-purple-500"
+                      : ""
+                  }`}
+                >
+                  <span className="text-code-comment group-hover:text-purple-400">
+                    //
+                  </span>
+                  {section.name}
+                </motion.a>
+              ))}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleDownloadCV}
+                className="bg-gradient-to-r from-purple-500 to-purple-700 text-white w-full max-w-[200px] px-4 py-2 rounded-md shadow-md hover:shadow-purple-500/30 transition-all border border-transparent"
+              >
+                Baixar Currículo
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

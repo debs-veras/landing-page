@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Terminal() {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState("");
   const fullText = "// Bem-vindo ao meu terminal ninja-dev";
+  const [command, setCommand] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     setIsVisible(true);
-
-    // Animação de digitação
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < fullText.length) {
@@ -19,9 +19,25 @@ export default function Terminal() {
         clearInterval(typingInterval);
       }
     }, 80);
-
     return () => clearInterval(typingInterval);
   }, []);
+
+  const handleCommand = () => {
+    const anchors: { [key: string]: string } = {
+      sobre: "sobre",
+      skills: "skills",
+      projetos: "projetos",
+      contato: "contato",
+    };
+    const target = anchors[command.toLowerCase()];
+    if (target) {
+      document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+      setErrorMsg("");
+    } else {
+      setErrorMsg(`Comando não encontrado: "${command}"`);
+    }
+    setCommand("");
+  };
 
   return (
     <motion.div
@@ -268,6 +284,42 @@ export default function Terminal() {
             >
               Enviar Mensagem Secreta
             </motion.button>
+          </motion.div>
+
+          {/* Terminal funcional */}
+          <motion.div
+            className="border-t border-purple-900 mt-4 font-fira-code"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.6 }}
+          >
+            <div className="flex flex-wrap items-center gap-2 text-light-gray mt-5">
+              <span className="text-purple-300">ninja@dev</span>:
+              <span className="text-purple-400">~</span>$
+              <input
+                className="bg-transparent outline-none text-white flex-1 min-w-[150px] ml-2"
+                type="text"
+                placeholder="Comando: sobre, skills, projetos, contato"
+                value={command}
+                onChange={(e) => {
+                  setCommand(e.target.value);
+                  if (errorMsg) setErrorMsg("");
+                }}
+                onKeyDown={(e) => e.key === "Enter" && handleCommand()}
+                autoComplete="off"
+                spellCheck={false}
+              />
+            </div>
+            {errorMsg && (
+              <motion.p
+                className="mt-1 text-red-500 font-fira-code text-sm italic"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                {errorMsg}
+              </motion.p>
+            )}
           </motion.div>
         </div>
       </motion.div>
