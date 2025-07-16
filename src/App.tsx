@@ -11,7 +11,7 @@ import Footer from "./Layout/components/Footer";
 
 export default function App() {
   return (
-    <div className="flex flex-col text-light-gray font-fira-code">
+    <div className="flex flex-col text-light-gray font-fira-code min-w-[340px] border-2">
       <Header />
       <main className="p-8 relative overflow-hidden">
         <AnimatedBackground />

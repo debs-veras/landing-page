@@ -123,11 +123,11 @@ export default function AnimatedBackground() {
         top: 0,
         left: 0,
         zIndex: -1,
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         backgroundColor: "#0a0a0a",
         pointerEvents: "none",
-        mixBlendMode: "soft-light", // suaviza sobreposição
+        mixBlendMode: "soft-light",
       }}
     />
   );
