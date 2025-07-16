@@ -18,16 +18,22 @@ import { motion } from "framer-motion";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Nome deve ter pelo menos 2 caracteres" }),
-  title: z.string().min(2, { message: "Assunto deve ter pelo menos 2 caracteres" }),
+  title: z
+    .string()
+    .min(2, { message: "Assunto deve ter pelo menos 2 caracteres" }),
   email: z.string().email({ message: "Por favor, insira um email válido" }),
-  message: z.string().min(10, { message: "Mensagem deve ter pelo menos 10 caracteres" }),
+  message: z
+    .string()
+    .min(10, { message: "Mensagem deve ter pelo menos 10 caracteres" }),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const [showNotification, setShowNotification] = useState(false);
 
   const {
@@ -82,7 +88,10 @@ export default function Contact() {
     <div className="py-16 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: showNotification ? 1 : 0, y: showNotification ? 0 : 20 }}
+        animate={{
+          opacity: showNotification ? 1 : 0,
+          y: showNotification ? 0 : 20,
+        }}
         transition={{ duration: 0.4 }}
         className="fixed bottom-6 right-6 z-50"
       >
@@ -123,23 +132,37 @@ export default function Contact() {
             className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm transition-all hover:border-[rgba(138,43,226,0.4)]"
           >
             <div className="text-xl font-mono text-purple-300 mb-6">
-              <span className="text-gray-400 mr-2">{"//"}</span> Envie uma mensagem
+              <span className="text-gray-400 mr-2">{"//"}</span> Envie uma
+              mensagem
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              {['name', 'title', 'email'].map((field) => (
+              {["name", "title", "email"].map((field) => (
                 <div key={field}>
-                  <label htmlFor={field} className="block text-sm text-gray-300 mb-1 capitalize">
-                    {field === 'name' ? 'Nome *' : field === 'title' ? 'Assunto *' : 'Email *'}
+                  <label
+                    htmlFor={field}
+                    className="block text-sm text-gray-300 mb-1 capitalize"
+                  >
+                    {field === "name"
+                      ? "Nome *"
+                      : field === "title"
+                      ? "Assunto *"
+                      : "Email *"}
                   </label>
                   <input
                     id={field}
-                    type={field === 'email' ? 'email' : 'text'}
+                    type={field === "email" ? "email" : "text"}
                     className={`w-full bg-[rgba(30,30,40,0.8)] border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 transition-all ${
                       errors[field as keyof typeof errors]
-                        ? 'border-red-500 focus:ring-red-500'
-                        : 'border-[rgba(138,43,226,0.3)] focus:ring-purple-500 hover:border-[rgba(138,43,226,0.5)]'
+                        ? "border-red-500 focus:ring-red-500"
+                        : "border-[rgba(138,43,226,0.3)] focus:ring-purple-500 hover:border-[rgba(138,43,226,0.5)]"
                     }`}
-                    placeholder={field === 'name' ? 'Seu nome' : field === 'title' ? 'Assunto' : 'seu@email.com'}
+                    placeholder={
+                      field === "name"
+                        ? "Seu nome"
+                        : field === "title"
+                        ? "Assunto"
+                        : "seu@email.com"
+                    }
                     {...register(field as keyof ContactFormData)}
                   />
                   {errors[field as keyof typeof errors] && (
@@ -150,7 +173,10 @@ export default function Contact() {
                 </div>
               ))}
               <div>
-                <label htmlFor="message" className="block text-sm text-gray-300 mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm text-gray-300 mb-1"
+                >
                   Mensagem *
                 </label>
                 <textarea
@@ -158,8 +184,8 @@ export default function Contact() {
                   rows={4}
                   className={`w-full bg-[rgba(30,30,40,0.8)] border rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 transition-all ${
                     errors.message
-                      ? 'border-red-500 focus:ring-red-500'
-                      : 'border-[rgba(138,43,226,0.3)] focus:ring-purple-500 hover:border-[rgba(138,43,226,0.5)]'
+                      ? "border-red-500 focus:ring-red-500"
+                      : "border-[rgba(138,43,226,0.3)] focus:ring-purple-500 hover:border-[rgba(138,43,226,0.5)]"
                   }`}
                   placeholder="Sua mensagem..."
                   {...register("message")}
@@ -176,8 +202,8 @@ export default function Contact() {
                 disabled={isSubmitting || !isDirty || !isValid}
                 className={`w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all ${
                   isSubmitting || !isDirty || !isValid
-                    ? 'opacity-50 cursor-not-allowed'
-                    : 'hover:shadow-lg hover:shadow-purple-500/20'
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:shadow-lg hover:shadow-purple-500/20"
                 }`}
               >
                 {isSubmitting ? (
@@ -200,26 +226,30 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm"
+            className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm transition-all hover:border-[rgba(138,43,226,0.4)]"
           >
             <span className="text-xl font-mono text-purple-300 mb-6 block">
               <span className="text-gray-400 mr-2">{"//"}</span>
               Outras formas de contato
             </span>
             <div className="space-y-4">
-              {[{
-                icon: FiMail,
-                label: "Email",
-                value: "deborahellenvp@gmail.com",
-              }, {
-                icon: FiPhone,
-                label: "Telefone",
-                value: "+55 (88) 99253-1384",
-              }, {
-                icon: FiMapPin,
-                label: "Localização",
-                value: "Sobral, Ceará",
-              }].map(({ icon: Icon, label, value }) => (
+              {[
+                {
+                  icon: FiMail,
+                  label: "Email",
+                  value: "deborahellenvp@gmail.com",
+                },
+                {
+                  icon: FiPhone,
+                  label: "Telefone",
+                  value: "+55 (88) 99253-1384",
+                },
+                {
+                  icon: FiMapPin,
+                  label: "Localização",
+                  value: "Sobral, Ceará",
+                },
+              ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-start">
                   <div className="bg-purple-900/30 p-2 rounded-lg mr-4">
                     <Icon className="h-5 w-5 text-purple-300" />
@@ -234,17 +264,22 @@ export default function Contact() {
               ))}
             </div>
             <div className="mt-8">
-              <span className="text-gray-400 text-sm mb-3 block">Redes Sociais</span>
+              <span className="text-gray-400 text-sm mb-3 block">
+                Redes Sociais
+              </span>
               <div className="flex space-x-3">
-                {[{
-                  href: "https://github.com/debs-veras",
-                  label: "GitHub",
-                  icon: FiGithub,
-                }, {
-                  href: "https://linkedin.com/in/débora-hellen-veras-paiva-711955194",
-                  label: "LinkedIn",
-                  icon: FiLinkedin,
-                }].map(({ href, label, icon: Icon }) => (
+                {[
+                  {
+                    href: "https://github.com/debs-veras",
+                    label: "GitHub",
+                    icon: FiGithub,
+                  },
+                  {
+                    href: "https://linkedin.com/in/débora-hellen-veras-paiva-711955194",
+                    label: "LinkedIn",
+                    icon: FiLinkedin,
+                  },
+                ].map(({ href, label, icon: Icon }) => (
                   <motion.a
                     key={label}
                     whileHover={{ scale: 1.1 }}
