@@ -16,8 +16,8 @@ interface SectionProps {
 
 const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
   return (
-    <div className="mb-10 bg-[rgba(20,20,30,0.85)] p-6 rounded-lg border border-[rgba(138,43,226,0.2)]">
-      <div className="font-fira-code text-light mb-6 text-md xs:text-xl">
+    <div className="mb-8 bg-[rgba(20,20,30,0.95)] p-6 rounded-lg border border-[rgba(138,43,226,0.3)] shadow-lg hover:shadow-purple-500/20 transition-shadow duration-300">
+      <div className="text-light mb-2 text-lg xs:text-xl">
         <p>
           <span className="text-code-keyword">const</span>{" "}
           <span className="text-code-property">{tag}</span>{" "}
@@ -26,56 +26,63 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {skills.map((tech, index) => (
           <motion.div
             key={tech.name}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            viewport={{ once: true }}
-            className="group relative bg-[rgba(30,30,40,0.85)] hover:bg-[rgba(50,50,70,0.85)]
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: index * 0.2,
+              ease: "easeOut",
+            }}
+            whileHover={{ scale: 1.03 }}
+            className="group relative bg-[rgba(30,30,50,0.8)] hover:bg-[rgba(50,50,80,0.9)]
               border border-[rgba(138,43,226,0.3)] transition-all duration-300 
-              rounded-lg p-4 text-center cursor-default overflow-hidden shadow-md hover:shadow-purple-500/10"
+              rounded-lg p-3 sm:p-4 text-center cursor-default overflow-hidden shadow-md hover:shadow-purple-500/20"
           >
-            <div className="w-16 h-16 mx-auto mb-2 flex items-center justify-center">
-              <img
+            <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 flex items-center justify-center">
+              <motion.img
                 src={tech.icon}
                 alt={tech.name}
-                className="w-full h-full object-contain rounded-2xl"
+                className="w-full h-full object-contain rounded-2xl transition-transform duration-300 group-hover:scale-110"
+                whileHover={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 0.5 }}
               />
             </div>
             <span
-              className={`font-fira-code ${tech.color || "text-light"} font-medium`}
+              className={`font-fira-code ${
+                tech.color || "text-light"
+              } font-medium text-xs sm:text-sm`}
             >
               {tech.name}
             </span>
 
-            {/* Barra animada */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[rgba(138,43,226,0.1)] overflow-hidden">
-              <motion.div
-                className={`h-full w-full ${gradient}`}
-                animate={{ x: ["-100%", "100%"] }}
-                transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-              />
+            {/* Barra estática com gradiente */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden">
+              <div className={`h-full w-full ${gradient}`} />
             </div>
 
-            {/* Tooltip animado */}
+            {/* Tooltip */}
             <motion.div
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-[rgba(20,20,30,0.96)] flex items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 bg-gradient-to-br from-[rgba(30,20,50,0.95)] to-[rgba(20,10,40,0.98)] flex items-center justify-center p-3 sm:p-4"
             >
-              <p className="text-sm text-light-gray">{tech.description}</p>
+              <p className="text-xs sm:text-sm text-light-gray font-fira-code leading-relaxed">
+                {tech.description}
+              </p>
             </motion.div>
           </motion.div>
         ))}
       </div>
 
-      <p className="mt-4 text-code-comment">// {title}</p>
-      <p className="text-code-punctuation">{" ];"}</p>
+      <div className="font-fira-code text-light mt-4 sm:mt-6 text-sm xs:text-md sm:text-lg">
+        <p className="text-code-comment">// {title}</p>
+        <p className="text-code-punctuation">{" ];"}</p>
+      </div>
     </div>
   );
 };
@@ -198,18 +205,25 @@ export default function SoftSkills() {
   ];
 
   return (
-    <div className="py-10">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold text-light mb-4">
-            <span className="text-primary">// </span>Jutsus Técnicos
-          </h2>
-          <p className="text-light-gray max-w-[700px] mx-auto">
+    <section className="py-10 xs:py-14">
+      <div className="max-w-6xl mx-auto">
+        {/* Título */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-6 sm:mb-10"
+        >
+          <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
+            <span className="text-primary">{"// "}</span>Jutsus Técnicos
+          </div>
+          <p className="text-light-gray mx-auto text-sm xs:text-base max-w-[700px]">
             Meus conhecimentos em tecnologias modernas para criar aplicações web
             poderosas. Assim como um ninja domina diferentes técnicas, domino
             estas tecnologias.
           </p>
-        </div>
+        </motion.div>
 
         <SkillSection
           title="Jutsus de frontend dominados"
@@ -236,6 +250,6 @@ export default function SoftSkills() {
           tag="trainingJutsus"
         />
       </div>
-    </div>
+    </section>
   );
 }

@@ -40,8 +40,8 @@ export default function Terminal() {
   };
 
   return (
-    <motion.div
-      className="flex justify-center items-center mb-8 px-4"
+    <motion.section
+      className="flex justify-center items-center mb-10 xs:py-14"
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: isVisible ? 1 : 0,
@@ -81,7 +81,7 @@ export default function Terminal() {
           </div>
 
           <motion.div
-            className="flex flex-wrap items-center justify-center  text-light-gray text-[0.9rem] grow order-1 text-center p-0 sm:justify-start md:text-left md:px-4 md:order-none font-fira-code"
+            className="flex flex-wrap items-center justify-center  text-light-gray text-xs xs:text-sm grow order-1 text-center p-0 sm:justify-start md:text-left md:px-4 md:order-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -105,7 +105,7 @@ export default function Terminal() {
             {["File", "Edit", "View"].map((item, index) => (
               <motion.button
                 key={item}
-                className="text-[0.85rem] font-fira-code hover:text-purple-300 transition-colors"
+                className="text-xs xs:text-sm hover:text-purple-300 transition-colors"
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
@@ -122,7 +122,7 @@ export default function Terminal() {
         <div className="p-6 md:p-8">
           <div className="mb-10 md:mb-12">
             <motion.p
-              className="font-[1.05rem] leading-[1.8] italic text-code-comment min-h-[1.8rem]"
+              className="text-sm leading-[1.8] italic text-code-comment min-h-[1.8rem] xs:font-base"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
@@ -144,13 +144,14 @@ export default function Terminal() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
+              className="text-sm xs:text-base"
             >
-              <p className="font-[1.05rem] leading-[1.8] mt-4">
+              <p className=" leading-[1.8] mt-4">
                 <span className="text-code-keyword">interface</span>{" "}
                 <span className="text-code-type">NinjaDev</span> {"{"}
               </p>
               <motion.p
-                className="font-[1.05rem] leading-[1.8] ml-6"
+                className=" leading-[1.8] ml-6"
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.8 }}
@@ -159,7 +160,7 @@ export default function Terminal() {
                 <span className="text-code-string">"Débora Hellen"</span>;
               </motion.p>
               <motion.p
-                className="font-[1.05rem] leading-[1.8] ml-6"
+                className=" leading-[1.8] ml-6"
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.9 }}
@@ -168,7 +169,7 @@ export default function Terminal() {
                 <span className="text-code-string">"Dev Junior"</span>;
               </motion.p>
               <motion.p
-                className="font-[1.05rem] leading-[1.8] ml-6"
+                className=" leading-[1.8] ml-6"
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.0 }}
@@ -179,11 +180,11 @@ export default function Terminal() {
                 <span className="text-code-string">"TypeScript"</span> |{" "}
                 <span className="text-code-string">"Next.js"</span>&gt;;
               </motion.p>
-              <p className="font-[1.05rem] leading-[1.8]">{"}"}</p>
+              <p className=" leading-[1.8]">{"}"}</p>
             </motion.div>
 
             <motion.p
-              className="mt-6 text-[1rem] text-light-gray leading-relaxed w-full"
+              className="mt-6 text-sm xs:text-base text-light-gray leading-relaxed w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1 }}
@@ -235,13 +236,13 @@ export default function Terminal() {
 
           {/* Action Buttons */}
           <motion.div
-            className="flex flex-col justify-center gap-4 sm:gap-6 md:flex-row"
+            className="flex flex-col justify-center text-sm gap-4 sm:gap-6 md:flex-row xs:text-base"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5 }}
           >
             <motion.button
-              className="px-6 py-3 sm:px-[1.8rem] sm:py-[0.9rem] rounded-[6px] font-fira-code font-medium flex items-center justify-center gap-3.5 cursor-pointer text-white transition-all duration-300 ease-in-out border-none bg-gradient-to-br from-[#8a2be2] to-[#9d4edd] hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(138,43,226,0.4)]"
+              className="px-6 py-3 sm:px-[1.8rem] sm:py-[0.9rem] rounded-[6px] font-medium flex items-center justify-center gap-3.5 cursor-pointer text-white transition-all duration-300 ease-in-out border-none bg-gradient-to-br from-[#8a2be2] to-[#9d4edd] hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(138,43,226,0.4)] "
               onClick={() => {
                 document
                   .getElementById("projetos")
@@ -263,7 +264,7 @@ export default function Terminal() {
               Explorar Projetos
             </motion.button>
             <motion.button
-              className="px-6 py-3 sm:px-[1.8rem] sm:py-[0.9rem] rounded-[6px] font-fira-code font-medium flex items-center justify-center gap-3.5 cursor-pointer text-secondary border border-secondary transition-all duration-300 ease-in-out hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(255,165,0,0.3)] hover:text-orange-300 hover:border-orange-300"
+              className="px-6 py-3 sm:px-[1.8rem] sm:py-[0.9rem] rounded-[6px] font-medium flex items-center justify-center gap-3.5 cursor-pointer text-secondary border border-secondary transition-all duration-300 ease-in-out hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(255,165,0,0.3)] hover:text-orange-300 hover:border-orange-300"
               onClick={() => {
                 document
                   .getElementById("contato")
@@ -288,7 +289,7 @@ export default function Terminal() {
 
           {/* Terminal funcional */}
           <motion.div
-            className="border-t border-purple-900 mt-4 font-fira-code"
+            className="border-t border-purple-900 mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.6 }}
@@ -312,7 +313,7 @@ export default function Terminal() {
             </div>
             {errorMsg && (
               <motion.p
-                className="mt-1 text-red-500 font-fira-code text-sm italic"
+                className="mt-1 text-red-500 text-sm italic"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -323,6 +324,6 @@ export default function Terminal() {
           </motion.div>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.section>
   );
 }

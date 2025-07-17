@@ -127,26 +127,26 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 bg-[rgba(10,10,20,0.9)] border-t border-b border-[rgba(138,43,226,0.2)]">
+    <section className="py-10 px-4 rounded-lg bg-[rgba(10,10,20,0.9)] border border-[rgba(138,43,226,0.2)] xs:py-14">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -15 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-7 xs:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 font-mono">
+          <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
             <span className="text-purple-400">//</span> Meus Projetos
-          </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-base">
+          </div>
+          <p className="text-light-gray mx-auto text-sm xs:text-base">
             Jutsus codificados que dominei em minha jornada como desenvolvedora
           </p>
         </motion.div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="flex gap-2 bg-[rgba(20,20,30,0.8)] p-1 rounded-md border border-[rgba(138,43,226,0.2)]">
+        <div className="flex justify-center mb-6 xs:mb-10">
+          <div className="flex gap-2 bg-[rgba(20,20,30,0.8)] max-w-full p-1 rounded-md border border-[rgba(138,43,226,0.2)]">
             {["web", "faculdade", "cursos"].map((tab) => (
               <button
                 key={tab}
@@ -154,7 +154,7 @@ export default function ProjectsSection() {
                   setActiveTab(tab as "web" | "faculdade" | "cursos");
                   setVisibleProjects(2);
                 }}
-                className={`px-4 py-2 text-sm rounded-md font-mono transition-all cursor-pointer ${
+                className={`xs:px-4 xs:py-2 px-2 py-1 rounded-md font-mono transition-all cursor-pointer text-xs xs:text-sm ${
                   activeTab === tab
                     ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow"
                     : "text-gray-300 hover:text-white"

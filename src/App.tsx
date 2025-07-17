@@ -11,46 +11,48 @@ import Footer from "./Layout/components/Footer";
 
 export default function App() {
   return (
-    <div className="flex flex-col text-light-gray font-fira-code min-w-[340px]">
-      <Header />
-      <main className="p-8 relative overflow-hidden">
-        <AnimatedBackground />
-        <motion.section
-          id="inicio"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <Terminal />
-        </motion.section>
+    <>
+      <AnimatedBackground />
+      <div className="flex flex-col text-light-gray font-fira-code min-w-[340px]">
+        <Header />
+        <main className="p-8">
+          <motion.section
+            id="inicio"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Terminal />
+          </motion.section>
 
-        <ScrollAnimation id="sobre">
-          <AboutMe />
+          <ScrollAnimation id="sobre">
+            <AboutMe />
+          </ScrollAnimation>
+
+          <ScrollAnimation id="skills" delay={0.2}>
+            <SoftSkills />
+          </ScrollAnimation>
+
+          <motion.section
+            id="projetos"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <ProjectsSection />
+          </motion.section>
+
+          <ScrollAnimation id="contato" delay={0.1}>
+            <Contact />
+          </ScrollAnimation>
+        </main>
+
+        <ScrollAnimation id="footer" delay={0.2}>
+          <Footer />
         </ScrollAnimation>
-
-        <ScrollAnimation id="skills" delay={0.2}>
-          <SoftSkills />
-        </ScrollAnimation>
-
-        <motion.section
-          id="projetos"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          <ProjectsSection />
-        </motion.section>
-
-        <ScrollAnimation id="contato" delay={0.1}>
-          <Contact />
-        </ScrollAnimation>
-      </main>
-
-      <ScrollAnimation id="footer" delay={0.2}>
-        <Footer />
-      </ScrollAnimation>
-    </div>
+      </div>
+    </>
   );
 }
 

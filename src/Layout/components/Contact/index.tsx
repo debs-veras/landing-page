@@ -85,7 +85,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-10 mt-10 px-4 rounded-lg bg-[rgba(10,10,20,0.9)] border border-[rgba(138,43,226,0.2)] xs:py-14">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{
@@ -112,12 +112,12 @@ export default function Contact() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-7 xs:mb-12"
         >
-          <div className="text-3xl font-bold text-light mb-4">
+          <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
             <span className="text-primary">{"// "}</span>Contato
           </div>
-          <p className="text-light-gray max-w-[700px] mx-auto">
+          <p className="text-light-gray mx-auto text-sm xs:text-base">
             Vamos conversar sobre tecnologia, projetos ou oportunidades!
           </p>
         </motion.div>
@@ -131,7 +131,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm transition-all hover:border-[rgba(138,43,226,0.4)]"
           >
-            <div className="text-xl font-mono text-purple-300 mb-6">
+            <div className="text-lg font-mono text-purple-300 mb-6 xs:text-xl">
               <span className="text-gray-400 mr-2">{"//"}</span> Envie uma
               mensagem
             </div>
@@ -200,7 +200,7 @@ export default function Contact() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting || !isDirty || !isValid}
-                className={`w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all ${
+                className={`w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all text-sm xs:text-base ${
                   isSubmitting || !isDirty || !isValid
                     ? "opacity-50 cursor-not-allowed"
                     : "hover:shadow-lg hover:shadow-purple-500/20"
@@ -228,10 +228,10 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-lg p-6 backdrop-blur-sm transition-all hover:border-[rgba(138,43,226,0.4)]"
           >
-            <span className="text-xl font-mono text-purple-300 mb-6 block">
+            <div className="text-lg font-mono text-purple-300 mb-6 xs:text-xl">
               <span className="text-gray-400 mr-2">{"//"}</span>
               Outras formas de contato
-            </span>
+            </div>
             <div className="space-y-4">
               {[
                 {
@@ -255,8 +255,10 @@ export default function Contact() {
                     <Icon className="h-5 w-5 text-purple-300" />
                   </div>
                   <div className="overflow-hidden">
-                    <span className="text-gray-400 text-sm">{label}</span>
-                    <div className="sm:text-base text-white transition-colors text-xs max-w-full line-clamp-1">
+                    <span className="text-gray-400 text-xs xs:text-sm">
+                      {label}
+                    </span>
+                    <div className=" text-white transition-colors text-xs max-w-full line-clamp-1 xs:text-base">
                       {value}
                     </div>
                   </div>
@@ -298,6 +300,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
