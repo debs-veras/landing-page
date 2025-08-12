@@ -76,8 +76,7 @@ export default function ProjectsSection() {
     cursos: [
       {
         title: "Pokedex Map Dev Week",
-        description:
-          "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
+        description: "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
         technologies: ["HTML", "JavaScript", "CSS"],
         image: "/projetos/mapadev.png",
         link: "https://debs-veras.github.io/pokedex-mapadev/",
@@ -118,6 +117,14 @@ export default function ProjectsSection() {
         image: "/projetos/organo.png",
         link: "https://organo-sage-omega.vercel.app/",
         github: "https://github.com/debs-veras/organo",
+      },
+      {
+        title: "Efeito Parallax",
+        description:"Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
+        technologies: ["HTML", "CSS"],
+        image: "/projetos/parallax.png",
+        link: "https://debs-veras.github.io/parallax/",
+        github: "https://github.com/debs-veras/parallax",
       },
     ],
   };
