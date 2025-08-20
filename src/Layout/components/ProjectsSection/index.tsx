@@ -36,6 +36,15 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/pokedex",
       },
       {
+        title: "Jogo Pedra, Papel e Tesoura",
+        description:
+          "Este é um projeto simples de um jogo Pedra, Papel e Tesoura desenvolvido com HTML, CSS e JavaScript.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        image: "/projetos/pedra-papel-tesoura.png",
+        link: "https://debs-veras.github.io/jogo-pedra-papel-tesoura/",
+        github: "https://github.com/debs-veras/jogo-pedra-papel-tesoura",
+      },
+      {
         title: "Site Educação Popular",
         description:
           "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
@@ -76,7 +85,8 @@ export default function ProjectsSection() {
     cursos: [
       {
         title: "Pokedex Map Dev Week",
-        description: "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
+        description:
+          "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
         technologies: ["HTML", "JavaScript", "CSS"],
         image: "/projetos/mapadev.png",
         link: "https://debs-veras.github.io/pokedex-mapadev/",
@@ -120,7 +130,8 @@ export default function ProjectsSection() {
       },
       {
         title: "Efeito Parallax",
-        description:"Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
+        description:
+          "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
         technologies: ["HTML", "CSS"],
         image: "/projetos/parallax.png",
         link: "https://debs-veras.github.io/parallax/",
