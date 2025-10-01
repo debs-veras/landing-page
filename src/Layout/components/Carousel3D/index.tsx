@@ -24,11 +24,7 @@ const Carousel3D = ({ skills }: CarouselProps) => {
   }, [x]);
 
   return (
-    <div className="relative w-full max-w-[95vw] h-[50vw] sm:h-[45vw] md:h-[40vw] lg:h-[35vw] xl:h-[320px] mx-auto perspective-[1200px] md:perspective-[1600px]">
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-1/3 h-1/3 bg-cyan-400/20 blur-[80px] rounded-full animate-pulse" />
-        <div className="w-1/4 h-1/4 bg-purple-600/15 blur-[60px] rounded-full absolute" />
-      </div>
+    <div className="relative w-full h-[50vw] sm:h-[45vw] md:h-[40vw] lg:h-[35vw] xl:h-[320px] mx-auto perspective-[1200px] md:perspective-[1600px] overflow-hidden">
 
       <motion.div
         className="absolute inset-0"
@@ -43,7 +39,7 @@ const Carousel3D = ({ skills }: CarouselProps) => {
           return (
             <div
               key={tech.name}
-              className="absolute top-1/3 left-1/2"
+              className="absolute top-1/5 left-1/2"
               style={{
                 width: "clamp(70px, 16vw, 140px)",
                 height: "clamp(70px, 16vw, 140px)",

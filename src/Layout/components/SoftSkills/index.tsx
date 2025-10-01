@@ -205,7 +205,8 @@ export default function SoftSkills() {
     },
   ];
 
-  return (
+  return (<>
+
     <section className="py-10 xs:py-14">
       <div className="max-w-6xl mx-auto">
         {/* Título */}
@@ -252,7 +253,8 @@ export default function SoftSkills() {
         />
       </div>
 
-      <Carousel3D skills={frontendSkills} />
     </section>
+      <Carousel3D skills={frontendSkills} />
+        </>
   );
 }
