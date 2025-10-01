@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Carousel3D from "../Carousel3D";
 
 interface Skill {
   name: string;
@@ -250,6 +251,8 @@ export default function SoftSkills() {
           tag="trainingJutsus"
         />
       </div>
+
+      <Carousel3D skills={frontendSkills} />
     </section>
   );
 }
