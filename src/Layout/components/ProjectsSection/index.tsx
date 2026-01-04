@@ -158,7 +158,8 @@ export default function ProjectsSection() {
             <span className="text-purple-400">//</span> Meus Projetos
           </div>
           <p className="text-light-gray mx-auto text-sm xs:text-base">
-            Jutsus codificados que dominei em minha jornada como desenvolvedora
+            Projetos codificados que dominei em minha jornada como
+            desenvolvedora
           </p>
         </motion.div>
 

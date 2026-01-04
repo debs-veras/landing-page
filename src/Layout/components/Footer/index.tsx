@@ -19,7 +19,7 @@ export default function Footer() {
           </a>
         </div>
         <div className="text-light-gray text-sm opacity-70 text-center">
-          © {new Date().getFullYear()} NinjaDev - Todos os direitos reservados
+          © {new Date().getFullYear()} Débora Hellen - Todos os direitos reservados
         </div>
       </div>
     </footer>

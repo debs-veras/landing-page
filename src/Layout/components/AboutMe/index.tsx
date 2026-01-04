@@ -2,84 +2,91 @@ import { motion } from "framer-motion";
 
 export default function AboutMe() {
   return (
-    <section className="py-10 px-4 rounded-lg bg-[rgba(10,10,20,0.9)] border border-[rgba(138,43,226,0.2)] xs:py-14">
-      <div className="max-w-[1200px] mx-auto">
-        {/* Título */}
+    <section
+      id="sobre"
+      className="relative py-16 px-6 bg-gradient-to-b from-[#0a0a14] to-[#0d0d18] border-t border-white/5"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -15 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-7 xs:mb-12"
+          className="text-center mb-14"
         >
-          <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
-            <span className="text-primary">{"// "}</span>Missão Ninja
-          </div>
-          <p className="text-light-gray mx-auto text-sm xs:text-base">
-            <span className="text-primary">"Dattebayo!"</span> Minha jornada
-            como desenvolvedora
-          </p>
+          <h2 className="text-3xl font-semibold text-white tracking-tight">
+            <span className="text-purple-400">//</span> Sobre mim
+          </h2>
+          {/* <p className="mt-4 text-gray-400 max-w-xl mx-auto">
+            Desenvolvedora Front-end focada em construir interfaces modernas,
+            acessíveis e escaláveis.
+          </p> */}
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          {/* Card 1 */}
+        {/* Content */}
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Card - Jornada */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.7, ease: "easeInOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="bg-[rgba(20,20,30,0.8)] w-full h-full border border-[rgba(138,43,226,0.2)] rounded-lg p-6 shadow-md hover:shadow-[0_0_20px_rgba(138,43,226,0.3)] transition-all duration-300"
+            className="relative rounded-xl bg-white/5 border border-white/10 p-7 backdrop-blur-md"
           >
-            <div className="text-lg text-light mb-4 xs:text-xl">
-              <span className="text-code-keyword">function</span>{" "}
-              <span className="text-code-function">minhaJornada</span>() {"{"}
-            </div>
-            <p className="text-light-gray mb-4 leading-relaxed text-sm xs:text-base">
-              Como desenvolvedora front-end júnior, combino minha formação
-              acadêmica em Ciência da Computação com experiência prática em
-              projetos reais. Minha paixão por criar interfaces funcionais e
-              acessíveis me levou a dominar várias tecnologias.
+            <span className="text-sm text-purple-400 font-medium">
+              Minha jornada
+            </span>
+
+            <h3 className="text-xl text-white font-semibold mt-2 mb-4">
+              Construindo experiências digitais
+            </h3>
+
+            <p className="text-gray-300 leading-relaxed">
+              Sou desenvolvedora front-end com formação em Ciência da Computação
+              e experiência prática no desenvolvimento de aplicações web
+              modernas. Trabalho com foco em usabilidade, performance e código
+              limpo, transformando requisitos complexos em interfaces claras e
+              eficientes.
             </p>
-            <p className="text-code-punctuation">{"}"}</p>
           </motion.div>
 
-          {/* Card 2 */}
+          {/* Card - Objetivo */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7, ease: "easeInOut" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="bg-[rgba(20,20,30,0.8)] w-full h-full border border-[rgba(138,43,226,0.2)] rounded-lg p-6 shadow-md hover:shadow-[0_0_20px_rgba(138,43,226,0.3)] transition-all duration-300"
+            className="relative rounded-xl bg-white/5 border border-white/10 p-7 backdrop-blur-md"
           >
-            <div className="text-lg text-light mb-4 xs:text-xl">
-              <span className="text-code-keyword">export function</span>{" "}
-              <span className="text-code-function">objetivo</span>() {"{"}
-            </div>
-            <p className="text-light-gray mb-4 leading-relaxed text-sm xs:text-base">
-              Busco oportunidades para crescer como desenvolvedora front-end,
-              aplicando meus conhecimentos em projetos desafiadores que exigem
-              criatividade e solução de problemas. Comprometida com aprendizado
-              contínuo e desenvolvimento de interfaces que combinem beleza e
-              funcionalidade.
+            <span className="text-sm text-purple-400 font-medium">
+              Objetivo profissional
+            </span>
+
+            <h3 className="text-xl text-white font-semibold mt-2 mb-4">
+              Evoluir, colaborar e gerar impacto
+            </h3>
+
+            <p className="text-gray-300 leading-relaxed">
+              Busco oportunidades onde eu possa evoluir tecnicamente, colaborar
+              com times de produto e engenharia, e contribuir na construção de
+              soluções digitais que resolvam problemas reais, unindo estética,
+              acessibilidade e performance.
             </p>
-            <p className="text-code-punctuation mt-4">{"}"}</p>
           </motion.div>
         </div>
 
-        {/* Frase final */}
+        {/* Closing */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-light-gray text-center mt-10 max-w-[800px] mx-auto leading-relaxed text-sm xs:text-base xs:mt-14"
+          className="mt-16 text-center text-gray-400 max-w-3xl mx-auto"
         >
-          <span className="text-primary">“I never go back on my word!”</span> —
-          Assim como Naruto, busco me tornar uma{" "}
-          <span className="text-primary">desenvolvedora Hokage</span>, criando
-          experiências web que impressionem tanto quanto um{" "}
-          <span className="text-primary">Rasengan</span>!
+          Curiosa por natureza e movida por aprendizado contínuo, encaro cada
+          projeto como uma oportunidade de evoluir — tanto como desenvolvedora
+          quanto como profissional.
         </motion.p>
       </div>
     </section>

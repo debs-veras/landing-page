@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { FaChevronRight, FaComments, FaRocket } from "react-icons/fa";
+import { FaX } from "react-icons/fa6";
 
 export default function Terminal() {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const fullText = "// Bem-vindo ao meu terminal ninja-dev";
+  const fullText = "// Olá! Bem-vindo(a) ao meu portfólio dev";
   const [command, setCommand] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -33,15 +35,13 @@ export default function Terminal() {
     if (target) {
       document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
       setErrorMsg("");
-    } else {
-      setErrorMsg(`Comando não encontrado: "${command}"`);
-    }
+    } else setErrorMsg(`Comando não encontrado: "${command}"`);
     setCommand("");
   };
 
   return (
     <motion.section
-      className="flex justify-center items-center mb-10 xs:py-14"
+      className="flex justify-center items-center mb-16 py-10 px-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: isVisible ? 1 : 0,
@@ -50,7 +50,7 @@ export default function Terminal() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        className="w-full max-w-[900px] bg-[rgba(20,20,30,0.95)] backdrop-blur-md rounded-lg border border-[rgba(138,43,226,0.3)] shadow-[0_10px_30px_rgba(0,0,0,0.5)] overflow-hidden"
+        className="w-full max-w-6xl bg-[rgba(20,20,30,0.97)] backdrop-blur-md rounded-xl border border-purple-900/50 shadow-2xl shadow-purple-900/20 overflow-hidden"
         initial={{ scale: 0.98 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -86,35 +86,14 @@ export default function Terminal() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <div className="text-purple-300 mr-2">~/ninja-path/</div>
+            <div className="text-purple-300 mr-2">~/dev-path/</div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              portfolio_ninja_dev.tsx
+              portfolio_dev.tsx
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="flex gap-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            {["File", "Edit", "View"].map((item, index) => (
-              <motion.button
-                key={item}
-                className="text-xs xs:text-sm hover:text-purple-300 transition-colors"
-                initial={{ y: -10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item}
-              </motion.button>
-            ))}
           </motion.div>
         </motion.div>
 
@@ -146,9 +125,10 @@ export default function Terminal() {
               transition={{ delay: 0.7 }}
               className="text-sm xs:text-base"
             >
-              <p className=" leading-[1.8] mt-4">
-                <span className="text-code-keyword">interface</span>{" "}
-                <span className="text-code-type">NinjaDev</span> {"{"}
+              <p className="leading-[1.8] mt-4">
+                <span className="text-code-keyword">const</span>{" "}
+                <span className="text-code-type">desenvolvedora</span>{" "}
+                <span className="text-code-operator">=</span> {"{"}
               </p>
               <motion.p
                 className=" leading-[1.8] ml-6"
@@ -156,8 +136,8 @@ export default function Terminal() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.8 }}
               >
-                <span className="text-code-property">name</span>:{" "}
-                <span className="text-code-string">"Débora Hellen"</span>;
+                <span className="text-code-property">nome</span>:{" "}
+                <span className="text-code-string">"Débora Veras"</span>;
               </motion.p>
               <motion.p
                 className=" leading-[1.8] ml-6"
@@ -174,11 +154,10 @@ export default function Terminal() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.0 }}
               >
-                <span className="text-code-property">main_skills</span>:{" "}
-                <span className="text-code-type">Array</span>&lt;
+                <span className="text-code-property">especialidades</span>: [
                 <span className="text-code-string">"React"</span> |{" "}
                 <span className="text-code-string">"TypeScript"</span> |{" "}
-                <span className="text-code-string">"Next.js"</span>&gt;;
+                <span className="text-code-string">"Next.js"</span>]
               </motion.p>
               <p className=" leading-[1.8]">{"}"}</p>
             </motion.div>
@@ -189,138 +168,99 @@ export default function Terminal() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1 }}
             >
-              Sou uma desenvolvedora frontend apaixonada por{" "}
-              <motion.span
-                className="text-purple-300 font-medium"
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  delay: 1.2,
-                  type: "spring",
-                  stiffness: 300,
-                }}
-              >
-                tecnologia
-              </motion.span>{" "}
-              e{" "}
-              <motion.span
-                className="text-orange-300 font-medium"
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  delay: 1.3,
-                  type: "spring",
-                  stiffness: 300,
-                }}
-              >
-                animes
-              </motion.span>
-              . Este espaço une meu amor por frameworks e bibliotecas modernas
-              como React e TypeScript com referências ao universo épico de
-              histórias como{" "}
-              <motion.span
-                className="text-orange-400 font-medium"
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  delay: 1.4,
-                  type: "spring",
-                  stiffness: 300,
-                }}
-              >
-                Naruto
-              </motion.span>
-              .
+              Sou Desenvolvedora Frontend especializada em criar interfaces
+              modernas, performáticas e acessíveis utilizando as mais recentes
+              tecnologias web. Com experiência em{" "}
+              <span className="text-blue-400 font-medium">React</span>,{" "}
+              <span className="text-cyan-400 font-medium">TypeScript</span> e{" "}
+              <span className="text-green-400 font-medium">Next.js</span>, foco
+              em entregar experiências de usuário excepcionais através de código
+              limpo e boas práticas de desenvolvimento. Transformo ideias em
+              experiências digitais através de código criativo e atenção aos
+              detalhes
             </motion.p>
           </div>
 
           {/* Action Buttons */}
           <motion.div
-            className="flex flex-col justify-center text-sm gap-4 sm:gap-6 md:flex-row xs:text-base"
+            className="flex flex-col sm:flex-row gap-4 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
+            transition={{ delay: 1.1 }}
           >
             <motion.button
-              className="px-6 py-3 sm:px-[1.8rem] sm:py-[0.9rem] rounded-[6px] font-medium flex items-center justify-center gap-3.5 cursor-pointer text-white transition-all duration-300 ease-in-out border-none bg-gradient-to-br from-[#8a2be2] to-[#9d4edd] hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(138,43,226,0.4)] "
-              onClick={() => {
+              className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 group cursor-pointer"
+              onClick={() =>
                 document
                   .getElementById("projetos")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                delay: 1.6,
-                type: "spring",
-                stiffness: 400,
-              }}
-              whileHover={{
-                y: -2,
-                boxShadow: "0 5px 15px rgba(138, 43, 226, 0.4)",
-              }}
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              whileHover={{ y: -3, scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              Explorar Projetos
+              <FaRocket className="group-hover:rotate-12 transition-transform" />
+              Explorar Meus Trabalhos
             </motion.button>
             <motion.button
-              className="px-6 py-3 sm:px-[1.8rem] sm:py-[0.9rem] rounded-[6px] font-medium flex items-center justify-center gap-3.5 cursor-pointer text-secondary border border-secondary transition-all duration-300 ease-in-out hover:-translate-y-[2px] hover:shadow-[0_5px_15px_rgba(255,165,0,0.3)] hover:text-orange-300 hover:border-orange-300"
-              onClick={() => {
+              className="flex-1 px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-orange-700 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-orange-500/30 group cursor-pointer"
+              onClick={() =>
                 document
                   .getElementById("contato")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                delay: 1.7,
-                type: "spring",
-                stiffness: 400,
-              }}
-              whileHover={{
-                y: -2,
-                boxShadow: "0 5px 15px rgba(255, 165, 0, 0.3)",
-              }}
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              whileHover={{ y: -3, scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              Enviar Mensagem Secreta
+              <FaComments className="group-hover:scale-110 transition-transform" />
+              Conversar Comigo
             </motion.button>
           </motion.div>
 
           {/* Terminal funcional */}
           <motion.div
-            className="border-t border-purple-900 mt-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6 }}
+            className="border-t border-purple-900/50 pt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.3 }}
           >
-            <div className="flex flex-wrap items-center gap-2 text-light-gray mt-5">
-              <span className="text-purple-300">ninja@dev</span>:
-              <span className="text-purple-400">~</span>$
-              <input
-                className="bg-transparent outline-none text-white flex-1 min-w-[150px] ml-2"
-                type="text"
-                placeholder="Comando: sobre, skills, projetos, contato"
-                value={command}
-                onChange={(e) => {
-                  setCommand(e.target.value);
-                  if (errorMsg) setErrorMsg("");
-                }}
-                onKeyDown={(e) => e.key === "Enter" && handleCommand()}
-                autoComplete="off"
-                spellCheck={false}
-              />
+            <div className="mb-4">
+              <div className="flex items-center text-sm mb-2 md:flex-nowrap flex-wrap">
+                <span className="text-green-400 font-medium">
+                  debora@portfolio
+                </span>
+                <span className="text-purple-400 mx-1">~</span>
+                <span className="text-orange-400">$</span>
+                <div className="w-full ml-3 flex items-center bg-gray-900/50 rounded-lg px-3 py-3 border border-purple-900/30">
+                  <FaChevronRight className="text-purple-500 mr-2" size={12} />
+                  <input
+                    className="bg-transparent outline-none text-gray-100 w-full placeholder-gray-500"
+                    type="text"
+                    placeholder="Digite um comando: sobre, skills, projetos, contato"
+                    value={command}
+                    onChange={(e) => {
+                      setCommand(e.target.value);
+                      setErrorMsg("");
+                    }}
+                    onKeyDown={(e) => e.key === "Enter" && handleCommand()}
+                    autoComplete="off"
+                    spellCheck={false}
+                  />
+                </div>
+              </div>
+
+              {errorMsg && (
+                <motion.p
+                  className="text-red-400 text-sm mt-2 flex items-center gap-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <span className="text-red-500">
+                    <FaX />
+                  </span>
+                  {errorMsg}
+                </motion.p>
+              )}
             </div>
-            {errorMsg && (
-              <motion.p
-                className="mt-1 text-red-500 text-sm italic"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                {errorMsg}
-              </motion.p>
-            )}
           </motion.div>
         </div>
       </motion.div>

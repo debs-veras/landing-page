@@ -55,12 +55,9 @@ export default function Header() {
   return (
     <header className="bg-[rgba(10,10,10,0.7)] backdrop-blur-sm border-b border-b-[rgba(138,43,226,0.3)] px-6 py-4 sticky top-0 z-[100] shadow-lg">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center gap-2 flex-wrap">
-        <a
-          href="#inicio"
-          className="flex items-center gap-2 font-medium text-[1.3rem]"
-        >
+        <a href="#inicio" className="flex items-center gap-2 font-medium text-[1.3rem]">
           <span className="text-primary">{"{"}</span>
-          <span className="text-light">ninja_dev</span>
+          <span className="text-light">debora_hellen</span>
           <span className="text-primary">{"}"}</span>
         </a>
 
@@ -72,7 +69,6 @@ export default function Header() {
           {menuOpen ? <HiX /> : <HiMenu />}
         </button>
 
-        {/* Menu desktop com estilo refinado */}
         <div className="hidden items-center gap-6 md:flex">
           <nav className="flex gap-6 text-light-gray">
             {sections.map((section, index) => (
@@ -110,7 +106,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Menu mobile com estilo mais limpo e refinado */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

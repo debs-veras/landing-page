@@ -205,56 +205,55 @@ export default function SoftSkills() {
     },
   ];
 
-  return (<>
+  return (
+    <>
+      <section className="py-10 xs:py-14">
+        <div className="max-w-6xl mx-auto">
+          {/* Título */}
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            viewport={{ once: true }}
+            className="text-center mb-6 sm:mb-10"
+          >
+            <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
+              <span className="text-primary">{"// "}</span> Stack Tecnológica
+            </div>
+            <p className="text-light-gray mx-auto text-sm xs:text-base max-w-[700px]">
+              Domínio completo em tecnologias modernas para desenvolvimento web.
+              Especializada em frontend com experiência sólida em todo o
+              ecossistema JavaScript.
+            </p>
+          </motion.div>
 
-    <section className="py-10 xs:py-14">
-      <div className="max-w-6xl mx-auto">
-        {/* Título */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          viewport={{ once: true }}
-          className="text-center mb-6 sm:mb-10"
-        >
-          <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
-            <span className="text-primary">{"// "}</span>Jutsus Técnicos
-          </div>
-          <p className="text-light-gray mx-auto text-sm xs:text-base max-w-[700px]">
-            Meus conhecimentos em tecnologias modernas para criar aplicações web
-            poderosas. Assim como um ninja domina diferentes técnicas, domino
-            estas tecnologias.
-          </p>
-        </motion.div>
-
-        <SkillSection
-          title="Jutsus de frontend dominados"
-          skills={frontendSkills}
-          gradient="bg-gradient-to-r from-purple-500 to-blue-500"
-          tag="frontendJutsus"
-        />
-        <SkillSection
-          title="Jutsus de backend dominados"
-          skills={backendSkills}
-          gradient="bg-gradient-to-r from-blue-500 to-green-500"
-          tag="backendJutsus"
-        />
-        <SkillSection
-          title="Ferramentas de desenvolvimento"
-          skills={tools}
-          gradient="bg-gradient-to-r from-orange-500 to-pink-500"
-          tag="toolsJutsus"
-        />
-        <SkillSection
-          title="Jutsus em treinamento..."
-          skills={learning}
-          gradient="bg-gradient-to-r from-purple-500 to-indigo-500"
-          tag="trainingJutsus"
-        />
-      </div>
-
-    </section>
+          <SkillSection
+            title="Tecnologias de Frontend & UI/UX"
+            skills={frontendSkills}
+            gradient="bg-gradient-to-r from-purple-500 to-blue-500"
+            tag="frontend"
+          />
+          <SkillSection
+            title="Tecnologias de Backend & Databases"
+            skills={backendSkills}
+            gradient="bg-gradient-to-r from-blue-500 to-green-500"
+            tag="backend"
+          />
+          <SkillSection
+            title="Tecnologias Ferramentas & DevOps"
+            skills={tools}
+            gradient="bg-gradient-to-r from-orange-500 to-pink-500"
+            tag="ferramentas"
+          />
+          <SkillSection
+            title="Tecnologias em Aprendizado"
+            skills={learning}
+            gradient="bg-gradient-to-r from-purple-500 to-indigo-500"
+            tag="emAprendizado"
+          />
+        </div>
+      </section>
       <Carousel3D skills={frontendSkills} />
-        </>
+    </>
   );
 }
