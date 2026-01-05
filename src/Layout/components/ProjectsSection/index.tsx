@@ -59,7 +59,7 @@ export default function ProjectsSection() {
           "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
         technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
         image: "/projetos/educacao-popular.png",
-        link: "https://epsaude.gpets.online",
+        link: "https://educacao-popular.free.nf",
       },
     ],
     faculdade: [
