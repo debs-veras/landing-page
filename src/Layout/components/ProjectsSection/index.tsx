@@ -102,6 +102,15 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/pokedex-mapadev",
       },
       {
+        title: "App Help Desk",
+        description:
+          "App Help Desk é uma aplicação simples em PHP para gerenciamento de chamados (help desk), construída para fins didáticos. Permite que usuários registrem, visualizem e gerenciem solicitações de suporte técnico.(Credenciais para login estão no README do projeto).",
+        technologies: ["HTML", "JavaScript", "CSS", "Bootstrap", "PHP"],
+        image: "/projetos/app-desk.png",
+        link: "https://deborahellen.free.nf/index.php",
+        github: "https://github.com/debs-veras/app_help_desk.git",
+      },
+      {
         title: "Mata Mosquito",
         description:
           "Um jogo simples e divertido onde o objetivo é matar os mosquitos que aparecem na tela dentro de um certo tempo. O jogo possui múltiplos níveis de dificuldade e aumenta a velocidade conforme você progride.",
