@@ -19,6 +19,15 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/box_chat",
       },
       {
+        title: "MovieExplore",
+        description:
+          " MovieExplore é um front-end em React + TypeScript + Vite para pesquisar filmes e séries usando a API do TMDB. O projeto oferece busca, página de detalhes, autenticação e gerenciamento de favoritos (Minha Coleção).",
+        technologies: ["React/TypeScript", "Tailwind"],
+        image: "/projetos/movie-explore.png",
+        github: "https://github.com/debs-veras/search-movie.git",
+        link: "https://movie-explore-rosy.vercel.app",
+      },
+      {
         title: "Landing page da empresa de tecnologia Box3",
         description:
           "Site da empresa Box3, desenvolvido com foco em apresentar soluções de software personalizadas para empresas. O site é responsivo, moderno e visa destacar os principais serviços, tecnologias utilizadas e canais de contato, respeitando as regras de SEO.",
