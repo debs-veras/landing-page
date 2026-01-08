@@ -25,7 +25,7 @@ export default function ProjectsSection() {
         technologies: ["React/TypeScript", "Tailwind"],
         image: "/projetos/movie-explore.png",
         github: "https://github.com/debs-veras/search-movie.git",
-        link: "https://movie-explore-rosy.vercel.app",
+        link: "https://search-movie-explore.vercel.app/",
       },
       {
         title: "Landing page da empresa de tecnologia Box3",
