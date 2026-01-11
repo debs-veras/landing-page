@@ -137,7 +137,7 @@ export default function Terminal() {
                 transition={{ delay: 0.8 }}
               >
                 <span className="text-code-property">nome</span>:{" "}
-                <span className="text-code-string">"Débora Veras"</span>;
+                <span className="text-code-string">"Débora Hellen"</span>;
               </motion.p>
               <motion.p
                 className=" leading-[1.8] ml-6"

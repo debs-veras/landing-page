@@ -18,10 +18,6 @@ export default function AboutMe() {
           <h2 className="text-3xl font-semibold text-white tracking-tight">
             <span className="text-purple-400">//</span> Sobre mim
           </h2>
-          {/* <p className="mt-4 text-gray-400 max-w-xl mx-auto">
-            Desenvolvedora Front-end focada em construir interfaces modernas,
-            acessíveis e escaláveis.
-          </p> */}
         </motion.div>
 
         {/* Content */}

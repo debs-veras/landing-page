@@ -42,20 +42,13 @@ export default function Header() {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
-  const handleDownloadCV = () => {
-    const cvUrl = "Débora Veras_CV.pdf";
-    const link = document.createElement("a");
-    link.href = cvUrl;
-    link.download = "Débora Veras_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <header className="bg-[rgba(10,10,10,0.7)] backdrop-blur-sm border-b border-b-[rgba(138,43,226,0.3)] px-6 py-4 sticky top-0 z-[100] shadow-lg">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center gap-2 flex-wrap">
-        <a href="#inicio" className="flex items-center gap-2 font-medium text-[1.3rem]">
+        <a
+          href="#inicio"
+          className="flex items-center gap-2 font-medium text-[1.3rem]"
+        >
           <span className="text-primary">{"{"}</span>
           <span className="text-light">debora_hellen</span>
           <span className="text-primary">{"}"}</span>
@@ -95,14 +88,16 @@ export default function Header() {
               </motion.a>
             ))}
           </nav>
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={handleDownloadCV}
-            className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all  border border-transparent hover:shadow-purple-500/30"
+            href="https://drive.google.com/file/d/18Rm4ONUhhWkR_OLJutMwR3fBRwwSsoS4/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all border border-transparent hover:shadow-purple-500/30"
           >
-            Baixar Currículo
-          </motion.button>
+            Currículo
+          </motion.a>
         </div>
       </div>
 
@@ -136,14 +131,16 @@ export default function Header() {
                   {section.name}
                 </motion.a>
               ))}
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleDownloadCV}
-                className="bg-gradient-to-r from-purple-500 to-purple-700 text-white w-full max-w-[200px] px-4 py-2 rounded-md shadow-md hover:shadow-purple-500/30 transition-all border border-transparent"
+                href="https://drive.google.com/file/d/18Rm4ONUhhWkR_OLJutMwR3fBRwwSsoS4/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all border border-transparent hover:shadow-purple-500/30"
               >
-                Baixar Currículo
-              </motion.button>
+                Currículo
+              </motion.a>
             </div>
           </motion.div>
         )}
