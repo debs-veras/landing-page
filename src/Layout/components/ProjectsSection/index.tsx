@@ -28,6 +28,15 @@ export default function ProjectsSection() {
         link: "https://search-movie-explore.vercel.app/",
       },
       {
+        title: "When & Weather",
+        description:
+          "Aplicação web desenvolvida durante o NASA International Space Apps Challenge 2025. O projeto auxilia no planejamento de eventos mais seguros ao permitir a consulta de condições climáticas",
+        technologies: ["React", "TypeScript", "CSS"],
+        image: "/projetos/when-and-weather.png",
+        github: "https://github.com/CodeStormNinja/when-and-weather",
+      },
+
+      {
         title: "BoxChat",
         description:
           "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
