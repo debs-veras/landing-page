@@ -11,12 +11,12 @@ export default function ProjectsSection() {
   const projects = {
     web: [
       {
-        title: "BoxChat",
+        title: "Altus Aerial",
         description:
-          "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
-        technologies: ["React/TypeScript", "Tailwind", "HTML", "CSS"],
-        image: "/projetos/box-chat.png",
-        github: "https://github.com/debs-veras/box_chat",
+          "Site institucional desenvolvido para a Altus Aerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        image: "/projetos/altus-aerial.png",
+        link: "https://altusaerial.com.br/",
       },
       {
         title: "MovieExplore",
@@ -28,13 +28,14 @@ export default function ProjectsSection() {
         link: "https://search-movie-explore.vercel.app/",
       },
       {
-        title: "Landing page da empresa de tecnologia Box3",
+        title: "BoxChat",
         description:
-          "Site da empresa Box3, desenvolvido com foco em apresentar soluções de software personalizadas para empresas. O site é responsivo, moderno e visa destacar os principais serviços, tecnologias utilizadas e canais de contato, respeitando as regras de SEO.",
-        technologies: ["React/TypeScript", "Tailwind"],
-        image: "/projetos/box3.png",
-        link: "https://box3.work/",
+          "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
+        technologies: ["React/TypeScript", "Tailwind", "HTML", "CSS"],
+        image: "/projetos/box-chat.png",
+        github: "https://github.com/debs-veras/box_chat",
       },
+
       {
         title: "Pokedex com Api",
         description:
