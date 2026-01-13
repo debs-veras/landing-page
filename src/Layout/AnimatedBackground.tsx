@@ -11,6 +11,7 @@ const techTerms = [
   "CSS",
   "Git",
 ];
+
 const symbols = ["{}", "()", "[]", "<>", "=>", "::", "&&", "||", "==="];
 
 type Particle = {
@@ -37,11 +38,15 @@ export default function AnimatedBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const getWidth = () => window.innerWidth;
+    const getHeight = () => window.visualViewport?.height || window.innerHeight;
+
+    let width = (canvas.width = getWidth());
+    let height = (canvas.height = getHeight());
 
     const isMobile = width < 768;
     const VERTEX_COUNT = isMobile ? 20 : 36;
@@ -180,19 +185,25 @@ export default function AnimatedBackground() {
     animate();
 
     const resize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      width = canvas.width = getWidth();
+      height = canvas.height = getHeight();
     };
 
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    window.visualViewport?.addEventListener("resize", resize);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", resize);
+    };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 -z-10"
-      style={{ pointerEvents: "none" }}
+      style={{
+        pointerEvents: "none",
+        backgroundColor: "#05050f",
+      }}
     />
   );
 }

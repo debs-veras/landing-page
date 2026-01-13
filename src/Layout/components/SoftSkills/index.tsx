@@ -93,7 +93,7 @@ export default function SoftSkills() {
     {
       name: "React",
       color: "text-[#61DAFB]",
-      icon: "/tecnologia/react.svg",
+      icon: "/tecnologia/react.webp",
       description:
         "Biblioteca JavaScript para construção de interfaces de usuário reativas e componentizadas.",
     },
