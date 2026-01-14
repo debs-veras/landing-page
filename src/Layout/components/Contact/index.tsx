@@ -277,7 +277,7 @@ export default function Contact() {
                     icon: FiGithub,
                   },
                   {
-                    href: "https://linkedin.com/in/débora-hellen-veras-paiva-711955194",
+                    href: "https://www.linkedin.com/in/debora-hellen-711955194",
                     label: "LinkedIn",
                     icon: FiLinkedin,
                   },

@@ -11,7 +11,7 @@ export default function Footer() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/débora-hellen-veras-paiva-711955194"
+            href="https://www.linkedin.com/in/debora-hellen-711955194"
             className="text-light-gray no-underline flex items-center gap-2 transition-colors duration-300 ease-in-out hover:text-light"
           >
             <span className="text-primary">{"{}"}</span>
@@ -19,7 +19,8 @@ export default function Footer() {
           </a>
         </div>
         <div className="text-light-gray text-sm opacity-70 text-center">
-          © {new Date().getFullYear()} Débora Hellen - Todos os direitos reservados
+          © {new Date().getFullYear()} Débora Hellen - Todos os direitos
+          reservados
         </div>
       </div>
     </footer>
