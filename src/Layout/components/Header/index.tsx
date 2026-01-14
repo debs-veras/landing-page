@@ -10,7 +10,8 @@ export default function Header() {
     { name: "Projetos", ancor: "projetos" },
     { name: "Contato", ancor: "contato" },
   ];
-
+  const linkCurriculo =
+    "https://drive.google.com/drive/folders/1HGV7bai2BA2r70w3GARw-8g2qMbD05Y1?usp=drive_link";
   const [activeSection, setActiveSection] = useState("inicio");
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -91,7 +92,7 @@ export default function Header() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="https://drive.google.com/file/d/18Rm4ONUhhWkR_OLJutMwR3fBRwwSsoS4/view?usp=drive_link"
+            href={linkCurriculo}
             target="_blank"
             rel="noopener noreferrer"
             className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all border border-transparent hover:shadow-purple-500/30"
@@ -134,7 +135,7 @@ export default function Header() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://drive.google.com/file/d/18Rm4ONUhhWkR_OLJutMwR3fBRwwSsoS4/view?usp=drive_link"
+                href={linkCurriculo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all border border-transparent hover:shadow-purple-500/30"
