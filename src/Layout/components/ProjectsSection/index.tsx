@@ -11,9 +11,18 @@ export default function ProjectsSection() {
   const projects = {
     web: [
       {
-        title: "Altus Aerial",
+        title: "Explorer NASA",
         description:
-          "Site institucional desenvolvido para a Altus Aerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
+          "Explorer NASA é uma aplicação frontend desenvolvida em React + TypeScript que consome a NASA Open API (APOD – Astronomy Picture of the Day) para exibir uma galeria de imagens e vídeos astronômicos.",
+        technologies: ["HTML", "CSS", "TypeScript", "React", "Tailwind"],
+        image: "/projetos/explorer-nasa.png",
+        github: "https://github.com/debs-veras/explorer-nasa",
+        link: "https://explorer-nasa.vercel.app",
+      },
+      {
+        title: "AltusAerial",
+        description:
+          "Site institucional desenvolvido para a AltusAerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
         technologies: ["HTML", "CSS", "JavaScript"],
         image: "/projetos/altus-aerial.png",
         link: "https://altusaerial.com.br/",
@@ -24,7 +33,7 @@ export default function ProjectsSection() {
           " MovieExplore é um front-end em React + TypeScript + Vite para pesquisar filmes e séries usando a API do TMDB. O projeto oferece busca, página de detalhes, autenticação e gerenciamento de favoritos (Minha Coleção).",
         technologies: ["React/TypeScript", "Tailwind"],
         image: "/projetos/movie-explore.png",
-        github: "https://github.com/debs-veras/search-movie.git",
+        github: "https://github.com/debs-veras/search-movie",
         link: "https://search-movie-explore.vercel.app/",
       },
       {
