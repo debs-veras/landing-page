@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ProjectsSection() {
   const [activeTab, setActiveTab] = useState<"web" | "faculdade" | "cursos">(
-    "web"
+    "web",
   );
   const [visibleProjects, setVisibleProjects] = useState(2);
   const projectsPerLoad = 2;
@@ -37,6 +37,15 @@ export default function ProjectsSection() {
         link: "https://search-movie-explore.vercel.app/",
       },
       {
+        title: "selecao-box3",
+        description:
+          "Este projeto foi desenvolvido como parte do processo seletivo técnico de uma empresa, com o objetivo de demonstrar habilidades em desenvolvimento frontend, organização de código, regras de negócio, integração com API e experiência do usuário.",
+        technologies: ["React/JavaScript", "Tailwind"],
+        image: "/projetos/selecao-box3.png",
+        github: "https://github.com/debs-veras/react-selecao-box3",
+        link: "https://react-selecao-box3.vercel.app/",
+      },
+      {
         title: "When & Weather",
         description:
           "Aplicação web desenvolvida durante o NASA International Space Apps Challenge 2025. O projeto auxilia no planejamento de eventos mais seguros ao permitir a consulta de condições climáticas",
@@ -44,7 +53,6 @@ export default function ProjectsSection() {
         image: "/projetos/when-and-weather.png",
         github: "https://github.com/CodeStormNinja/when-and-weather",
       },
-
       {
         title: "BoxChat",
         description:
@@ -53,7 +61,6 @@ export default function ProjectsSection() {
         image: "/projetos/box-chat.png",
         github: "https://github.com/debs-veras/box_chat",
       },
-
       {
         title: "Pokedex com Api",
         description:
