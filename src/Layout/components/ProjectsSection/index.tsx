@@ -46,6 +46,15 @@ export default function ProjectsSection() {
         link: "https://react-selecao-box3.vercel.app/",
       },
       {
+        title: "Memory Game",
+        description:
+          "Jogo da Memória desenvolvido com HTML, CSS e JavaScript puro. O projeto começou a partir de um estudo de um jogo base apresentado em um vídeo do YouTube, mas foi fortemente expandido e refatorado, recebendo novas funcionalidades, melhorias de arquitetura e modos de jogo adicionais.",
+        technologies: ["JavaScript", "CSS", "HTML"],
+        image: "/projetos/memory-game.png",
+        github: "https://github.com/debs-veras/memory-game",
+        link: "https://debs-veras.github.io/memory-game/pages/game.html",
+      },
+      {
         title: "When & Weather",
         description:
           "Aplicação web desenvolvida durante o NASA International Space Apps Challenge 2025. O projeto auxilia no planejamento de eventos mais seguros ao permitir a consulta de condições climáticas",
