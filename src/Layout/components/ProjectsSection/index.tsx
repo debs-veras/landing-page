@@ -54,7 +54,7 @@ export default function ProjectsSection() {
         technologies: ["JavaScript", "CSS", "HTML"],
         image: "/projetos/memory-game.png",
         github: "https://github.com/debs-veras/memory-game",
-        link: "https://debs-veras.github.io/memory-game/pages/game.html",
+        link: "https://debs-veras.github.io/memory-game",
       },
       {
         title: "BoxChat",
