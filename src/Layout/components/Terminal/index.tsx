@@ -41,7 +41,7 @@ export default function Terminal() {
 
   return (
     <motion.section
-      className="flex justify-center items-center mb-16 py-10 px-4"
+      className="flex justify-center items-center py-10 px-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: isVisible ? 1 : 0,

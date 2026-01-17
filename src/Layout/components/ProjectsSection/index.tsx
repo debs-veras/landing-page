@@ -2,11 +2,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ProjectsSection() {
-  const [activeTab, setActiveTab] = useState<"web" | "faculdade" | "cursos">(
+  const [activeTab, setActiveTab] = useState<"web" | "academico" | "cursos">(
     "web",
   );
-  const [visibleProjects, setVisibleProjects] = useState(2);
-  const projectsPerLoad = 2;
+  const [visibleProjects, setVisibleProjects] = useState(3);
+  const projectsPerLoad = 3;
 
   const projects = {
     web: [
@@ -88,13 +88,14 @@ export default function ProjectsSection() {
         link: "https://educacao-popular.free.nf",
       },
     ],
-    faculdade: [
+    academico: [
       {
         title: "Estrutura de Dados",
         description:
           "Atividades e implementações realizada na disciplina de estrutura de dados",
         technologies: [],
-        image: null,
+        image:
+          "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
         link: null,
         github: "https://github.com/debs-veras/estrutura-de-dados",
       },
@@ -103,7 +104,8 @@ export default function ProjectsSection() {
         description:
           "Atividades e implementações realizada na disciplina de programação orientada a objetos (POO)",
         technologies: [],
-        image: null,
+        image:
+          "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
         link: null,
         github: "https://github.com/debs-veras/programacao-orientada-objeto",
       },
@@ -112,7 +114,8 @@ export default function ProjectsSection() {
         description:
           "Atividades e implementações realizada na disciplina de construção e análise de algoritmos",
         technologies: [],
-        image: null,
+        image:
+          "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
         link: null,
         github: "https://github.com/debs-veras/construcao-analise-algoritmos",
       },
@@ -121,7 +124,8 @@ export default function ProjectsSection() {
         description:
           "Atividades e implementações realizada na disciplina de algoritmo para grafos",
         technologies: [],
-        image: null,
+        image:
+          "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
         link: null,
         github: "https://github.com/debs-veras/algoritmos-para-grafos",
       },
@@ -130,7 +134,8 @@ export default function ProjectsSection() {
         description:
           "Atividades e implementações realizada na disciplina de redes de computadores",
         technologies: [],
-        image: null,
+        image:
+          "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
         link: null,
         github: "https://github.com/debs-veras/socket",
       },
@@ -228,12 +233,12 @@ export default function ProjectsSection() {
         {/* Tabs */}
         <div className="flex justify-center mb-6 xs:mb-10">
           <div className="flex gap-2 bg-[rgba(20,20,30,0.8)] max-w-full p-1 rounded-md border border-[rgba(138,43,226,0.2)]">
-            {["web", "faculdade", "cursos"].map((tab) => (
+            {["web", "academico", "cursos"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => {
-                  setActiveTab(tab as "web" | "faculdade" | "cursos");
-                  setVisibleProjects(2);
+                  setActiveTab(tab as "web" | "academico" | "cursos");
+                  setVisibleProjects(3);
                 }}
                 className={`xs:px-4 xs:py-2 px-2 py-1 rounded-md font-mono transition-all cursor-pointer text-xs xs:text-sm ${
                   activeTab === tab
@@ -247,8 +252,35 @@ export default function ProjectsSection() {
           </div>
         </div>
 
+        {/* Descrição da aba */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
+          {activeTab === "web" && (
+            <p className="text-gray-400 text-sm xs:text-base max-w-xl mx-auto">
+              Projetos web modernos com React, TypeScript e foco em experiência
+              do usuário e design responsivo.
+            </p>
+          )}
+          {activeTab === "academico" && (
+            <p className="text-gray-400 text-sm xs:text-base max-w-xl mx-auto">
+              Projetos acadêmicos com foco em algoritmos, estruturas de dados,
+              POO e redes.
+            </p>
+          )}
+          {activeTab === "cursos" && (
+            <p className="text-gray-400 text-sm xs:text-base max-w-xl mx-auto">
+              Projetos práticos de cursos aplicando HTML, CSS, JavaScript e
+              React.
+            </p>
+          )}
+        </motion.div>
+
         {/* Projetos */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects[activeTab].slice(0, visibleProjects).map((project, i) => (
             <motion.div
               key={i}

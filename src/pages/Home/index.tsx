@@ -15,7 +15,7 @@ export default function Home() {
       <AnimatedBackground />
       <div className="flex flex-col text-light-gray font-fira-code min-w-[340px]">
         <Header />
-        <main className="p-8">
+        <main className="p-4 sm:p-8">
           <motion.section
             id="inicio"
             initial={{ opacity: 0, y: 20 }}

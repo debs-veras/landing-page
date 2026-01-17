@@ -4,7 +4,7 @@ export default function AboutMe() {
   return (
     <section
       id="sobre"
-      className="relative py-16 px-6 bg-gradient-to-b from-[#0a0a14] to-[#0d0d18] border-t border-white/5"
+      className="relative rounded-lg py-16 px-6 bg-gradient-to-b from-[#0a0a14] to-[#0d0d18] border-t border-white/5"
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
