@@ -96,7 +96,7 @@ export default function ProjectsSection() {
         technologies: [],
         image: null,
         link: null,
-        github: "https://github.com/debs-veras/Estrutura-de-Dados",
+        github: "https://github.com/debs-veras/estrutura-de-dados",
       },
       {
         title: "Programação Orientada a Objetos",
@@ -123,7 +123,7 @@ export default function ProjectsSection() {
         technologies: [],
         image: null,
         link: null,
-        github: "https://github.com/debs-veras/Algoritmos-para-Grafos",
+        github: "https://github.com/debs-veras/algoritmos-para-grafos",
       },
       {
         title: "Redes de Computadores",
