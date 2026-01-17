@@ -99,6 +99,24 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/Estrutura-de-Dados",
       },
       {
+        title: "Programação Orientada a Objetos",
+        description:
+          "Atividades e implementações realizada na disciplina de programação orientada a objetos (POO)",
+        technologies: [],
+        image: null,
+        link: null,
+        github: "https://github.com/debs-veras/programacao-orientada-objeto",
+      },
+      {
+        title: "Construção e Análise de Algoritmos",
+        description:
+          "Atividades e implementações realizada na disciplina de construção e análise de algoritmos",
+        technologies: [],
+        image: null,
+        link: null,
+        github: "https://github.com/debs-veras/construcao-analise-algoritmos",
+      },
+      {
         title: "Algoritmos para Grafos",
         description:
           "Atividades e implementações realizada na disciplina de algoritmo para grafos",
