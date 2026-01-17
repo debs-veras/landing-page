@@ -14,18 +14,10 @@ export default function ProjectsSection() {
         title: "Explorer NASA",
         description:
           "Explorer NASA é uma aplicação frontend desenvolvida em React + TypeScript que consome a NASA Open API (APOD – Astronomy Picture of the Day) para exibir uma galeria de imagens e vídeos astronômicos.",
-        technologies: ["HTML", "CSS", "TypeScript", "React", "Tailwind"],
+        technologies: ["TypeScript", "React", "Tailwind"],
         image: "/projetos/explorer-nasa.png",
         github: "https://github.com/debs-veras/explorer-nasa",
         link: "https://explorer-nasa.vercel.app",
-      },
-      {
-        title: "AltusAerial",
-        description:
-          "Site institucional desenvolvido para a AltusAerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        image: "/projetos/altus-aerial.png",
-        link: "https://altusaerial.com.br/",
       },
       {
         title: "MovieExplore",
@@ -37,6 +29,15 @@ export default function ProjectsSection() {
         link: "https://search-movie-explore.vercel.app/",
       },
       {
+        title: "Pokedex com Api",
+        description:
+          "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
+        technologies: ["React", "Typescript", "Tailwind"],
+        image: "/projetos/pokedex.png",
+        link: "https://pokedex-orpin-chi-52.vercel.app/",
+        github: "https://github.com/debs-veras/pokedex",
+      },
+      {
         title: "selecao-box3",
         description:
           "Este projeto foi desenvolvido como parte do processo seletivo técnico de uma empresa, com o objetivo de demonstrar habilidades em desenvolvimento frontend, organização de código, regras de negócio, integração com API e experiência do usuário.",
@@ -45,14 +46,31 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/react-selecao-box3",
         link: "https://react-selecao-box3.vercel.app/",
       },
+
       {
         title: "Memory Game",
         description:
-          "Jogo da Memória desenvolvido com HTML, CSS e JavaScript puro. O projeto começou a partir de um estudo de um jogo base apresentado em um vídeo do YouTube, mas foi fortemente expandido e refatorado, recebendo novas funcionalidades, melhorias de arquitetura e modos de jogo adicionais.",
+          "Jogo da Memória desenvolvido com HTML, CSS e JavaScript. O projeto começou a partir de um estudo de um jogo base apresentado em um vídeo do YouTube, mas foi fortemente expandido e refatorado, recebendo novas funcionalidades e modos de jogo adicionais.",
         technologies: ["JavaScript", "CSS", "HTML"],
         image: "/projetos/memory-game.png",
         github: "https://github.com/debs-veras/memory-game",
         link: "https://debs-veras.github.io/memory-game/pages/game.html",
+      },
+      {
+        title: "BoxChat",
+        description:
+          "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.",
+        technologies: ["TypeScript", "React", "Tailwind"],
+        image: "/projetos/box-chat.png",
+        github: "https://github.com/debs-veras/box_chat",
+      },
+      {
+        title: "AltusAerial",
+        description:
+          "Site institucional desenvolvido para a AltusAerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        image: "/projetos/altus-aerial.png",
+        link: "https://altusaerial.com.br/",
       },
       {
         title: "When & Weather",
@@ -63,21 +81,12 @@ export default function ProjectsSection() {
         github: "https://github.com/CodeStormNinja/when-and-weather",
       },
       {
-        title: "BoxChat",
+        title: "Site Educação Popular",
         description:
-          "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
-        technologies: ["React/TypeScript", "Tailwind", "HTML", "CSS"],
-        image: "/projetos/box-chat.png",
-        github: "https://github.com/debs-veras/box_chat",
-      },
-      {
-        title: "Pokedex com Api",
-        description:
-          "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
-        technologies: ["React", "Typescript", "Tailwind"],
-        image: "/projetos/pokedex.png",
-        link: "https://pokedex-orpin-chi-52.vercel.app/",
-        github: "https://github.com/debs-veras/pokedex",
+          "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
+        technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
+        image: "/projetos/educacao-popular.png",
+        link: "https://educacao-popular.free.nf",
       },
       {
         title: "Jogo Pedra, Papel e Tesoura",
@@ -87,14 +96,6 @@ export default function ProjectsSection() {
         image: "/projetos/pedra-papel-tesoura.png",
         link: "https://debs-veras.github.io/jogo-pedra-papel-tesoura/",
         github: "https://github.com/debs-veras/jogo-pedra-papel-tesoura",
-      },
-      {
-        title: "Site Educação Popular",
-        description:
-          "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
-        technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
-        image: "/projetos/educacao-popular.png",
-        link: "https://educacao-popular.free.nf",
       },
     ],
     academico: [
