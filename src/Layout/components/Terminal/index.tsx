@@ -41,7 +41,7 @@ export default function Terminal() {
 
   return (
     <motion.section
-      className="flex justify-center items-center py-10 px-4"
+      className="flex justify-center items-center pb-10 px-4 flex-col"
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: isVisible ? 1 : 0,
@@ -99,7 +99,7 @@ export default function Terminal() {
 
         {/* Terminal Content */}
         <div className="p-6 md:p-8">
-          <div className="mb-10 md:mb-12">
+          <div className="mb-5">
             <motion.p
               className="text-sm leading-[1.8] italic text-code-comment min-h-[1.8rem] xs:font-base"
               initial={{ opacity: 0 }}
@@ -161,24 +161,6 @@ export default function Terminal() {
               </motion.p>
               <p className=" leading-[1.8]">{"}"}</p>
             </motion.div>
-
-            <motion.p
-              className="mt-6 text-sm xs:text-base text-light-gray leading-relaxed w-full"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
-            >
-              Sou Desenvolvedora Frontend especializada em criar interfaces
-              modernas, performáticas e acessíveis utilizando as mais recentes
-              tecnologias web. Com experiência em{" "}
-              <span className="text-blue-400 font-medium">React</span>,{" "}
-              <span className="text-cyan-400 font-medium">TypeScript</span> e{" "}
-              <span className="text-green-400 font-medium">Next.js</span>, foco
-              em entregar experiências de usuário excepcionais através de código
-              limpo e boas práticas de desenvolvimento. Transformo ideias em
-              experiências digitais através de código criativo e atenção aos
-              detalhes
-            </motion.p>
           </div>
 
           {/* Action Buttons */}

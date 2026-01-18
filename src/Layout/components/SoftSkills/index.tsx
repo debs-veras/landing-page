@@ -207,7 +207,7 @@ export default function SoftSkills() {
 
   return (
     <>
-      <section className="py-10 xs:py-14">
+      <section>
         <div className="max-w-6xl mx-auto">
           {/* Título */}
           <motion.div
