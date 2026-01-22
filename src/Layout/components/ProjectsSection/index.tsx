@@ -29,6 +29,14 @@ export default function ProjectsSection() {
         link: "https://search-movie-explore.vercel.app/",
       },
       {
+        title: "Portfólio ",
+        description:
+          "Este projeto consiste em uma landing page de página única (SPA) com navegação por âncoras, construída para servir como portfólio pessoal e também como base reutilizável para páginas institucionais.",
+        technologies: ["React", "Typescript", "Tailwind"],
+        image: "/projetos/portfolio.png",
+        github: "https://github.com/debs-veras/landing-page",
+      },
+      {
         title: "Pokedex com Api",
         description:
           "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
@@ -46,7 +54,6 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/react-selecao-box3",
         link: "https://react-selecao-box3.vercel.app/",
       },
-
       {
         title: "Memory Game",
         description:
@@ -168,6 +175,15 @@ export default function ProjectsSection() {
         image: "/projetos/app-desk.png",
         link: "https://deborahellen.free.nf/index.php",
         github: "https://github.com/debs-veras/app_help_desk.git",
+      },
+      {
+        title: "Pokedex Completa",
+        description:
+          "Esse repositório contém a Pokédex completa que foi construída durante um tutorial no YouTube pelo canal Manual do Dev, usando as linguagens de front‑end HTML, CSS e JavaScript para criar uma aplicação interativa que lista Pokémons e mostra detalhes sobre eles.",
+        technologies: ["HTML", "JavaScript", "CSS"],
+        image: "/projetos/pokedex-completa.png",
+        link: "https://debs-veras.github.io/pokedex-completo",
+        github: "https://github.com/debs-veras/pokedex-completo",
       },
       {
         title: "Mata Mosquito",
