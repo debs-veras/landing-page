@@ -43,6 +43,55 @@ export default function Header() {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
+  // Scroll ultra suave para âncoras do menu
+  useEffect(() => {
+    function easeInOutQuad(t: number) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    function animatedScrollTo(targetY: number, duration = 900) {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      let start: number | null = null;
+      function step(timestamp: number) {
+        if (start === null) start = timestamp;
+        const elapsed = timestamp - (start as number);
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = easeInOutQuad(progress);
+        window.scrollTo(0, startY + diff * ease);
+        if (elapsed < duration) {
+          window.requestAnimationFrame(step);
+        }
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    const handleClick = (e: Event) => {
+      const anchor = e.currentTarget as HTMLAnchorElement;
+      const hash = anchor.getAttribute("href");
+      if (hash && hash.startsWith("#") && hash.length > 1) {
+        const target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          // Compensa o scroll-margin-top
+          const rect = target.getBoundingClientRect();
+          const scrollMargin = parseInt(
+            getComputedStyle(target).scrollMarginTop || "0",
+            10,
+          );
+          const targetY = window.scrollY + rect.top - scrollMargin;
+          animatedScrollTo(targetY);
+          history.pushState(null, "", hash);
+        }
+      }
+    };
+    const links = document.querySelectorAll('header a[href^="#"]');
+    links.forEach((link) => link.addEventListener("click", handleClick));
+    return () => {
+      links.forEach((link) => link.removeEventListener("click", handleClick));
+    };
+  }, []);
+
   return (
     <header className="bg-[rgba(10,10,10,0.7)] backdrop-blur-sm border-b border-b-[rgba(138,43,226,0.3)] px-6 py-4 sticky top-0 z-[100] shadow-lg">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center gap-2 flex-wrap">

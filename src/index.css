@@ -1,6 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Compensa header fixo para âncoras */
+[id] {
+  scroll-margin-top: 80px;
+}
+
 @theme {
   --breakpoint-xs: 30rem;
   --color-primary: #8a2be2;
