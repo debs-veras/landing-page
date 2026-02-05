@@ -37,6 +37,15 @@ export default function ProjectsSection() {
         github: "https://github.com/debs-veras/landing-page",
       },
       {
+        title: "AltusBranding ",
+        description:
+          "Landing page institucional para AltusBranding, focada em branding estratégico, design e experiência digital.",
+        technologies: ["React", "Typescript", "Tailwind"],
+        image: "/projetos/altusbranding.png",
+        github: "https://github.com/debs-veras/altusbranding",
+        link: "https://altusbranding.vercel.app",
+      },
+      {
         title: "Pokedex com Api",
         description:
           "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
