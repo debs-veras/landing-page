@@ -31,9 +31,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [showNotification, setShowNotification] = useState(false);
 
   const {
@@ -63,7 +61,7 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        "service_mf5n8ns",
+        "service_vwfw4um",
         "template_iqojkoe",
         {
           from_name: data.name,
