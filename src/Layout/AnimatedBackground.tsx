@@ -11,29 +11,35 @@ const techTerms = [
   "CSS",
   "Git",
 ];
-
 const symbols = ["{}", "()", "[]", "<>", "=>", "::", "&&", "||", "==="];
 
 type Particle = {
   x: number;
   y: number;
+  vx: number;
+  vy: number;
   size: number;
   opacity: number;
-  speedX: number;
-  speedY: number;
   type: "vertex" | "text" | "symbol";
   content?: string;
   life: number;
   maxLife: number;
   color: string;
-  targetX: number;
-  targetY: number;
+};
+
+type Vertex = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
 };
 
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particles = useRef<Particle[]>([]);
-  const vertices = useRef<Array<{ x: number; y: number; size: number }>>([]);
+  const vertices = useRef<Vertex[]>([]);
+  const animationRef = useRef<number>();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -42,17 +48,31 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const dpr = window.devicePixelRatio || 1;
+
     const getWidth = () => window.innerWidth;
     const getHeight = () => window.visualViewport?.height || window.innerHeight;
 
-    let width = (canvas.width = getWidth());
-    let height = (canvas.height = getHeight());
+    let width = getWidth();
+    let height = getHeight();
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    ctx.scale(dpr, dpr);
+    ctx.imageSmoothingEnabled = false;
 
     const isMobile = width < 768;
-    const VERTEX_COUNT = isMobile ? 20 : 36;
-    const TEXT_COUNT = isMobile ? 6 : 14;
-    const SYMBOL_COUNT = isMobile ? 10 : 18;
+
+    const VERTEX_COUNT = isMobile ? 18 : 32;
+    const TEXT_COUNT = isMobile ? 5 : 12;
+    const SYMBOL_COUNT = isMobile ? 8 : 16;
+
     const CONNECTION_DISTANCE = 180;
+    const CONNECTION_DISTANCE_SQ = CONNECTION_DISTANCE * CONNECTION_DISTANCE;
 
     const COLORS = [
       "rgba(99,102,241,0.7)",
@@ -62,65 +82,70 @@ export default function AnimatedBackground() {
     ];
 
     const rand = (min: number, max: number) =>
-      Math.random() * (max - min) + min;
+      min + Math.random() * (max - min);
 
-    vertices.current = Array.from({ length: VERTEX_COUNT }, () => ({
+    const createVertex = (): Vertex => ({
       x: rand(40, width - 40),
       y: rand(40, height - 40),
+      vx: rand(-0.2, 0.2),
+      vy: rand(-0.2, 0.2),
       size: rand(2, 4),
-    }));
+    });
 
-    const createParticle = (type: Particle["type"]): Particle => {
-      const x = rand(0, width);
-      const y = rand(0, height);
+    vertices.current = new Array(VERTEX_COUNT)
+      .fill(0)
+      .map(() => createVertex());
 
-      return {
-        x,
-        y,
-        targetX: x,
-        targetY: y,
-        size:
-          type === "vertex"
-            ? rand(2, 4)
-            : type === "text"
+    const createParticle = (type: Particle["type"]): Particle => ({
+      x: rand(0, width),
+      y: rand(0, height),
+      vx: rand(-0.15, 0.15),
+      vy: rand(-0.15, 0.15),
+      size:
+        type === "vertex"
+          ? rand(2, 4)
+          : type === "text"
             ? rand(12, 16)
             : rand(10, 14),
-        opacity: 0,
-        speedX: rand(-0.15, 0.15),
-        speedY: rand(-0.15, 0.15),
-        type,
-        content:
-          type === "text"
-            ? techTerms[Math.floor(Math.random() * techTerms.length)]
-            : type === "symbol"
+      opacity: 0,
+      type,
+      content:
+        type === "text"
+          ? techTerms[Math.floor(Math.random() * techTerms.length)]
+          : type === "symbol"
             ? symbols[Math.floor(Math.random() * symbols.length)]
             : undefined,
-        life: 0,
-        maxLife: type === "vertex" ? 99999 : rand(3000, 6000),
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-      };
-    };
+      life: 0,
+      maxLife: type === "vertex" ? 999999 : rand(2500, 5000),
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    });
 
     particles.current = [
-      ...Array.from({ length: VERTEX_COUNT }, () => createParticle("vertex")),
-      ...Array.from({ length: TEXT_COUNT }, () => createParticle("text")),
-      ...Array.from({ length: SYMBOL_COUNT }, () => createParticle("symbol")),
+      ...new Array(VERTEX_COUNT).fill(0).map(() => createParticle("vertex")),
+      ...new Array(TEXT_COUNT).fill(0).map(() => createParticle("text")),
+      ...new Array(SYMBOL_COUNT).fill(0).map(() => createParticle("symbol")),
     ];
 
     const drawConnections = () => {
-      for (let i = 0; i < vertices.current.length; i++) {
-        for (let j = i + 1; j < vertices.current.length; j++) {
-          const a = vertices.current[i];
-          const b = vertices.current[j];
+      const verts = vertices.current;
+
+      for (let i = 0; i < verts.length; i++) {
+        const a = verts[i];
+
+        for (let j = i + 1; j < verts.length; j++) {
+          const b = verts[j];
+
           const dx = a.x - b.x;
           const dy = a.y - b.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
 
-          if (d < CONNECTION_DISTANCE) {
-            ctx.strokeStyle = `rgba(99,102,241,${
-              (1 - d / CONNECTION_DISTANCE) * 0.25
-            })`;
+          const distSq = dx * dx + dy * dy;
+
+          if (distSq < CONNECTION_DISTANCE_SQ) {
+            const alpha = 1 - distSq / CONNECTION_DISTANCE_SQ;
+
+            ctx.strokeStyle = `rgba(99,102,241,${alpha * 0.25})`;
             ctx.lineWidth = 1;
+
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -131,42 +156,52 @@ export default function AnimatedBackground() {
     };
 
     const animate = () => {
-      ctx.fillStyle = "rgba(5,5,15,0.25)";
-      ctx.fillRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
-      vertices.current.forEach((v) => {
-        v.x += rand(-0.3, 0.3);
-        v.y += rand(-0.3, 0.3);
-        v.x = Math.max(20, Math.min(width - 20, v.x));
-        v.y = Math.max(20, Math.min(height - 20, v.y));
-      });
+      const verts = vertices.current;
+
+      for (let i = 0; i < verts.length; i++) {
+        const v = verts[i];
+
+        v.x += v.vx;
+        v.y += v.vy;
+
+        if (v.x < 20 || v.x > width - 20) v.vx *= -1;
+        if (v.y < 20 || v.y > height - 20) v.vy *= -1;
+      }
 
       drawConnections();
 
-      particles.current.forEach((p) => {
-        const fade = 120;
+      const parts = particles.current;
+
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+
+        const fade = 100;
 
         if (p.life < fade) p.opacity = p.life / fade;
         else if (p.life > p.maxLife - fade)
           p.opacity = (p.maxLife - p.life) / fade;
         else p.opacity = 1;
 
-        p.x += p.speedX;
-        p.y += p.speedY;
+        p.x += p.vx;
+        p.y += p.vy;
         p.life++;
 
-        if (p.x < 0 || p.x > width) p.speedX *= -1;
-        if (p.y < 0 || p.y > height) p.speedY *= -1;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
 
         ctx.save();
+
         ctx.globalAlpha = p.opacity * 0.6;
         ctx.fillStyle = p.color;
-        ctx.font = `${p.size}px 'JetBrains Mono', monospace`;
+        ctx.font = `${p.size}px monospace`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
-        if (p.content) ctx.fillText(p.content, p.x, p.y);
-        else {
+        if (p.content) {
+          ctx.fillText(p.content, p.x, p.y);
+        } else {
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
@@ -175,23 +210,38 @@ export default function AnimatedBackground() {
         ctx.restore();
 
         if (p.life > p.maxLife && p.type !== "vertex") {
-          Object.assign(p, createParticle(p.type));
+          parts[i] = createParticle(p.type);
         }
-      });
+      }
 
-      requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     };
 
     animate();
 
+    let resizeTimeout: any;
+
     const resize = () => {
-      width = canvas.width = getWidth();
-      height = canvas.height = getHeight();
+      clearTimeout(resizeTimeout);
+
+      resizeTimeout = setTimeout(() => {
+        width = getWidth();
+        height = getHeight();
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+
+        ctx.scale(dpr, dpr);
+      }, 120);
     };
 
     window.visualViewport?.addEventListener("resize", resize);
 
     return () => {
+      cancelAnimationFrame(animationRef.current!);
       window.visualViewport?.removeEventListener("resize", resize);
     };
   }, []);
@@ -202,7 +252,7 @@ export default function AnimatedBackground() {
       className="fixed inset-0 -z-10"
       style={{
         pointerEvents: "none",
-        backgroundColor: "#05050f",
+        background: "#05050f",
       }}
     />
   );

@@ -1,283 +1,299 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 
+type Project = {
+  title: string;
+  description: string;
+  technologies?: string[];
+  image?: string;
+  github?: string | null;
+  link?: string | null;
+};
+
+const TABS = ["web", "academico", "cursos"] as const;
+type Tab = (typeof TABS)[number];
+
+const PROJECTS: Record<Tab, Project[]> = {
+  web: [
+    {
+      title: "Explorer NASA",
+      description:
+        "Explorer NASA é uma aplicação frontend desenvolvida em React + TypeScript que consome a NASA Open API (APOD – Astronomy Picture of the Day) para exibir uma galeria de imagens e vídeos astronômicos.",
+      technologies: ["TypeScript", "React", "Tailwind"],
+      image: "/projetos/explorer-nasa.png",
+      github: "https://github.com/debs-veras/explorer-nasa",
+      link: "https://explorer-nasa.vercel.app",
+    },
+    {
+      title: "MovieExplore",
+      description:
+        " MovieExplore é um front-end em React + TypeScript + Vite para pesquisar filmes e séries usando a API do TMDB. O projeto oferece busca, página de detalhes, autenticação e gerenciamento de favoritos (Minha Coleção).",
+      technologies: ["React/TypeScript", "Tailwind"],
+      image: "/projetos/movie-explore.png",
+      github: "https://github.com/debs-veras/search-movie",
+      link: "https://search-movie-explore.vercel.app/",
+    },
+    {
+      title: "Portfólio ",
+      description:
+        "Este projeto consiste em uma landing page de página única (SPA) com navegação por âncoras, construída para servir como portfólio pessoal e também como base reutilizável para páginas institucionais.",
+      technologies: ["React", "Typescript", "Tailwind"],
+      image: "/projetos/portfolio.png",
+      github: "https://github.com/debs-veras/landing-page",
+    },
+    {
+      title: "AltusBranding ",
+      description:
+        "Landing page institucional para AltusBranding, focada em branding estratégico, design e experiência digital.",
+      technologies: ["React", "Typescript", "Tailwind"],
+      image: "/projetos/altusbranding.png",
+      github: "https://github.com/debs-veras/altusbranding",
+      link: "https://altusbranding.vercel.app",
+    },
+    {
+      title: "Pokedex com Api",
+      description:
+        "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
+      technologies: ["React", "Typescript", "Tailwind"],
+      image: "/projetos/pokedex.png",
+      link: "https://pokedex-orpin-chi-52.vercel.app/",
+      github: "https://github.com/debs-veras/pokedex",
+    },
+    {
+      title: "selecao-box3",
+      description:
+        "Este projeto foi desenvolvido como parte do processo seletivo técnico de uma empresa, com o objetivo de demonstrar habilidades em desenvolvimento frontend, organização de código, regras de negócio, integração com API e experiência do usuário.",
+      technologies: ["React/JavaScript", "Tailwind"],
+      image: "/projetos/selecao-box3.png",
+      github: "https://github.com/debs-veras/react-selecao-box3",
+      link: "https://react-selecao-box3.vercel.app/",
+    },
+    {
+      title: "Memory Game",
+      description:
+        "Jogo da Memória desenvolvido com HTML, CSS e JavaScript. O projeto começou a partir de um estudo de um jogo base apresentado em um vídeo do YouTube, mas foi fortemente expandido e refatorado, recebendo novas funcionalidades e modos de jogo adicionais.",
+      technologies: ["JavaScript", "CSS", "HTML"],
+      image: "/projetos/memory-game.png",
+      github: "https://github.com/debs-veras/memory-game",
+      link: "https://debs-veras.github.io/memory-game",
+    },
+    {
+      title: "BoxChat",
+      description:
+        "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.",
+      technologies: ["TypeScript", "React", "Tailwind"],
+      image: "/projetos/box-chat.png",
+      github: "https://github.com/debs-veras/box_chat",
+    },
+    {
+      title: "AltusAerial",
+      description:
+        "Site institucional desenvolvido para a AltusAerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      image: "/projetos/altus-aerial.png",
+      link: "https://altusaerial.com.br/",
+    },
+    {
+      title: "When & Weather",
+      description:
+        "Aplicação web desenvolvida durante o NASA International Space Apps Challenge 2025. O projeto auxilia no planejamento de eventos mais seguros ao permitir a consulta de condições climáticas",
+      technologies: ["React", "TypeScript", "CSS"],
+      image: "/projetos/when-and-weather.png",
+      github: "https://github.com/CodeStormNinja/when-and-weather",
+    },
+    {
+      title: "Site Educação Popular",
+      description:
+        "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
+      technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
+      image: "/projetos/educacao-popular.png",
+      link: "https://educacao-popular.free.nf",
+    },
+    {
+      title: "Jogo Pedra, Papel e Tesoura",
+      description:
+        "Este é um projeto simples de um jogo Pedra, Papel e Tesoura desenvolvido com HTML, CSS e JavaScript.",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      image: "/projetos/pedra-papel-tesoura.png",
+      link: "https://debs-veras.github.io/jogo-pedra-papel-tesoura/",
+      github: "https://github.com/debs-veras/jogo-pedra-papel-tesoura",
+    },
+  ],
+  academico: [
+    {
+      title: "Estrutura de Dados",
+      description:
+        "Atividades e implementações realizada na disciplina de estrutura de dados",
+      technologies: [],
+      image:
+        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/estrutura-de-dados",
+    },
+    {
+      title: "Programação Orientada a Objetos",
+      description:
+        "Atividades e implementações realizada na disciplina de programação orientada a objetos (POO)",
+      technologies: [],
+      image:
+        "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/programacao-orientada-objeto",
+    },
+    {
+      title: "Construção e Análise de Algoritmos",
+      description:
+        "Atividades e implementações realizada na disciplina de construção e análise de algoritmos",
+      technologies: [],
+      image:
+        "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/construcao-analise-algoritmos",
+    },
+    {
+      title: "Algoritmos para Grafos",
+      description:
+        "Atividades e implementações realizada na disciplina de algoritmo para grafos",
+      technologies: [],
+      image:
+        "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/algoritmos-para-grafos",
+    },
+    {
+      title: "Redes de Computadores",
+      description:
+        "Atividades e implementações realizada na disciplina de redes de computadores",
+      technologies: [],
+      image:
+        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/socket",
+    },
+  ],
+  cursos: [
+    {
+      title: "Pokedex Map Dev Week",
+      description:
+        "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
+      technologies: ["HTML", "JavaScript", "CSS"],
+      image: "/projetos/mapadev.png",
+      link: "https://debs-veras.github.io/pokedex-mapadev/",
+      github: "https://github.com/debs-veras/pokedex-mapadev",
+    },
+    {
+      title: "App Help Desk",
+      description:
+        "App Help Desk é uma aplicação simples em PHP para gerenciamento de chamados (help desk), construída para fins didáticos. Permite que usuários registrem, visualizem e gerenciem solicitações de suporte técnico.(Credenciais para login estão no README do projeto).",
+      technologies: ["HTML", "JavaScript", "CSS", "Bootstrap", "PHP"],
+      image: "/projetos/app-desk.png",
+      link: "https://deborahellen.free.nf/index.php",
+      github: "https://github.com/debs-veras/app_help_desk.git",
+    },
+    {
+      title: "Pokedex Completa",
+      description:
+        "Esse repositório contém a Pokédex completa que foi construída durante um tutorial no YouTube pelo canal Manual do Dev, usando as linguagens de front‑end HTML, CSS e JavaScript para criar uma aplicação interativa que lista Pokémons e mostra detalhes sobre eles.",
+      technologies: ["HTML", "JavaScript", "CSS"],
+      image: "/projetos/pokedex-completa.png",
+      link: "https://debs-veras.github.io/pokedex-completo",
+      github: "https://github.com/debs-veras/pokedex-completo",
+    },
+    {
+      title: "Mata Mosquito",
+      description:
+        "Um jogo simples e divertido onde o objetivo é matar os mosquitos que aparecem na tela dentro de um certo tempo. O jogo possui múltiplos níveis de dificuldade e aumenta a velocidade conforme você progride.",
+      technologies: ["HTML", "JavaScript", "CSS", "Bootstrap"],
+      image: "/projetos/mata-mosquito.png",
+      link: "https://debs-veras.github.io/game-mata-mosquito/",
+      github: "https://github.com/debs-veras/game-mata-mosquito",
+    },
+    {
+      title: "Museu Nacional",
+      description:
+        "Site fictício do Museu Nacional, desenvolvido exclusivamente para fins educacionais. O objetivo é praticar conceitos de desenvolvimento web utilizando HTML, CSS e JavaScript.",
+      technologies: ["HTML", "CSS"],
+      image: "/projetos/museu-nacional.png",
+      link: "https://debs-veras.github.io/site-museu/",
+      github: "https://github.com/debs-veras/site-museu",
+    },
+    {
+      title: "Site de Notícia",
+      description:
+        "Projeto de estudo de um site de notícias simulado com layout de portal informativo.",
+      technologies: ["HTML", "CSS"],
+      image: "/projetos/blog-noticia.png",
+      link: "https://debs-veras.github.io/blog-noticia/",
+      github: "https://github.com/debs-veras/blog-noticia",
+    },
+    {
+      title: "Organo",
+      description:
+        "Organo é uma aplicação web desenvolvida com fins educativos, que permite organizar pessoas e times de forma visual e intuitiva.",
+      technologies: ["HTML", "CSS", "React"],
+      image: "/projetos/organo.png",
+      link: "https://organo-sage-omega.vercel.app/",
+      github: "https://github.com/debs-veras/organo",
+    },
+    {
+      title: "Efeito Parallax",
+      description:
+        "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
+      technologies: ["HTML", "CSS"],
+      image: "/projetos/parallax.png",
+      link: "https://debs-veras.github.io/parallax/",
+      github: "https://github.com/debs-veras/parallax",
+    },
+  ],
+};
+
 export default function ProjectsSection() {
-  const [activeTab, setActiveTab] = useState<"web" | "academico" | "cursos">(
-    "web",
-  );
+  const [activeTab, setActiveTab] = useState<Tab>("web");
   const [visibleProjects, setVisibleProjects] = useState(3);
+
   const projectsPerLoad = 3;
 
-  const projects = {
-    web: [
-      {
-        title: "Explorer NASA",
-        description:
-          "Explorer NASA é uma aplicação frontend desenvolvida em React + TypeScript que consome a NASA Open API (APOD – Astronomy Picture of the Day) para exibir uma galeria de imagens e vídeos astronômicos.",
-        technologies: ["TypeScript", "React", "Tailwind"],
-        image: "/projetos/explorer-nasa.png",
-        github: "https://github.com/debs-veras/explorer-nasa",
-        link: "https://explorer-nasa.vercel.app",
-      },
-      {
-        title: "MovieExplore",
-        description:
-          " MovieExplore é um front-end em React + TypeScript + Vite para pesquisar filmes e séries usando a API do TMDB. O projeto oferece busca, página de detalhes, autenticação e gerenciamento de favoritos (Minha Coleção).",
-        technologies: ["React/TypeScript", "Tailwind"],
-        image: "/projetos/movie-explore.png",
-        github: "https://github.com/debs-veras/search-movie",
-        link: "https://search-movie-explore.vercel.app/",
-      },
-      {
-        title: "Portfólio ",
-        description:
-          "Este projeto consiste em uma landing page de página única (SPA) com navegação por âncoras, construída para servir como portfólio pessoal e também como base reutilizável para páginas institucionais.",
-        technologies: ["React", "Typescript", "Tailwind"],
-        image: "/projetos/portfolio.png",
-        github: "https://github.com/debs-veras/landing-page",
-      },
-      {
-        title: "AltusBranding ",
-        description:
-          "Landing page institucional para AltusBranding, focada em branding estratégico, design e experiência digital.",
-        technologies: ["React", "Typescript", "Tailwind"],
-        image: "/projetos/altusbranding.png",
-        github: "https://github.com/debs-veras/altusbranding",
-        link: "https://altusbranding.vercel.app",
-      },
-      {
-        title: "Pokedex com Api",
-        description:
-          "Um componente interativo em React que exibe detalhes completos de um Pokémon em um modal animado, consumindo dados em tempo real da PokéAPI. Uma Pokédex interativa desenvolvida para fins de aprendizado",
-        technologies: ["React", "Typescript", "Tailwind"],
-        image: "/projetos/pokedex.png",
-        link: "https://pokedex-orpin-chi-52.vercel.app/",
-        github: "https://github.com/debs-veras/pokedex",
-      },
-      {
-        title: "selecao-box3",
-        description:
-          "Este projeto foi desenvolvido como parte do processo seletivo técnico de uma empresa, com o objetivo de demonstrar habilidades em desenvolvimento frontend, organização de código, regras de negócio, integração com API e experiência do usuário.",
-        technologies: ["React/JavaScript", "Tailwind"],
-        image: "/projetos/selecao-box3.png",
-        github: "https://github.com/debs-veras/react-selecao-box3",
-        link: "https://react-selecao-box3.vercel.app/",
-      },
-      {
-        title: "Memory Game",
-        description:
-          "Jogo da Memória desenvolvido com HTML, CSS e JavaScript. O projeto começou a partir de um estudo de um jogo base apresentado em um vídeo do YouTube, mas foi fortemente expandido e refatorado, recebendo novas funcionalidades e modos de jogo adicionais.",
-        technologies: ["JavaScript", "CSS", "HTML"],
-        image: "/projetos/memory-game.png",
-        github: "https://github.com/debs-veras/memory-game",
-        link: "https://debs-veras.github.io/memory-game",
-      },
-      {
-        title: "BoxChat",
-        description:
-          "Este projeto é um sistema de chat em tempo real que permite conversas entre usuários conectados. Foi desenvolvido usando React para o frontend e Socket.IO com Node.js para o backend.",
-        technologies: ["TypeScript", "React", "Tailwind"],
-        image: "/projetos/box-chat.png",
-        github: "https://github.com/debs-veras/box_chat",
-      },
-      {
-        title: "AltusAerial",
-        description:
-          "Site institucional desenvolvido para a AltusAerial, focado na apresentação de serviços, identidade visual moderna e navegação responsiva.",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        image: "/projetos/altus-aerial.png",
-        link: "https://altusaerial.com.br/",
-      },
-      {
-        title: "When & Weather",
-        description:
-          "Aplicação web desenvolvida durante o NASA International Space Apps Challenge 2025. O projeto auxilia no planejamento de eventos mais seguros ao permitir a consulta de condições climáticas",
-        technologies: ["React", "TypeScript", "CSS"],
-        image: "/projetos/when-and-weather.png",
-        github: "https://github.com/CodeStormNinja/when-and-weather",
-      },
-      {
-        title: "Site Educação Popular",
-        description:
-          "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
-        technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
-        image: "/projetos/educacao-popular.png",
-        link: "https://educacao-popular.free.nf",
-      },
-      {
-        title: "Jogo Pedra, Papel e Tesoura",
-        description:
-          "Este é um projeto simples de um jogo Pedra, Papel e Tesoura desenvolvido com HTML, CSS e JavaScript.",
-        technologies: ["HTML", "CSS", "JavaScript"],
-        image: "/projetos/pedra-papel-tesoura.png",
-        link: "https://debs-veras.github.io/jogo-pedra-papel-tesoura/",
-        github: "https://github.com/debs-veras/jogo-pedra-papel-tesoura",
-      },
-    ],
-    academico: [
-      {
-        title: "Estrutura de Dados",
-        description:
-          "Atividades e implementações realizada na disciplina de estrutura de dados",
-        technologies: [],
-        image:
-          "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
-        link: null,
-        github: "https://github.com/debs-veras/estrutura-de-dados",
-      },
-      {
-        title: "Programação Orientada a Objetos",
-        description:
-          "Atividades e implementações realizada na disciplina de programação orientada a objetos (POO)",
-        technologies: [],
-        image:
-          "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
-        link: null,
-        github: "https://github.com/debs-veras/programacao-orientada-objeto",
-      },
-      {
-        title: "Construção e Análise de Algoritmos",
-        description:
-          "Atividades e implementações realizada na disciplina de construção e análise de algoritmos",
-        technologies: [],
-        image:
-          "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
-        link: null,
-        github: "https://github.com/debs-veras/construcao-analise-algoritmos",
-      },
-      {
-        title: "Algoritmos para Grafos",
-        description:
-          "Atividades e implementações realizada na disciplina de algoritmo para grafos",
-        technologies: [],
-        image:
-          "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
-        link: null,
-        github: "https://github.com/debs-veras/algoritmos-para-grafos",
-      },
-      {
-        title: "Redes de Computadores",
-        description:
-          "Atividades e implementações realizada na disciplina de redes de computadores",
-        technologies: [],
-        image:
-          "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
-        link: null,
-        github: "https://github.com/debs-veras/socket",
-      },
-    ],
-    cursos: [
-      {
-        title: "Pokedex Map Dev Week",
-        description:
-          "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
-        technologies: ["HTML", "JavaScript", "CSS"],
-        image: "/projetos/mapadev.png",
-        link: "https://debs-veras.github.io/pokedex-mapadev/",
-        github: "https://github.com/debs-veras/pokedex-mapadev",
-      },
-      {
-        title: "App Help Desk",
-        description:
-          "App Help Desk é uma aplicação simples em PHP para gerenciamento de chamados (help desk), construída para fins didáticos. Permite que usuários registrem, visualizem e gerenciem solicitações de suporte técnico.(Credenciais para login estão no README do projeto).",
-        technologies: ["HTML", "JavaScript", "CSS", "Bootstrap", "PHP"],
-        image: "/projetos/app-desk.png",
-        link: "https://deborahellen.free.nf/index.php",
-        github: "https://github.com/debs-veras/app_help_desk.git",
-      },
-      {
-        title: "Pokedex Completa",
-        description:
-          "Esse repositório contém a Pokédex completa que foi construída durante um tutorial no YouTube pelo canal Manual do Dev, usando as linguagens de front‑end HTML, CSS e JavaScript para criar uma aplicação interativa que lista Pokémons e mostra detalhes sobre eles.",
-        technologies: ["HTML", "JavaScript", "CSS"],
-        image: "/projetos/pokedex-completa.png",
-        link: "https://debs-veras.github.io/pokedex-completo",
-        github: "https://github.com/debs-veras/pokedex-completo",
-      },
-      {
-        title: "Mata Mosquito",
-        description:
-          "Um jogo simples e divertido onde o objetivo é matar os mosquitos que aparecem na tela dentro de um certo tempo. O jogo possui múltiplos níveis de dificuldade e aumenta a velocidade conforme você progride.",
-        technologies: ["HTML", "JavaScript", "CSS", "Bootstrap"],
-        image: "/projetos/mata-mosquito.png",
-        link: "https://debs-veras.github.io/game-mata-mosquito/",
-        github: "https://github.com/debs-veras/game-mata-mosquito",
-      },
-      {
-        title: "Museu Nacional",
-        description:
-          "Site fictício do Museu Nacional, desenvolvido exclusivamente para fins educacionais. O objetivo é praticar conceitos de desenvolvimento web utilizando HTML, CSS e JavaScript.",
-        technologies: ["HTML", "CSS"],
-        image: "/projetos/museu-nacional.png",
-        link: "https://debs-veras.github.io/site-museu/",
-        github: "https://github.com/debs-veras/site-museu",
-      },
-      {
-        title: "Site de Notícia",
-        description:
-          "Projeto de estudo de um site de notícias simulado com layout de portal informativo.",
-        technologies: ["HTML", "CSS"],
-        image: "/projetos/blog-noticia.png",
-        link: "https://debs-veras.github.io/blog-noticia/",
-        github: "https://github.com/debs-veras/blog-noticia",
-      },
-      {
-        title: "Organo",
-        description:
-          "Organo é uma aplicação web desenvolvida com fins educativos, que permite organizar pessoas e times de forma visual e intuitiva.",
-        technologies: ["HTML", "CSS", "React"],
-        image: "/projetos/organo.png",
-        link: "https://organo-sage-omega.vercel.app/",
-        github: "https://github.com/debs-veras/organo",
-      },
-      {
-        title: "Efeito Parallax",
-        description:
-          "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
-        technologies: ["HTML", "CSS"],
-        image: "/projetos/parallax.png",
-        link: "https://debs-veras.github.io/parallax/",
-        github: "https://github.com/debs-veras/parallax",
-      },
-    ],
-  };
+  const visibleList = useMemo(() => {
+    return PROJECTS[activeTab].slice(0, visibleProjects);
+  }, [activeTab, visibleProjects]);
 
-  const loadMoreProjects = () => {
+  const loadMoreProjects = useCallback(() => {
     setVisibleProjects((prev) => prev + projectsPerLoad);
-  };
+  }, []);
+
+  const changeTab = useCallback((tab: Tab) => {
+    setActiveTab(tab);
+    setVisibleProjects(3);
+  }, []);
 
   return (
-    <section className="py-10 px-4 rounded-lg bg-[rgba(10,10,20,0.9)] border border-[rgba(138,43,226,0.2)] xs:py-14">
+    <section className="py-10 px-4 xs:py-14">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-7 xs:mb-12"
         >
           <div className="text-2xl font-bold text-light mb-4 xs:text-3xl">
             <span className="text-purple-400">//</span> Meus Projetos
           </div>
-          <p className="text-light-gray mx-auto text-sm xs:text-base">
-            Projetos codificados que dominei em minha jornada como
-            desenvolvedora
+          <p className="text-light-gray text-sm xs:text-base">
+            Projetos desenvolvidos durante minha jornada como dev
           </p>
         </motion.div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-6 xs:mb-10">
-          <div className="flex gap-2 bg-[rgba(20,20,30,0.8)] max-w-full p-1 rounded-md border border-[rgba(138,43,226,0.2)]">
-            {["web", "academico", "cursos"].map((tab) => (
+        <div className="flex justify-center mb-10">
+          <div className="flex gap-2 bg-[rgba(20,20,30,0.8)] p-1 rounded-md border border-[rgba(138,43,226,0.2)]">
+            {TABS.map((tab) => (
               <button
                 key={tab}
-                onClick={() => {
-                  setActiveTab(tab as "web" | "academico" | "cursos");
-                  setVisibleProjects(3);
-                }}
-                className={`xs:px-4 xs:py-2 px-2 py-1 rounded-md font-mono transition-all cursor-pointer text-xs xs:text-sm ${
+                onClick={() => changeTab(tab)}
+                className={`px-4 py-2 rounded-md font-mono transition cursor-pointer text-sm ${
                   activeTab === tab
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow"
+                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
                     : "text-gray-300 hover:text-white"
                 }`}
               >
@@ -287,53 +303,29 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Descrição da aba */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
-          {activeTab === "web" && (
-            <p className="text-gray-400 text-sm xs:text-base max-w-xl mx-auto">
-              Projetos web modernos com React, TypeScript e foco em experiência
-              do usuário e design responsivo.
-            </p>
-          )}
-          {activeTab === "academico" && (
-            <p className="text-gray-400 text-sm xs:text-base max-w-xl mx-auto">
-              Projetos acadêmicos com foco em algoritmos, estruturas de dados,
-              POO e redes.
-            </p>
-          )}
-          {activeTab === "cursos" && (
-            <p className="text-gray-400 text-sm xs:text-base max-w-xl mx-auto">
-              Projetos práticos de cursos aplicando HTML, CSS, JavaScript e
-              React.
-            </p>
-          )}
-        </motion.div>
-
-        {/* Projetos */}
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects[activeTab].slice(0, visibleProjects).map((project, i) => (
+          {visibleList.map((project, i) => (
             <motion.div
-              key={i}
+              key={project.title}
+              layout
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-xl overflow-hidden hover:border-purple-500 hover:shadow-[0_0_30px_rgba(138,43,226,0.2)] transition-all group"
+              className="bg-[rgba(20,20,30,0.8)] border border-[rgba(138,43,226,0.2)] rounded-xl overflow-hidden hover:border-purple-500 hover:shadow-[0_0_30px_rgba(138,43,226,0.2)] transition group"
             >
               <div className="relative h-60 overflow-hidden">
                 {project.image && (
                   <img
-                    loading="lazy"
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                )}{" "}
+                )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end p-6">
                   <h3 className="text-2xl text-white font-mono font-bold">
                     {project.title}
@@ -341,15 +333,15 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-              <div className="p-6 h-full ">
+              <div className="p-6">
                 <p className="text-gray-300 text-sm mb-4 font-mono">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies?.map((tech, idx) => (
+                  {project.technologies?.map((tech) => (
                     <span
-                      key={idx}
+                      key={tech}
                       className="text-xs bg-purple-900/30 text-purple-300 px-3 py-1 rounded-full border border-purple-800/50 font-mono"
                     >
                       {tech}
@@ -357,19 +349,13 @@ export default function ProjectsSection() {
                   ))}
                 </div>
 
-                <div
-                  className={`grid gap-4 ${
-                    project.link && project.github
-                      ? "grid-cols-2"
-                      : "grid-cols-1"
-                  }`}
-                >
+                <div className="grid gap-4 grid-cols-2">
                   {project.link && (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="sm:col-span-1 col-span-2 text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:from-purple-700 hover:to-blue-700 transition-all text-sm sm:text-base"
+                      className="text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:from-purple-700 hover:to-blue-700 transition"
                     >
                       Ver Demo
                     </a>
@@ -380,7 +366,7 @@ export default function ProjectsSection() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="sm:col-span-1 col-span-2 text-center px-4 py-2 border border-purple-500 text-purple-300 rounded-md hover:bg-purple-900/30 transition-all text-sm sm:text-base"
+                      className="text-center px-4 py-2 border border-purple-500 text-purple-300 rounded-md hover:bg-purple-900/30 transition"
                     >
                       Código
                     </a>
@@ -391,16 +377,14 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* Botão Ver Mais */}
-        {visibleProjects < projects[activeTab].length && (
+        {visibleProjects < PROJECTS[activeTab].length && (
           <div className="text-center mt-10">
-            <motion.button
+            <button
               onClick={loadMoreProjects}
-              whileTap={{ scale: 0.95 }}
-              className="cursor-pointer px-6 py-3 border border-purple-500 text-purple-300 rounded-lg hover:bg-purple-900/30 transition-all font-mono text-sm"
+              className="px-6 py-3 border border-purple-500 text-purple-300 rounded-lg hover:bg-purple-900/30 transition font-mono cursor-pointer"
             >
               {"<"}Ver mais projetos{">"}
-            </motion.button>
+            </button>
           </div>
         )}
       </div>

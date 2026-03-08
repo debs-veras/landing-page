@@ -85,7 +85,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-10 mt-10 px-4 rounded-lg bg-[rgba(10,10,20,0.9)] border border-[rgba(138,43,226,0.2)] xs:py-14">
+    <section className="py-10 mt-10 px-4 xs:py-14">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{
