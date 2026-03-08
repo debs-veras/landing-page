@@ -39,7 +39,7 @@ export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const particles = useRef<Particle[]>([]);
   const vertices = useRef<Vertex[]>([]);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
