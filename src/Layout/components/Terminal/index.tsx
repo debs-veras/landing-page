@@ -165,7 +165,7 @@ export default function Terminal() {
 
           {/* Action Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 mb-8"
+            className="flex flex-col sm:flex-row gap-4 mb-8 text-xs sm:text-base"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1 }}
@@ -181,7 +181,7 @@ export default function Terminal() {
               whileTap={{ scale: 0.98 }}
             >
               <FaRocket className="group-hover:rotate-12 transition-transform" />
-              Explorar Meus Trabalhos
+              Meus Trabalhos
             </motion.button>
             <motion.button
               className="flex-1 px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-orange-700 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-orange-500/30 group cursor-pointer"
