@@ -48,7 +48,12 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    const isMobile = window.innerWidth < 768;
+
+    // 🔥 Limita DPR no mobile (grande ganho de performance)
+    const dpr = isMobile
+      ? Math.min(window.devicePixelRatio || 1, 1.5)
+      : Math.min(window.devicePixelRatio || 1, 2);
 
     const getWidth = () => window.innerWidth;
     const getHeight = () => window.visualViewport?.height || window.innerHeight;
@@ -65,13 +70,12 @@ export default function AnimatedBackground() {
     ctx.scale(dpr, dpr);
     ctx.imageSmoothingEnabled = false;
 
-    const isMobile = width < 768;
+    // 🔥 Quantidade reduzida no mobile
+    const VERTEX_COUNT = isMobile ? 10 : 32;
+    const TEXT_COUNT = isMobile ? 0 : 12;
+    const SYMBOL_COUNT = isMobile ? 4 : 16;
 
-    const VERTEX_COUNT = isMobile ? 18 : 32;
-    const TEXT_COUNT = isMobile ? 5 : 12;
-    const SYMBOL_COUNT = isMobile ? 8 : 16;
-
-    const CONNECTION_DISTANCE = 180;
+    const CONNECTION_DISTANCE = isMobile ? 110 : 180;
     const CONNECTION_DISTANCE_SQ = CONNECTION_DISTANCE * CONNECTION_DISTANCE;
 
     const COLORS = [
@@ -92,9 +96,7 @@ export default function AnimatedBackground() {
       size: rand(2, 4),
     });
 
-    vertices.current = new Array(VERTEX_COUNT)
-      .fill(0)
-      .map(() => createVertex());
+    vertices.current = new Array(VERTEX_COUNT).fill(0).map(createVertex);
 
     const createParticle = (type: Particle["type"]): Particle => ({
       x: rand(0, width),
@@ -155,7 +157,19 @@ export default function AnimatedBackground() {
       }
     };
 
-    const animate = () => {
+    // 🔥 FPS menor no mobile
+    const FPS = isMobile ? 30 : 60;
+    const frameTime = 1000 / FPS;
+    let lastTime = 0;
+
+    const animate = (time: number) => {
+      if (time - lastTime < frameTime) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      lastTime = time;
+
       ctx.clearRect(0, 0, width, height);
 
       const verts = vertices.current;
@@ -192,7 +206,6 @@ export default function AnimatedBackground() {
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
         ctx.save();
-
         ctx.globalAlpha = p.opacity * 0.6;
         ctx.fillStyle = p.color;
         ctx.font = `${p.size}px monospace`;
@@ -217,7 +230,7 @@ export default function AnimatedBackground() {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animate(0);
 
     let resizeTimeout: any;
 
@@ -235,14 +248,26 @@ export default function AnimatedBackground() {
         canvas.style.height = `${height}px`;
 
         ctx.scale(dpr, dpr);
-      }, 120);
+      }, 150);
     };
 
     window.visualViewport?.addEventListener("resize", resize);
 
+    // 🔥 pausa animação quando aba não está visível
+    const handleVisibility = () => {
+      if (document.hidden) {
+        if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      } else {
+        animate(performance.now());
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
-      cancelAnimationFrame(animationRef.current!);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
       window.visualViewport?.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
 
