@@ -33,13 +33,8 @@ export default function Reveal({
       id={id}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration: 0.5,
-        ease: "easeOut",
-      }}
-      style={{
-        willChange: "transform, opacity",
-      }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </motion.section>

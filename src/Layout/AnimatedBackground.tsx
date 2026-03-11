@@ -12,6 +12,7 @@ const techTerms = [
   "CSS",
   "Git",
 ];
+
 const symbols = ["{}", "()", "[]", "<>", "=>", "::", "&&", "||", "==="];
 
 type Item = {
@@ -29,6 +30,7 @@ type Item = {
 export default function AnimatedBackground() {
   const items = useMemo<Item[]>(() => {
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
     const count = isMobile ? 14 : 36;
 
     return Array.from({ length: count }).map((_, i) => {
@@ -57,8 +59,9 @@ export default function AnimatedBackground() {
 
   return (
     <div
-      className="fixed inset-0 -z-10 overflow-hidden pointer-events-none"
+      className="fixed inset-0 overflow-hidden pointer-events-none"
       style={{
+        zIndex: 0,
         background: "#05050f",
       }}
     >
@@ -70,6 +73,7 @@ export default function AnimatedBackground() {
             left: `${item.x}%`,
             top: `${item.y}%`,
             fontSize: item.size,
+            willChange: "transform, opacity",
           }}
           initial={{
             x: 0,

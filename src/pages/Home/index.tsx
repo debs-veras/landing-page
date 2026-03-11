@@ -9,6 +9,7 @@ import Contact from "../../Layout/components/Contact";
 import Footer from "../../Layout/components/Footer";
 import Reveal from "../../Layout/components/Reveal";
 
+
 const container = {
   hidden: {},
   visible: {
@@ -25,39 +26,41 @@ export default function Home() {
     <>
       <AnimatedBackground />
 
-      <div className="flex flex-col text-light-gray font-fira-code min-w-[340px]">
-        <Header />
+      <div className="scroll-container">
+        <div className="flex flex-col text-light-gray font-fira-code min-w-[340px]">
+          <Header />
 
-        <motion.main
-          className="p-4 sm:p-8"
-          variants={container}
-          initial="hidden"
-          animate="visible"
-        >
-          <Reveal id="inicio" disableAnimation={isMobile}>
-            <Terminal />
-          </Reveal>
+          <motion.main
+            className="p-4 sm:p-8"
+            variants={container}
+            initial="hidden"
+            animate="visible"
+          >
+            <Reveal id="inicio" disableAnimation={isMobile}>
+              <Terminal />
+            </Reveal>
 
-          <Reveal id="sobre" disableAnimation={isMobile}>
-            <AboutMe />
-          </Reveal>
+            <Reveal id="sobre" disableAnimation={isMobile}>
+              <AboutMe />
+            </Reveal>
 
-          <Reveal id="skills" disableAnimation={isMobile}>
-            <SoftSkills />
-          </Reveal>
+            <Reveal id="skills" disableAnimation={isMobile}>
+              <SoftSkills />
+            </Reveal>
 
-          <Reveal id="projetos" disableAnimation={isMobile}>
-            <ProjectsSection />
-          </Reveal>
+            <Reveal id="projetos" disableAnimation={isMobile}>
+              <ProjectsSection />
+            </Reveal>
 
-          <Reveal id="contato" disableAnimation={isMobile}>
-            <Contact />
-          </Reveal>
+            <Reveal id="contato" disableAnimation={isMobile}>
+              <Contact />
+            </Reveal>
 
-          <Reveal id="footer" disableAnimation={isMobile}>
-            <Footer />
-          </Reveal>
-        </motion.main>
+            <Reveal id="footer" disableAnimation={isMobile}>
+              <Footer />
+            </Reveal>
+          </motion.main>
+        </div>
       </div>
     </>
   );
