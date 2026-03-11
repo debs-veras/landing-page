@@ -355,7 +355,7 @@ export default function ProjectsSection() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:from-purple-700 hover:to-blue-700 transition"
+                      className="sm:text-base text-xs flex items-center justify-center px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-md hover:from-purple-700 hover:to-blue-700 transition"
                     >
                       Ver Demo
                     </a>
@@ -366,7 +366,7 @@ export default function ProjectsSection() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-center px-4 py-2 border border-purple-500 text-purple-300 rounded-md hover:bg-purple-900/30 transition"
+                      className="sm:text-base text-xs flex items-center justify-center px-4 py-2 border border-purple-500 text-purple-300 rounded-md hover:bg-purple-900/30 transition"
                     >
                       Código
                     </a>
@@ -381,7 +381,7 @@ export default function ProjectsSection() {
           <div className="text-center mt-10">
             <button
               onClick={loadMoreProjects}
-              className="px-6 py-3 border border-purple-500 text-purple-300 rounded-lg hover:bg-purple-900/30 transition font-mono cursor-pointer"
+              className="sm:text-base text-xs px-6 py-3 border border-purple-500 text-purple-300 rounded-lg hover:bg-purple-900/30 transition font-mono cursor-pointer"
             >
               {"<"}Ver mais projetos{">"}
             </button>

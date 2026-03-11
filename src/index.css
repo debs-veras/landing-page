@@ -1,21 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
 @import "tailwindcss";
 
+/* reset base */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* scroll suave global */
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #8a2be2 transparent;
 }
 
-/* Compensa header fixo para âncoras */
+/* compensação header fixo */
 [id] {
   scroll-margin-top: 80px;
 }
 
+/* theme tokens */
 @theme {
   --breakpoint-xs: 30rem;
   --color-primary: #8a2be2;
@@ -33,6 +38,8 @@ html {
   --color-code-property: #9cdcfe;
   --font-fira-code: "Fira Code", monospace;
 }
+
+/* base layout */
 
 body {
   padding: 0;
@@ -53,14 +60,45 @@ body,
   background: #05050f;
 }
 
+/* container que realmente rola */
+
 .scroll-container {
   position: relative;
   z-index: 1;
   height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
+  max-width: 100vw;
   background: transparent;
-
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+}
+
+/* ---------- SCROLLBAR STYLE ---------- */
+
+/* Chrome / Edge / Safari */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8a2be2 0%, #7c3aed 50%, #6d28d9 100%);
+  border-radius: 20px;
+  box-shadow:
+    0 0 6px rgba(138, 43, 226, 0.35),
+    inset 0 0 4px rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #9d4edd 0%, #8b5cf6 50%, #7c3aed 100%);
+  box-shadow:
+    0 0 10px rgba(157, 78, 221, 0.6),
+    inset 0 0 4px rgba(255, 255, 255, 0.15);
 }

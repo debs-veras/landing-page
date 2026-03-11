@@ -172,7 +172,7 @@ function FeatureItem({
   text: string;
 }) {
   return (
-    <div className="flex items-start gap-4">
+    <div className="flex items-start gap-4 flex-wrap sm:flex-nowrap">
       <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
         <span className="text-blue-400 font-bold">{index}</span>
       </div>
