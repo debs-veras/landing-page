@@ -27,11 +27,20 @@ const PROJECTS: Record<Tab, Project[]> = {
     {
       title: "MovieExplore",
       description:
-        " MovieExplore é um front-end em React + TypeScript + Vite para pesquisar filmes e séries usando a API do TMDB. O projeto oferece busca, página de detalhes, autenticação e gerenciamento de favoritos (Minha Coleção).",
+        "MovieExplore é um front-end em React + TypeScript + Vite para pesquisar filmes e séries usando a API do TMDB. O projeto oferece busca, página de detalhes, autenticação e gerenciamento de favoritos (Minha Coleção).",
       technologies: ["React/TypeScript", "Tailwind"],
       image: "/projetos/movie-explore.png",
       github: "https://github.com/debs-veras/search-movie",
       link: "https://search-movie-explore.vercel.app/",
+    },
+    {
+      title: "BlogTech",
+      description:
+        "Este é o frontend do BlogTech, uma plataforma de blog moderna e performática desenvolvida para oferecer a melhor experiência na criação e leitura de conteúdos tecnológicos.(Acesso estão no readme/documentação do projeto)",
+      technologies: ["React/TypeScript", "Tailwind", "Node/Express", 'Docker'],
+      image: "/projetos/blog-tech.png",
+      github: "https://github.com/debs-veras/blogtech-fe",
+      link: "https://blogtech-fe.vercel.app",
     },
     {
       title: "Portfólio ",
@@ -182,6 +191,24 @@ const PROJECTS: Record<Tab, Project[]> = {
       github: "https://github.com/debs-veras/pokedex-mapadev",
     },
     {
+      title: "Efeito Parallax",
+      description:
+        "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
+      technologies: ["HTML", "CSS"],
+      image: "/projetos/parallax.png",
+      link: "https://debs-veras.github.io/parallax/",
+      github: "https://github.com/debs-veras/parallax",
+    },
+    {
+      title: "Site de Notícia",
+      description:
+        "Projeto de estudo de um site de notícias simulado com layout de portal informativo.",
+      technologies: ["HTML", "CSS"],
+      image: "/projetos/blog-noticia.png",
+      link: "https://debs-veras.github.io/blog-noticia/",
+      github: "https://github.com/debs-veras/blog-noticia",
+    },
+    {
       title: "App Help Desk",
       description:
         "App Help Desk é uma aplicação simples em PHP para gerenciamento de chamados (help desk), construída para fins didáticos. Permite que usuários registrem, visualizem e gerenciem solicitações de suporte técnico.(Credenciais para login estão no README do projeto).",
@@ -217,15 +244,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       link: "https://debs-veras.github.io/site-museu/",
       github: "https://github.com/debs-veras/site-museu",
     },
-    {
-      title: "Site de Notícia",
-      description:
-        "Projeto de estudo de um site de notícias simulado com layout de portal informativo.",
-      technologies: ["HTML", "CSS"],
-      image: "/projetos/blog-noticia.png",
-      link: "https://debs-veras.github.io/blog-noticia/",
-      github: "https://github.com/debs-veras/blog-noticia",
-    },
+
     {
       title: "Organo",
       description:
@@ -234,15 +253,6 @@ const PROJECTS: Record<Tab, Project[]> = {
       image: "/projetos/organo.png",
       link: "https://organo-sage-omega.vercel.app/",
       github: "https://github.com/debs-veras/organo",
-    },
-    {
-      title: "Efeito Parallax",
-      description:
-        "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
-      technologies: ["HTML", "CSS"],
-      image: "/projetos/parallax.png",
-      link: "https://debs-veras.github.io/parallax/",
-      github: "https://github.com/debs-veras/parallax",
     },
   ],
 };
