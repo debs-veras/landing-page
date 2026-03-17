@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { m, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 import ImageLoading from "../../../components/ImageLoading";
 
@@ -27,7 +27,7 @@ const Carousel3D = ({ skills }: CarouselProps) => {
   return (
     <div className="relative w-full h-[50vw] sm:h-[45vw] md:h-[40vw] lg:h-[35vw] xl:h-[320px] mx-auto perspective-[1200px] md:perspective-[1600px] overflow-hidden">
 
-      <motion.div
+      <m.div
         className="absolute inset-0"
         style={{
           transformStyle: "preserve-3d",
@@ -70,7 +70,7 @@ const Carousel3D = ({ skills }: CarouselProps) => {
             </div>
           );
         })}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

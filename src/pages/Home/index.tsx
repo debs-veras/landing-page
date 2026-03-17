@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import AnimatedBackground from "../../Layout/AnimatedBackground";
 import Header from "../../Layout/components/Header";
 import Terminal from "../../Layout/components/Terminal";
@@ -23,14 +23,14 @@ export default function Home() {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       <AnimatedBackground />
 
       <div className="scroll-container">
         <div className="flex flex-col text-light-gray font-fira-code min-w-[340px]">
           <Header />
 
-          <motion.main
+          <m.main
             className="p-4 sm:p-8"
             variants={container}
             initial="hidden"
@@ -59,9 +59,9 @@ export default function Home() {
             <Reveal id="footer" disableAnimation={isMobile}>
               <Footer />
             </Reveal>
-          </motion.main>
+          </m.main>
         </div>
       </div>
-    </>
+    </LazyMotion>
   );
 }

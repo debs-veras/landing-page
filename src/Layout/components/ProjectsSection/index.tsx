@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import ImageLoading from "../../../components/ImageLoading";
 
 type Project = {
@@ -290,7 +290,7 @@ export default function ProjectsSection() {
   return (
     <section className="py-10 px-4 xs:py-14">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -15 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -303,7 +303,7 @@ export default function ProjectsSection() {
           <p className="text-light-gray text-sm xs:text-base">
             Projetos desenvolvidos durante minha jornada como dev
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Tabs */}
         <div className="flex justify-center mb-10">
@@ -327,7 +327,7 @@ export default function ProjectsSection() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleList.map((project, i) => (
-            <motion.div
+            <m.div
               key={project.title}
               layout
               initial={{ opacity: 0, y: 30 }}
@@ -394,7 +394,7 @@ export default function ProjectsSection() {
                   )}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

@@ -14,7 +14,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import emailjs from "emailjs-com";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Nome deve ter pelo menos 2 caracteres" }),
@@ -84,7 +84,7 @@ export default function Contact() {
 
   return (
     <section className="py-10 mt-10 px-4 xs:py-14">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: showNotification ? 1 : 0,
@@ -103,10 +103,10 @@ export default function Contact() {
             <FiX className="mr-2" /> Erro ao enviar mensagem. Tente novamente.
           </div>
         )}
-      </motion.div>
+      </m.div>
 
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -118,11 +118,11 @@ export default function Contact() {
           <p className="text-light-gray mx-auto text-sm xs:text-base">
             Vamos conversar sobre tecnologia, projetos ou oportunidades!
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Formulário */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -194,7 +194,7 @@ export default function Contact() {
                   </p>
                 )}
               </div>
-              <motion.button
+              <m.button
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting || !isDirty || !isValid}
@@ -214,12 +214,12 @@ export default function Contact() {
                     <FiSend /> Enviar Mensagem
                   </>
                 )}
-              </motion.button>
+              </m.button>
             </form>
-          </motion.div>
+          </m.div>
 
           {/* Contatos */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -230,7 +230,15 @@ export default function Contact() {
               <span className="text-gray-400 mr-2">{"//"}</span>
               Outras formas de contato
             </div>
-            <div className="space-y-4">
+            <m.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.15 } },
+              }}
+              className="space-y-4"
+            >
               {[
                 {
                   icon: FiMail,
@@ -248,7 +256,14 @@ export default function Contact() {
                   value: "Sobral, Ceará",
                 },
               ].map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex items-start">
+                <m.div
+                  key={label}
+                  variants={{
+                    hidden: { opacity: 0, x: 20 },
+                    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } },
+                  }}
+                  className="flex items-start"
+                >
                   <div className="bg-purple-900/30 p-2 rounded-lg mr-4">
                     <Icon className="h-5 w-5 text-purple-300" />
                   </div>
@@ -260,9 +275,9 @@ export default function Contact() {
                       {value}
                     </div>
                   </div>
-                </div>
+                </m.div>
               ))}
-            </div>
+            </m.div>
             <div className="mt-8">
               <span className="text-gray-400 text-sm mb-3 block">
                 Redes Sociais
@@ -280,7 +295,7 @@ export default function Contact() {
                     icon: FiLinkedin,
                   },
                 ].map(({ href, label, icon: Icon }) => (
-                  <motion.a
+                  <m.a
                     key={label}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
@@ -291,11 +306,11 @@ export default function Contact() {
                     aria-label={label}
                   >
                     <Icon className="w-5 h-5 text-white" />
-                  </motion.a>
+                  </m.a>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

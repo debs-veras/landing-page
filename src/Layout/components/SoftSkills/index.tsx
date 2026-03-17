@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Carousel3D from "../Carousel3D";
 import ImageLoading from "../../../components/ImageLoading";
 
@@ -30,7 +30,7 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
 
       <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {skills.map((tech, index) => (
-          <motion.div
+          <m.div
             key={tech.name}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
               border border-[rgba(138,43,226,0.3)] transition-all duration-300 
               rounded-lg p-3 sm:p-4 text-center cursor-default overflow-hidden shadow-md hover:shadow-purple-500/20"
           >
-            <motion.div 
+            <m.div 
               className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 flex items-center justify-center"
               whileHover={{ rotate: [0, 10, -10, 0] }}
               transition={{ duration: 0.5 }}
@@ -55,7 +55,7 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
                 containerClassName="w-full h-full flex items-center justify-center"
                 className="w-full h-full object-contain rounded-2xl transition-transform duration-300 group-hover:scale-110"
               />
-            </motion.div>
+            </m.div>
             <span
               className={`font-fira-code ${
                 tech.color || "text-light"
@@ -70,7 +70,7 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
             </div>
 
             {/* Tooltip */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
@@ -79,8 +79,8 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
               <p className="text-xs sm:text-sm text-light-gray font-fira-code leading-relaxed">
                 {tech.description}
               </p>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         ))}
       </div>
 
@@ -215,7 +215,7 @@ export default function SoftSkills() {
       <section>
         <div className="max-w-6xl mx-auto">
           {/* Título */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -230,7 +230,7 @@ export default function SoftSkills() {
               Especializada em frontend com experiência sólida em todo o
               ecossistema JavaScript.
             </p>
-          </motion.div>
+          </m.div>
 
           <SkillSection
             title="Tecnologias de Frontend & UI/UX"

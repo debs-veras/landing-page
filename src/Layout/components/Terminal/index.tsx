@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaChevronRight, FaComments, FaRocket } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
@@ -40,7 +40,7 @@ export default function Terminal() {
   };
 
   return (
-    <motion.section
+    <m.section
       className="flex justify-center items-center pb-10 px-4 flex-col"
       initial={{ opacity: 0, y: 20 }}
       animate={{
@@ -49,14 +49,14 @@ export default function Terminal() {
       }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <motion.div
+      <m.div
         className="w-full max-w-6xl bg-[rgba(20,20,30,0.97)] backdrop-blur-md rounded-xl border border-purple-900/50 shadow-2xl shadow-purple-900/20 overflow-hidden"
         initial={{ scale: 0.98 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         {/* Terminal Header */}
-        <motion.div
+        <m.div
           className="flex flex-wrap justify-center items-center gap-4 px-6 py-3.5 bg-[rgba(15,15,25,0.95)] border-b border-b-[rgba(138,43,226,0.3)] md:flex-nowrap md:gap-0 md:justify-normal"
           initial={{ y: -20 }}
           animate={{ y: 0 }}
@@ -64,7 +64,7 @@ export default function Terminal() {
         >
           <div className="flex gap-3 mr-4">
             {["#ff5f56", "#ffbd2e", "#27c93f"].map((color, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 className="w-3.5 h-3.5 rounded-full"
                 style={{ backgroundColor: color }}
@@ -80,33 +80,33 @@ export default function Terminal() {
             ))}
           </div>
 
-          <motion.div
+          <m.div
             className="flex flex-wrap items-center justify-center  text-light-gray text-xs xs:text-sm grow order-1 text-center p-0 sm:justify-start md:text-left md:px-4 md:order-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
             <div className="text-purple-300 mr-2">~/dev-path/</div>
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
               portfolio_dev.tsx
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </m.div>
+          </m.div>
+        </m.div>
 
         {/* Terminal Content */}
         <div className="p-6 md:p-8">
           <div className="mb-5">
-            <motion.p
+            <m.p
               className="text-sm leading-[1.8] italic text-code-comment min-h-[1.8rem] xs:font-base"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
               {typedText}
-              <motion.span
+              <m.span
                 className="ml-1"
                 animate={{ opacity: [0, 1, 0] }}
                 transition={{
@@ -116,10 +116,10 @@ export default function Terminal() {
                 }}
               >
                 |
-              </motion.span>
-            </motion.p>
+              </m.span>
+            </m.p>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
@@ -130,7 +130,7 @@ export default function Terminal() {
                 <span className="text-code-type">desenvolvedora</span>{" "}
                 <span className="text-code-operator">=</span> {"{"}
               </p>
-              <motion.p
+              <m.p
                 className=" leading-[1.8] ml-6"
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -138,8 +138,8 @@ export default function Terminal() {
               >
                 <span className="text-code-property">nome</span>:{" "}
                 <span className="text-code-string">"Débora Hellen"</span>;
-              </motion.p>
-              <motion.p
+              </m.p>
+              <m.p
                 className=" leading-[1.8] ml-6"
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -147,8 +147,8 @@ export default function Terminal() {
               >
                 <span className="text-code-property">rank</span>:{" "}
                 <span className="text-code-string">"Dev Junior"</span>;
-              </motion.p>
-              <motion.p
+              </m.p>
+              <m.p
                 className=" leading-[1.8] ml-6"
                 initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -158,48 +158,48 @@ export default function Terminal() {
                 <span className="text-code-string">"React"</span> |{" "}
                 <span className="text-code-string">"TypeScript"</span> |{" "}
                 <span className="text-code-string">"Next.js"</span>]
-              </motion.p>
+              </m.p>
               <p className=" leading-[1.8]">{"}"}</p>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Action Buttons */}
-          <motion.div
+          <m.div
             className="flex flex-col sm:flex-row gap-4 mb-8 text-xs sm:text-base"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1 }}
           >
-            <motion.button
+            <m.button
               className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 group cursor-pointer"
               onClick={() =>
                 document
                   .getElementById("projetos")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              whileHover={{ y: -3, scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ y: -4, scale: 1.05, boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaRocket className="group-hover:rotate-12 transition-transform" />
               Meus Trabalhos
-            </motion.button>
-            <motion.button
+            </m.button>
+            <m.button
               className="flex-1 px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-orange-700 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-orange-500/30 group cursor-pointer"
               onClick={() =>
                 document
                   .getElementById("contato")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              whileHover={{ y: -3, scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ y: -4, scale: 1.05, boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaComments className="group-hover:scale-110 transition-transform" />
               Conversar Comigo
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
 
           {/* Terminal funcional */}
-          <motion.div
+          <m.div
             className="border-t border-purple-900/50 pt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -231,7 +231,7 @@ export default function Terminal() {
               </div>
 
               {errorMsg && (
-                <motion.p
+                <m.p
                   className="text-red-400 text-sm mt-2 flex items-center gap-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -240,12 +240,12 @@ export default function Terminal() {
                     <FaX />
                   </span>
                   {errorMsg}
-                </motion.p>
+                </m.p>
               )}
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
-    </motion.section>
+      </m.div>
+    </m.section>
   );
 }

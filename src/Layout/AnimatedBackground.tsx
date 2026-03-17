@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useMemo } from "react";
 
 const techTerms = [
@@ -62,7 +62,7 @@ export default function AnimatedBackground() {
   }, []);
 
   return (
-    <div
+      <div
       className="fixed inset-0 overflow-hidden pointer-events-none"
       style={{
         zIndex: 0,
@@ -79,7 +79,7 @@ export default function AnimatedBackground() {
       />
 
       {items.map((item) => (
-        <motion.span
+        <m.span
           key={item.id}
           className="absolute font-mono select-none text-indigo-400"
           style={{
@@ -108,8 +108,8 @@ export default function AnimatedBackground() {
           }}
         >
           {item.content}
-        </motion.span>
+        </m.span>
       ))}
-    </div>
+      </div>
   );
 }

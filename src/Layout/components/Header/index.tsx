@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { m, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const sections = [
@@ -151,7 +151,7 @@ export default function Header() {
         <div className="hidden items-center gap-6 md:flex">
           <nav className="flex gap-6 text-light-gray">
             {sections.map((section, index) => (
-              <motion.a
+              <m.a
                 key={index}
                 initial={{ opacity: 0, y: -12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -160,10 +160,12 @@ export default function Header() {
                   ease: "easeInOut",
                   duration: 0.4,
                 }}
+                whileHover={{ scale: 1.08, color: "#c084fc" }}
+                whileTap={{ scale: 0.95 }}
                 href={`#${section.ancor}`}
                 className={`group flex items-center gap-2 hover:text-white transition-all relative tracking-wide ${
                   activeSection === section.ancor
-                    ? "text-purple-400 font-semibold after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-purple-500"
+                    ? "text-purple-400 font-semibold after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-purple-500 after:shadow-[0_0_8px_rgba(168,85,247,0.8)]"
                     : ""
                 }`}
               >
@@ -171,26 +173,26 @@ export default function Header() {
                   //
                 </span>
                 {section.name}
-              </motion.a>
+              </m.a>
             ))}
           </nav>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <m.a
+            whileHover={{ scale: 1.08, boxShadow: "0 0 20px rgba(168, 85, 247, 0.4)" }}
+            whileTap={{ scale: 0.92 }}
             href={linkCurriculo}
             target="_blank"
             rel="noopener noreferrer"
             className="ml-4 bg-gradient-to-r cursor-pointer from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all border border-transparent hover:shadow-purple-500/30"
           >
             Currículo
-          </motion.a>
+          </m.a>
         </div>
       </div>
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -199,7 +201,7 @@ export default function Header() {
           >
             <div className="flex flex-col gap-6 items-center text-light-gray">
               {sections.map((section, index) => (
-                <motion.a
+                <m.a
                   key={index}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -216,10 +218,10 @@ export default function Header() {
                     //
                   </span>
                   {section.name}
-                </motion.a>
+                </m.a>
               ))}
 
-              <motion.a
+              <m.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href={linkCurriculo}
@@ -228,9 +230,9 @@ export default function Header() {
                 className="bg-gradient-to-r from-purple-500 to-purple-700 text-white px-5 py-2 rounded-md shadow-md transition-all border border-transparent hover:shadow-purple-500/30"
               >
                 Currículo
-              </motion.a>
+              </m.a>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

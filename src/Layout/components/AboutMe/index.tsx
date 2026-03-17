@@ -1,4 +1,4 @@
-import { LazyMotion, domAnimation, m } from "framer-motion";
+import { m } from "framer-motion";
 import { FiTarget } from "react-icons/fi";
 import { GiSparkles } from "react-icons/gi";
 
@@ -28,7 +28,6 @@ const features = [
 
 export default function AboutMe() {
   return (
-    <LazyMotion features={domAnimation}>
       <section id="sobre" className="relative overflow-hidden py-16 px-6">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-10">
@@ -109,22 +108,36 @@ export default function AboutMe() {
                   </span>
                 </h3>
 
-                <div className="space-y-6">
+                <m.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    visible: { transition: { staggerChildren: 0.15 } },
+                  }}
+                  className="space-y-6"
+                >
                   {features.map((feature, index) => (
-                    <FeatureItem
+                    <m.div
                       key={feature.title}
-                      index={index + 1}
-                      title={feature.title}
-                      text={feature.text}
-                    />
+                      variants={{
+                        hidden: { opacity: 0, x: 20 },
+                        visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } },
+                      }}
+                    >
+                      <FeatureItem
+                        index={index + 1}
+                        title={feature.title}
+                        text={feature.text}
+                      />
+                    </m.div>
                   ))}
-                </div>
+                </m.div>
               </div>
             </m.div>
           </div>
         </div>
       </section>
-    </LazyMotion>
   );
 }
 

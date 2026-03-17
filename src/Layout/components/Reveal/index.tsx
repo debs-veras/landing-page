@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
-import { useInView } from "framer-motion";
 
 export default function Reveal({
   children,
@@ -15,8 +14,8 @@ export default function Reveal({
 
   const inView = useInView(ref, {
     once: true,
-    margin: "-80px",
-    amount: 0.2,
+    margin: "-50px",
+    amount: 0.1,
   });
 
   if (disableAnimation) {
@@ -28,15 +27,20 @@ export default function Reveal({
   }
 
   return (
-    <motion.section
+    <m.section
       ref={ref}
       id={id}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ 
+        duration: 0.8, 
+        type: "spring", 
+        bounce: 0.3, 
+        opacity: { duration: 0.6, ease: "easeOut" } 
+      }}
       style={{ willChange: "transform, opacity" }}
     >
       {children}
-    </motion.section>
+    </m.section>
   );
 }
