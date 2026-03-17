@@ -155,8 +155,6 @@ Demonstrar domínio de **frontend moderno**, com foco em **arquitetura**, **anim
 **Débora Hellen**
 Frontend Developer
 
-* LinkedIn: [https://www.linkedin.com/](https://www.linkedin.com/)
-
 ---
 
 ⭐ Se este projeto chamou sua atenção, considere deixar uma estrela no repositório!
