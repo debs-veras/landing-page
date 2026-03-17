@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
+import ImageLoading from "../../../components/ImageLoading";
 
 type Project = {
   title: string;
@@ -37,7 +38,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       title: "BlogTech",
       description:
         "Este é o frontend do BlogTech, uma plataforma de blog moderna e performática desenvolvida para oferecer a melhor experiência na criação e leitura de conteúdos tecnológicos.(Acesso estão no readme/documentação do projeto)",
-      technologies: ["React/TypeScript", "Tailwind", "Node/Express", 'Docker'],
+      technologies: ["React/TypeScript", "Tailwind", "Node/Express", "Docker"],
       image: "/projetos/blog-tech.png",
       github: "https://github.com/debs-veras/blogtech-fe",
       link: "https://blogtech-fe.vercel.app",
@@ -86,6 +87,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       github: "https://github.com/debs-veras/memory-game",
       link: "https://debs-veras.github.io/memory-game",
     },
+
     {
       title: "BoxChat",
       description:
@@ -93,6 +95,15 @@ const PROJECTS: Record<Tab, Project[]> = {
       technologies: ["TypeScript", "React", "Tailwind"],
       image: "/projetos/box-chat.png",
       github: "https://github.com/debs-veras/box_chat",
+    },
+    {
+      title: "Clone Netflix",
+      description:
+        "Uma réplica visual da página de entrada (landing page) da Netflix, focada em design responsivo, performance e experiência do usuário premium.",
+      technologies: ["JavaScript", "CSS", "HTML"],
+      image: "/projetos/clone-netflix.png",
+      github: "https://github.com/debs-veras/clone-netflix",
+      link: "https://debs-veras.github.io/clone-netflix/",
     },
     {
       title: "AltusAerial",
@@ -327,7 +338,7 @@ export default function ProjectsSection() {
             >
               <div className="relative h-60 overflow-hidden">
                 {project.image && (
-                  <img
+                  <ImageLoading
                     src={project.image}
                     alt={project.title}
                     loading="lazy"

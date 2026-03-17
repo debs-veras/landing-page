@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Carousel3D from "../Carousel3D";
+import ImageLoading from "../../../components/ImageLoading";
 
 interface Skill {
   name: string;
@@ -43,15 +44,18 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
               border border-[rgba(138,43,226,0.3)] transition-all duration-300 
               rounded-lg p-3 sm:p-4 text-center cursor-default overflow-hidden shadow-md hover:shadow-purple-500/20"
           >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 flex items-center justify-center">
-              <motion.img
+            <motion.div 
+              className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 flex items-center justify-center"
+              whileHover={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 0.5 }}
+            >
+              <ImageLoading
                 src={tech.icon}
                 alt={tech.name}
+                containerClassName="w-full h-full flex items-center justify-center"
                 className="w-full h-full object-contain rounded-2xl transition-transform duration-300 group-hover:scale-110"
-                whileHover={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 0.5 }}
               />
-            </div>
+            </motion.div>
             <span
               className={`font-fira-code ${
                 tech.color || "text-light"
@@ -88,7 +92,7 @@ const SkillSection = ({ title, skills, gradient, tag }: SectionProps) => {
   );
 };
 
-export default function SoftSkills() {
+// Static arrays extracted outside of component to prevent unnecessary re-creations across renders
   const frontendSkills: Skill[] = [
     {
       name: "React",
@@ -205,6 +209,7 @@ export default function SoftSkills() {
     },
   ];
 
+export default function SoftSkills() {
   return (
     <>
       <section>

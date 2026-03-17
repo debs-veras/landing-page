@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
+import ImageLoading from "../../../components/ImageLoading";
 
 interface Skill {
   name: string;
@@ -59,10 +60,11 @@ const Carousel3D = ({ skills }: CarouselProps) => {
 
                 <div className="absolute inset-0 rounded-lg border border-purple-500/40 shadow-[0_0_15px_rgba(168,85,247,0.2)]" />
 
-                <img
+                <ImageLoading
                   src={tech.icon}
                   alt={tech.name}
-                  className="w-4/5 h-4/5 object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.6)] filter brightness-110 contrast-110"
+                  containerClassName="w-4/5 h-4/5 flex items-center justify-center"
+                  className="w-full h-full object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.6)] filter brightness-110 contrast-110"
                 />
               </div>
             </div>
