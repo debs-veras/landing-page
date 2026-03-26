@@ -35,6 +35,16 @@ const PROJECTS: Record<Tab, Project[]> = {
       link: "https://search-movie-explore.vercel.app/",
     },
     {
+      title: "CCBlog",
+      description:
+        "O CCBlog é uma plataforma web desenvolvida para centralizar informações, notícias e gestão acadêmica do curso de Ciência da Computação",
+      technologies: ["React/TypeScript", "Tailwind", "Node/Express", "Docker"],
+      image: "/projetos/ccblog.png",
+      github: "https://github.com/debs-veras/ccblog",
+      link: "https://ccblog-zeta.vercel.app/",
+    },
+
+    {
       title: "BlogTech",
       description:
         "Este é o frontend do BlogTech, uma plataforma de blog moderna e performática desenvolvida para oferecer a melhor experiência na criação e leitura de conteúdos tecnológicos.(Acesso estão no readme/documentação do projeto)",
@@ -50,6 +60,14 @@ const PROJECTS: Record<Tab, Project[]> = {
       technologies: ["React", "Typescript", "Tailwind"],
       image: "/projetos/portfolio.png",
       github: "https://github.com/debs-veras/landing-page",
+    },
+    {
+      title: "Sinal Verde",
+      description:
+        "Site imobiliário moderno desenvolvido para a Sinal Verde Negócios Imobiliários. Design responsivo, animações com Framer Motion e catálogo de imóveis dinâmico.",
+      technologies: ["React/TypeScript", "Tailwind"],
+      image: "/projetos/sinal-verde.png",
+      link: "https://sinal-verde-site.vercel.app/",
     },
     {
       title: "AltusBranding ",
