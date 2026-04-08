@@ -43,6 +43,14 @@ const PROJECTS: Record<Tab, Project[]> = {
       github: "https://github.com/debs-veras/ccblog",
       link: "https://ccblog-zeta.vercel.app/",
     },
+    {
+      title: "Coded",
+      description:
+        "O Coded é uma plataforma robusta de gestão acadêmica projetada para simplificar a organização de atividades escolares. Desenvolvida com tecnologia de ponta, a solução permite o controle eficiente de tarefas e cronogramas, promovendo uma melhor integração e produtividade no ambiente educacional.",
+      technologies: ["React/TypeScript", "Tailwind", "Python", "Docker"],
+      image: "/projetos/coded.png",
+      github: "https://github.com/debs-veras/coded",
+    },
 
     {
       title: "BlogTech",
