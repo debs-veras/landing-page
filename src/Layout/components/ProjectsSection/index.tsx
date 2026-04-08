@@ -216,6 +216,24 @@ const PROJECTS: Record<Tab, Project[]> = {
       link: null,
       github: "https://github.com/debs-veras/socket",
     },
+    {
+      title: "Compiladores",
+      description:
+        "Implementação de um compilador para uma linguagem simplificada, utilizando Flex para análise léxica e Bison para análise sintática, com foco em geração de código intermediário (ILOC).",
+      image:
+        "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/compiladores",
+    },
+    {
+      title: "Laboratório de Programação",
+      description:
+        "Desenvolvimento de algoritmos estruturados e lógica de programação em C. O projeto reúne diversos exercícios práticos, incluindo a implementação de jogos e manipulação de estruturas de dados básicas.",
+      image:
+        "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1200&q=80",
+      link: null,
+      github: "https://github.com/debs-veras/laboratorio-de-programacao",
+    },
   ],
   cursos: [
     {
