@@ -246,6 +246,14 @@ const PROJECTS: Record<Tab, Project[]> = {
       github: "https://github.com/debs-veras/pokedex-mapadev",
     },
     {
+      title: "App Lista Tarefas",
+      description:
+        "Uma aplicação web simples e funcional para gerenciamento de tarefas (To-Do List), desenvolvida em PHP com arquitetura MVC (Model-View-Controller) e integração com banco de dados MySQL.",
+      technologies: ["PHP", "HTML", "JavaScript", "CSS"],
+      image: "/projetos/app-lista-tarefas.png",
+      github: "https://github.com/debs-veras/app_lista_tarefas",
+    },
+    {
       title: "Efeito Parallax",
       description:
         "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
