@@ -44,7 +44,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       link: "https://ccblog-zeta.vercel.app/",
     },
     {
-      title: "Coded",
+      title: "Seleção Coded",
       description:
         "O Coded é uma plataforma robusta de gestão acadêmica projetada para simplificar a organização de atividades escolares. Desenvolvida com tecnologia de ponta, a solução permite o controle eficiente de tarefas e cronogramas, promovendo uma melhor integração e produtividade no ambiente educacional.",
       technologies: ["React/TypeScript", "Tailwind", "Python", "Docker"],
@@ -96,7 +96,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       github: "https://github.com/debs-veras/pokedex",
     },
     {
-      title: "selecao-box3",
+      title: "Seleção Box3",
       description:
         "Este projeto foi desenvolvido como parte do processo seletivo técnico de uma empresa, com o objetivo de demonstrar habilidades em desenvolvimento frontend, organização de código, regras de negócio, integração com API e experiência do usuário.",
       technologies: ["React/JavaScript", "Tailwind"],
@@ -146,14 +146,6 @@ const PROJECTS: Record<Tab, Project[]> = {
       technologies: ["React", "TypeScript", "CSS"],
       image: "/projetos/when-and-weather.png",
       github: "https://github.com/CodeStormNinja/when-and-weather",
-    },
-    {
-      title: "Site Educação Popular",
-      description:
-        "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
-      technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
-      image: "/projetos/educacao-popular.png",
-      link: "https://educacao-popular.free.nf",
     },
     {
       title: "Jogo Pedra, Papel e Tesoura",
@@ -277,7 +269,6 @@ const PROJECTS: Record<Tab, Project[]> = {
         "App Help Desk é uma aplicação simples em PHP para gerenciamento de chamados (help desk), construída para fins didáticos. Permite que usuários registrem, visualizem e gerenciem solicitações de suporte técnico.(Credenciais para login estão no README do projeto).",
       technologies: ["HTML", "JavaScript", "CSS", "Bootstrap", "PHP"],
       image: "/projetos/app-desk.png",
-      link: "https://deborahellen.free.nf/index.php",
       github: "https://github.com/debs-veras/app_help_desk.git",
     },
     {
