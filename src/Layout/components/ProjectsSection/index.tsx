@@ -148,6 +148,14 @@ const PROJECTS: Record<Tab, Project[]> = {
       github: "https://github.com/CodeStormNinja/when-and-weather",
     },
     {
+      title: "Site Educação Popular",
+      description:
+        "Este é um projeto digital que visa promover, divulgar e fortalecer práticas de Educação Popular em Saúde, alinhadas à participação social e às políticas públicas de base comunitária.",
+      technologies: ["PHP", "Bootstrap", "CSS", "HTML"],
+      image: "/projetos/educacao-popular.png",
+      github: "https://github.com/debs-veras/site-educacao-popular",
+    },
+    {
       title: "Jogo Pedra, Papel e Tesoura",
       description:
         "Este é um projeto simples de um jogo Pedra, Papel e Tesoura desenvolvido com HTML, CSS e JavaScript.",
