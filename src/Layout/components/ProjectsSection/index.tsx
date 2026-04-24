@@ -59,7 +59,6 @@ const PROJECTS: Record<Tab, Project[]> = {
       technologies: ["React/TypeScript", "Tailwind", "Node/Express", "Docker"],
       image: "/projetos/blog-tech.png",
       github: "https://github.com/debs-veras/blogtech-fe",
-      link: "https://blogtech-fe.vercel.app",
     },
     {
       title: "Portfólio ",

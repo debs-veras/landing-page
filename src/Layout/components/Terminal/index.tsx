@@ -145,8 +145,8 @@ export default function Terminal() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.9 }}
               >
-                <span className="text-code-property">rank</span>:{" "}
-                <span className="text-code-string">"Dev Junior"</span>;
+                <span className="text-code-property">atuação</span>:{" "}
+                <span className="text-code-string">"Desenvolvedora Front-End"</span>;
               </m.p>
               <m.p
                 className=" leading-[1.8] ml-6"
@@ -157,7 +157,7 @@ export default function Terminal() {
                 <span className="text-code-property">especialidades</span>: [
                 <span className="text-code-string">"React"</span> |{" "}
                 <span className="text-code-string">"TypeScript"</span> |{" "}
-                <span className="text-code-string">"Next.js"</span>]
+                <span className="text-code-string">"UI/UX"</span>]
               </m.p>
               <p className=" leading-[1.8]">{"}"}</p>
             </m.div>
