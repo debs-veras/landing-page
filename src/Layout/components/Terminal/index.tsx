@@ -1,37 +1,127 @@
-import { m } from "framer-motion";
-import { useEffect, useState } from "react";
+import { LazyMotion, domAnimation, m, type Variants } from "framer-motion";
+import { memo, useEffect, useState } from "react";
 import { FaChevronRight, FaComments, FaRocket } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
 
-export default function Terminal() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [typedText, setTypedText] = useState("");
+const containerVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const fadeLeft: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -12,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const TypingText = memo(() => {
   const fullText = "// Olá! Bem-vindo(a) ao meu portfólio dev";
-  const [command, setCommand] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+
+  const [typedText, setTypedText] = useState("");
 
   useEffect(() => {
-    setIsVisible(true);
     let i = 0;
     const typingInterval = setInterval(() => {
       if (i < fullText.length) {
         setTypedText(fullText.substring(0, i + 1));
         i++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 80);
+      } else clearInterval(typingInterval);
+    }, 55);
+
     return () => clearInterval(typingInterval);
   }, []);
 
+  return (
+    <p className="text-sm leading-[1.8] italic text-code-comment min-h-[1.8rem]">
+      {typedText}
+
+      <span className="terminal-cursor ml-1">|</span>
+    </p>
+  );
+});
+
+TypingText.displayName = "TypingText";
+
+const ActionButton = memo(
+  ({
+    icon,
+    label,
+    onClick,
+    gradient,
+  }: {
+    icon: React.ReactNode;
+    label: string;
+    onClick: () => void;
+    gradient: string;
+  }) => {
+    return (
+      <m.button
+        onClick={onClick}
+        whileHover={{
+          y: -3,
+          scale: 1.02,
+        }}
+        whileTap={{
+          scale: 0.97,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 18,
+        }}
+        className={`flex-1 px-6 py-3 rounded-xl font-medium flex items-center justify-center gap-2 text-white shadow-lg transform-gpu will-change-transform cursor-pointer ${gradient}`}
+      >
+        {icon}
+        {label}
+      </m.button>
+    );
+  },
+);
+
+ActionButton.displayName = "ActionButton";
+
+const TerminalInput = memo(() => {
+  const [command, setCommand] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
   const handleCommand = () => {
-    const anchors: { [key: string]: string } = {
+    const anchors: Record<string, string> = {
       sobre: "sobre",
       skills: "skills",
       projetos: "projetos",
       contato: "contato",
     };
-    const target = anchors[command.toLowerCase()];
+
+    const target = anchors[command.toLowerCase().trim()];
+
     if (target) {
       document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
       setErrorMsg("");
@@ -40,212 +130,220 @@ export default function Terminal() {
   };
 
   return (
-    <m.section
-      className="flex justify-center items-center pb-10 px-4 flex-col"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{
-        opacity: isVisible ? 1 : 0,
-        y: isVisible ? 0 : 20,
-      }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      <m.div
-        className="w-full max-w-6xl bg-[rgba(20,20,30,0.97)] backdrop-blur-md rounded-xl border border-purple-900/50 shadow-2xl shadow-purple-900/20 overflow-hidden"
-        initial={{ scale: 0.98 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        {/* Terminal Header */}
-        <m.div
-          className="flex flex-wrap justify-center items-center gap-4 px-6 py-3.5 bg-[rgba(15,15,25,0.95)] border-b border-b-[rgba(138,43,226,0.3)] md:flex-nowrap md:gap-0 md:justify-normal"
-          initial={{ y: -20 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.4 }}
+    <div className="border-t border-purple-900/40 pt-6">
+      <div className="flex items-center text-sm mb-2 flex-wrap md:flex-nowrap">
+        <span className="text-green-400 font-medium">debora@portfolio</span>
+        <span className="text-purple-400 mx-1">~</span>
+        <span className="text-orange-400">$</span>
+        <div className="w-full ml-3 flex items-center rounded-xl px-3 py-3 border border-purple-900/30 bg-black/30">
+          <FaChevronRight className="text-purple-500 mr-2 shrink-0" size={12} />
+
+          <input
+            type="text"
+            value={command}
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="Digite: sobre, skills, projetos, contato"
+            className="bg-transparent outline-none text-gray-100 w-full placeholder-gray-500"
+            onChange={(e) => {
+              setCommand(e.target.value);
+              setErrorMsg("");
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleCommand();
+              }
+            }}
+          />
+        </div>
+      </div>
+
+      {errorMsg && (
+        <m.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-red-400 text-sm mt-3 flex items-center gap-2"
         >
-          <div className="flex gap-3 mr-4">
-            {["#ff5f56", "#ffbd2e", "#27c93f"].map((color, index) => (
-              <m.div
-                key={index}
-                className="w-3.5 h-3.5 rounded-full"
-                style={{ backgroundColor: color }}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 15,
-                }}
-              />
-            ))}
-          </div>
+          <FaX className="text-red-500 shrink-0" />
 
+          {errorMsg}
+        </m.p>
+      )}
+    </div>
+  );
+});
+
+TerminalInput.displayName = "TerminalInput";
+
+export default function Terminal() {
+  return (
+    <LazyMotion features={domAnimation}>
+      <m.section
+        initial="hidden"
+        animate="show"
+        variants={containerVariants}
+        className="flex justify-center items-center pb-10 px-4 flex-col"
+      >
+        <m.div
+          variants={fadeUp}
+          className="
+            w-full
+            max-w-6xl
+            overflow-hidden
+            rounded-2xl
+            border
+            border-purple-900/40
+            bg-[rgba(20,20,30,0.98)]
+            shadow-2xl
+            shadow-purple-900/10
+          "
+        >
+          {/* HEADER */}
           <m.div
-            className="flex flex-wrap items-center justify-center  text-light-gray text-xs xs:text-sm grow order-1 text-center p-0 sm:justify-start md:text-left md:px-4 md:order-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
+            variants={fadeUp}
+            className="
+              flex
+              flex-wrap
+              items-center
+              gap-4
+              border-b
+              border-purple-900/30
+              bg-[rgba(15,15,25,0.98)]
+              px-6
+              py-4
+              md:flex-nowrap
+            "
           >
-            <div className="text-purple-300 mr-2">~/dev-path/</div>
-            <m.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              portfolio_dev.tsx
-            </m.div>
-          </m.div>
-        </m.div>
+            <div className="flex gap-3 mr-2">
+              {["#ff5f56", "#ffbd2e", "#27c93f"].map((color, index) => (
+                <m.div
+                  key={index}
+                  initial={{
+                    scale: 0,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    scale: 1,
+                    opacity: 1,
+                  }}
+                  transition={{
+                    delay: index * 0.08,
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 18,
+                  }}
+                  className="w-3.5 h-3.5 rounded-full"
+                  style={{
+                    backgroundColor: color,
+                  }}
+                />
+              ))}
+            </div>
 
-        {/* Terminal Content */}
-        <div className="p-6 md:p-8">
-          <div className="mb-5">
-            <m.p
-              className="text-sm leading-[1.8] italic text-code-comment min-h-[1.8rem] xs:font-base"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              {typedText}
-              <m.span
-                className="ml-1"
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 0.8,
-                  repeatDelay: 0.3,
-                }}
-              >
-                |
-              </m.span>
-            </m.p>
+            <div className="flex items-center text-sm text-light-gray">
+              <span className="text-purple-300 mr-2">~/dev-path/</span>
 
-            <m.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="text-sm xs:text-base"
-            >
-              <p className="leading-[1.8] mt-4">
-                <span className="text-code-keyword">const</span>{" "}
-                <span className="text-code-type">desenvolvedora</span>{" "}
-                <span className="text-code-operator">=</span> {"{"}
-              </p>
-              <m.p
-                className=" leading-[1.8] ml-6"
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                <span className="text-code-property">nome</span>:{" "}
-                <span className="text-code-string">"Débora Hellen"</span>;
-              </m.p>
-              <m.p
-                className=" leading-[1.8] ml-6"
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.9 }}
-              >
-                <span className="text-code-property">atuação</span>:{" "}
-                <span className="text-code-string">"Desenvolvedora Front-End"</span>;
-              </m.p>
-              <m.p
-                className=" leading-[1.8] ml-6"
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1.0 }}
-              >
-                <span className="text-code-property">especialidades</span>: [
-                <span className="text-code-string">"React"</span> |{" "}
-                <span className="text-code-string">"TypeScript"</span> |{" "}
-                <span className="text-code-string">"UI/UX"</span>]
-              </m.p>
-              <p className=" leading-[1.8]">{"}"}</p>
-            </m.div>
-          </div>
-
-          {/* Action Buttons */}
-          <m.div
-            className="flex flex-col sm:flex-row gap-4 mb-8 text-xs sm:text-base"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
-          >
-            <m.button
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 group cursor-pointer"
-              onClick={() =>
-                document
-                  .getElementById("projetos")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              whileHover={{ y: -4, scale: 1.05, boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaRocket className="group-hover:rotate-12 transition-transform" />
-              Meus Trabalhos
-            </m.button>
-            <m.button
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-orange-700 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-orange-500/30 group cursor-pointer"
-              onClick={() =>
-                document
-                  .getElementById("contato")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              whileHover={{ y: -4, scale: 1.05, boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaComments className="group-hover:scale-110 transition-transform" />
-              Conversar Comigo
-            </m.button>
-          </m.div>
-
-          {/* Terminal funcional */}
-          <m.div
-            className="border-t border-purple-900/50 pt-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.3 }}
-          >
-            <div className="mb-4">
-              <div className="flex items-center text-sm mb-2 md:flex-nowrap flex-wrap">
-                <span className="text-green-400 font-medium">
-                  debora@portfolio
-                </span>
-                <span className="text-purple-400 mx-1">~</span>
-                <span className="text-orange-400">$</span>
-                <div className="w-full ml-3 flex items-center bg-gray-900/50 rounded-lg px-3 py-3 border border-purple-900/30">
-                  <FaChevronRight className="text-purple-500 mr-2" size={12} />
-                  <input
-                    className="bg-transparent outline-none text-gray-100 w-full placeholder-gray-500"
-                    type="text"
-                    placeholder="Digite um comando: sobre, skills, projetos, contato"
-                    value={command}
-                    onChange={(e) => {
-                      setCommand(e.target.value);
-                      setErrorMsg("");
-                    }}
-                    onKeyDown={(e) => e.key === "Enter" && handleCommand()}
-                    autoComplete="off"
-                    spellCheck={false}
-                  />
-                </div>
-              </div>
-
-              {errorMsg && (
-                <m.p
-                  className="text-red-400 text-sm mt-2 flex items-center gap-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                >
-                  <span className="text-red-500">
-                    <FaX />
-                  </span>
-                  {errorMsg}
-                </m.p>
-              )}
+              <span className="text-gray-300">portfolio_dev.tsx</span>
             </div>
           </m.div>
-        </div>
-      </m.div>
-    </m.section>
+
+          {/* CONTENT */}
+          <div className="p-6 md:p-8">
+            <m.div variants={containerVariants} initial="hidden" animate="show">
+              <m.div variants={fadeUp}>
+                <TypingText />
+              </m.div>
+
+              <m.div variants={fadeUp} className="mt-5 text-sm xs:text-base">
+                <p className="leading-[1.8]">
+                  <span className="text-code-keyword">const</span>{" "}
+                  <span className="text-code-type">desenvolvedora</span>{" "}
+                  <span className="text-code-operator">=</span> {"{"}
+                </p>
+
+                {[
+                  {
+                    property: "nome",
+                    value: '"Débora Hellen"',
+                  },
+                  {
+                    property: "atuação",
+                    value: '"Desenvolvedora Front-End"',
+                  },
+                  {
+                    property: "especialidades",
+                    value: '[ "React" | "TypeScript" | "UI/UX" ]',
+                  },
+                ].map((item, index) => (
+                  <m.p
+                    key={item.property}
+                    variants={fadeLeft}
+                    transition={{
+                      delay: index * 0.08,
+                    }}
+                    className="leading-[1.8] ml-6"
+                  >
+                    <span className="text-code-property">{item.property}</span>:{" "}
+                    <span className="text-code-string">{item.value}</span>;
+                  </m.p>
+                ))}
+
+                <p className="leading-[1.8]">{"}"}</p>
+              </m.div>
+
+              {/* BUTTONS */}
+              <m.div
+                variants={fadeUp}
+                className="flex flex-col sm:flex-row gap-4 mt-8 mb-8 text-sm"
+              >
+                <ActionButton
+                  icon={<FaRocket />}
+                  label="Meus Trabalhos"
+                  gradient="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  onClick={() =>
+                    document.getElementById("projetos")?.scrollIntoView({
+                      behavior: "smooth",
+                    })
+                  }
+                />
+
+                <ActionButton
+                  icon={<FaComments />}
+                  label="Conversar Comigo"
+                  gradient="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700"
+                  onClick={() =>
+                    document.getElementById("contato")?.scrollIntoView({
+                      behavior: "smooth",
+                    })
+                  }
+                />
+              </m.div>
+
+              {/* TERMINAL */}
+              <m.div variants={fadeUp}>
+                <TerminalInput />
+              </m.div>
+            </m.div>
+          </div>
+        </m.div>
+
+        <style>{`
+        .terminal-cursor {
+          animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+          0%,
+          100% {
+            opacity: 0;
+          }
+
+          50% {
+            opacity: 1;
+          }
+        }
+      `}</style>
+      </m.section>
+    </LazyMotion>
   );
 }
