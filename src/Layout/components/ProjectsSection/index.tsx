@@ -51,6 +51,15 @@ const PROJECTS: Record<Tab, Project[]> = {
       image: "/projetos/coded.png",
       github: "https://github.com/debs-veras/coded",
     },
+    {
+      title: "Quiz Naruto",
+      description:
+        "Um quiz interativo com a temática do anime Naruto. Este projeto foi desenvolvido para testar os conhecimentos dos fãs do universo ninja, apresentando perguntas dinâmicas e gerenciamento de estado avançado.",
+      technologies: ["React/TypeScript", "Tailwind"],
+      image: "/projetos/quiz-naruto.png",
+      github: "https://github.com/debs-veras/quiz-naruto-fe",
+      link: "https://quiz-naruto-fe.vercel.app",
+    },
 
     {
       title: "BlogTech",
