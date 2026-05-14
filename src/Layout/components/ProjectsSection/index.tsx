@@ -119,7 +119,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       technologies: ["JavaScript", "CSS", "HTML"],
       image: "/projetos/memory-game.png",
       github: "https://github.com/debs-veras/memory-game",
-      link: "https://debs-veras.github.io/memory-game",
+      link: "https://memory-game-debs.vercel.app",
     },
 
     {
@@ -137,7 +137,7 @@ const PROJECTS: Record<Tab, Project[]> = {
       technologies: ["JavaScript", "CSS", "HTML"],
       image: "/projetos/clone-netflix.png",
       github: "https://github.com/debs-veras/clone-netflix",
-      link: "https://debs-veras.github.io/clone-netflix/",
+      link: "https://clone-netflix-debs.vercel.app",
     },
     {
       title: "AltusAerial",
@@ -169,7 +169,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Este é um projeto simples de um jogo Pedra, Papel e Tesoura desenvolvido com HTML, CSS e JavaScript.",
       technologies: ["HTML", "CSS", "JavaScript"],
       image: "/projetos/pedra-papel-tesoura.png",
-      link: "https://debs-veras.github.io/jogo-pedra-papel-tesoura/",
+      link: "https://jogo-pedra-papel-tesoura-debs.vercel.app",
       github: "https://github.com/debs-veras/jogo-pedra-papel-tesoura",
     },
   ],
@@ -250,7 +250,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Uma Pokédex interativa desenvolvida para fins de aprendizado, exibindo informações de Pokémon de forma visual e organizada.",
       technologies: ["HTML", "JavaScript", "CSS"],
       image: "/projetos/mapadev.png",
-      link: "https://debs-veras.github.io/pokedex-mapadev/",
+      link: "https://pokedex-mapadev-debs.vercel.app",
       github: "https://github.com/debs-veras/pokedex-mapadev",
     },
     {
@@ -267,7 +267,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Este projeto demonstra o efeito parallax utilizando imagens em uma página web.",
       technologies: ["HTML", "CSS"],
       image: "/projetos/parallax.png",
-      link: "https://debs-veras.github.io/parallax/",
+      link: "https://parallax-debs.vercel.app",
       github: "https://github.com/debs-veras/parallax",
     },
     {
@@ -276,7 +276,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Projeto de estudo de um site de notícias simulado com layout de portal informativo.",
       technologies: ["HTML", "CSS"],
       image: "/projetos/blog-noticia.png",
-      link: "https://debs-veras.github.io/blog-noticia/",
+      link: "https://blog-noticia-debs.vercel.app",
       github: "https://github.com/debs-veras/blog-noticia",
     },
     {
@@ -293,7 +293,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Esse repositório contém a Pokédex completa que foi construída durante um tutorial no YouTube pelo canal Manual do Dev, usando as linguagens de front‑end HTML, CSS e JavaScript para criar uma aplicação interativa que lista Pokémons e mostra detalhes sobre eles.",
       technologies: ["HTML", "JavaScript", "CSS"],
       image: "/projetos/pokedex-completa.png",
-      link: "https://debs-veras.github.io/pokedex-completo",
+      link: "https://pokedex-completo-debs.vercel.app",
       github: "https://github.com/debs-veras/pokedex-completo",
     },
     {
@@ -302,7 +302,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Um jogo simples e divertido onde o objetivo é matar os mosquitos que aparecem na tela dentro de um certo tempo. O jogo possui múltiplos níveis de dificuldade e aumenta a velocidade conforme você progride.",
       technologies: ["HTML", "JavaScript", "CSS", "Bootstrap"],
       image: "/projetos/mata-mosquito.png",
-      link: "https://debs-veras.github.io/game-mata-mosquito/",
+      link: "https://game-mata-mosquito-debs.vercel.app",
       github: "https://github.com/debs-veras/game-mata-mosquito",
     },
     {
@@ -311,7 +311,7 @@ const PROJECTS: Record<Tab, Project[]> = {
         "Site fictício do Museu Nacional, desenvolvido exclusivamente para fins educacionais. O objetivo é praticar conceitos de desenvolvimento web utilizando HTML, CSS e JavaScript.",
       technologies: ["HTML", "CSS"],
       image: "/projetos/museu-nacional.png",
-      link: "https://debs-veras.github.io/site-museu/",
+      link: "https://site-museu-debs.vercel.app",
       github: "https://github.com/debs-veras/site-museu",
     },
 
